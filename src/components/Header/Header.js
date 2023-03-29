@@ -28,7 +28,7 @@ function Header({ loggedIn }) {
             <Link to="/signup" className="header__button">
               Регистрация
             </Link>
-            <Link to="/signin" className="header__button header__button-black">
+            <Link to="/signin" className="header__button header__button-green">
               Войти
             </Link>
           </div>

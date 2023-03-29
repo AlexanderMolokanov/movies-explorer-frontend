@@ -41,9 +41,9 @@
   opacity: 0.6;
 }
 
-.header__button-black {
-  color: #fff;
-  background-color: #000000;
+.header__button-green {
+  color: #000000;
+  background-color: #2BE080;
   min-width: 76px;
   border-radius: 3px;
 }
@@ -107,7 +107,7 @@
     line-height: 16px;
   }
 
-  .header__button-black {
+  .header__button-green {
     min-width: 54px;
   }
 }

@@ -32,7 +32,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="https://vk.com/nikkach"
+                href="https://vk.com/id322662327"
                 target="_blank"
                 rel="noreferrer"
                 className="footer__link"
