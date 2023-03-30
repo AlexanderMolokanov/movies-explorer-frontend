@@ -30,7 +30,7 @@ export default function Footer() {
                 Github
               </a>
             </li>
-            <li>
+            {/* <li>
               <a
                 href="https://vk.com/id322662327"
                 target="_blank"
@@ -39,7 +39,7 @@ export default function Footer() {
               >
                 ВКонтакте
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

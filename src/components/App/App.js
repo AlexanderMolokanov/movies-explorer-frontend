@@ -195,27 +195,35 @@ function App() {
                 <Redirect to="/" />
               )}
             </Route>
-            <ProtectedRoute
+            {/* <ProtectedRoute */}
+            <Route
               path="/movies"
               savedMovies={savedMovies}
               loggedIn={isLoggedIn}
               onCardDelete={handleCardDelete}
               component={Movies}
-              handleLikeClick={handleCardLike}></ProtectedRoute>
-            <ProtectedRoute
+              handleLikeClick={handleCardLike}>
+            </Route>
+            {/* </ProtectedRoute> */}
+            {/* <ProtectedRoute */}
+            <Route
               path="/saved-movies"
               savedMovies={savedMovies}
               loggedIn={isLoggedIn}
               onCardDelete={handleCardDelete}
-              component={SavedMovies}></ProtectedRoute>
-            <ProtectedRoute
+              component={SavedMovies}>
+            </Route>
+            {/* </ProtectedRoute> */}
+            {/* <ProtectedRoute */}
+            <Route
               path="/profile"
               signOut={handleSignOut}
               onUpdateUser={handleUpdateUser}
               loggedIn={isLoggedIn}
               component={Profile}
-              isLoading={isLoading}></ProtectedRoute>
-
+              isLoading={isLoading}>
+            </Route>
+            {/* </ProtectedRoute> */}
             <Route path="/*">
               <NotFound />
             </Route>

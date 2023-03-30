@@ -9,7 +9,7 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop';
 function Main() {
   return (
     <main>
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
       <Promo />
       <AboutProject />
       <Techs />
