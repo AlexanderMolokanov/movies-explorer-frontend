@@ -4,7 +4,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
-import Footer from '../Footer/Footer';
+import Footer from '../Footer/Footer'; 
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Movies from '../Movies/Movies';
@@ -20,7 +20,8 @@ import * as api from '../../utils/MainApi';
 function App() {
   const history = useHistory();
   const location = useLocation();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
   const [savedMovies, setSavedMovies] = useState([]);
   const [isSuccess, setIsSuccess] = useState(true);
@@ -157,7 +158,8 @@ function App() {
 
   // Выход
   const handleSignOut = () => {
-    setIsLoggedIn(false);
+    // setIsLoggedIn(false);
+    setIsLoggedIn(true);
     localStorage.removeItem('jwt');
     localStorage.removeItem('movies');
     localStorage.removeItem('movieSearch');
@@ -199,7 +201,7 @@ function App() {
             <Route
               path="/movies"
               savedMovies={savedMovies}
-              loggedIn={isLoggedIn}
+              // loggedIn={isLoggedIn}
               onCardDelete={handleCardDelete}
               component={Movies}
               handleLikeClick={handleCardLike}>

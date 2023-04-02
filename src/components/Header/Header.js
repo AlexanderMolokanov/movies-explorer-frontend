@@ -6,9 +6,11 @@ import logo from '../../images/logo.svg';
 import account from '../../images/acc-button.svg';
 import menu from '../../images/menu-button.svg';
 
-function Header({ loggedIn }) {
+function Header(
+  // { loggedIn }
+  ) {
   const [isClicked, setIsClicked] = useState(false);
-
+  const loggedIn = true;
   function handleOpen() {
     setIsClicked(true);
   }
@@ -47,7 +49,7 @@ function Header({ loggedIn }) {
             </NavLink>
             <NavLink
               to="/saved-movies"
-              className="header__button"
+              className="header__button" 
               activeClassName="header__button_active">
               Сохранённые фильмы
             </NavLink>

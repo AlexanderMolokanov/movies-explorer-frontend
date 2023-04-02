@@ -27,7 +27,7 @@
 }
 
 .nav-tab__link:hover {
-  transform: translate(0, -10px) scale(1.5);
+  /* transform: translate(0, -10px) scale(1.5); */
   transition-duration: 0.5s;
   cursor: pointer;
   background: #2be080;
