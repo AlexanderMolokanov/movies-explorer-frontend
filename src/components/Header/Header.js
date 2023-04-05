@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
 import logo from '../../images/logo.svg';
-import account from '../../images/acc-button.svg';
+// import account from '../../images/acc-button.svg';
 import menu from '../../images/menu-button.svg';
 
 function Header(
@@ -56,7 +56,8 @@ function Header(
           </div>
           <div className="header__button-container">
             <Link to="/profile" className="header__account-button">
-              <img src={account} alt="аккаунт" />
+              {/* <img src={account} alt="аккаунт" /> */}
+              Аккаунт
             </Link>
             <button onClick={handleOpen} className="header__menu-button">
               <img src={menu} alt="меню" />
