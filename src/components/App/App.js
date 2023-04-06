@@ -12,6 +12,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
@@ -199,7 +200,8 @@ function App() {
               )}
             </Route>
             {/* <ProtectedRoute */}
-            <Route
+            <ErrorBoundary>
+              <Route
               path="/movies"
               savedMovies={savedMovies}
               // loggedIn={isLoggedIn}
@@ -207,6 +209,7 @@ function App() {
               component={Movies}
               handleLikeClick={handleCardLike}>
             </Route>
+            </ErrorBoundary>
             {/* </ProtectedRoute> */}
             {/* <ProtectedRoute */}
             <Route

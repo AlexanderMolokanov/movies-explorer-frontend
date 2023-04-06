@@ -3,6 +3,7 @@ import './SavedMovies.css';
 import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import Footer from '../Footer/Footer';
 import { filterMovies, filterDuration } from '../../utils/utils';
 
@@ -40,13 +41,15 @@ function SavedMovies({ loggedIn, savedMovies, onCardDelete }) {
       <SearchForm 
       onSearchMovies={onSearchMovies} 
       onFilter={handleShortMovies} />
-      <MoviesCardList
+      <ErrorBoundary>
+        <MoviesCardList
         isNotFound={isNotFound}
         isSavedFilms={true} 
         cards={filteredMovies}
         savedMovies={savedMovies}
         onCardDelete={onCardDelete}
-      />
+        />
+      </ErrorBoundary>
       <Footer />
     </section>
   );
