@@ -8,7 +8,9 @@ export const register = (name, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     credentials: 'include',
+    'Access-Control-Allow-Origin': `${BASE_URL}`,
     headers: {
+      Origin: 'http://localhost:3000/',
       "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
     },
@@ -20,7 +22,9 @@ export const authorize = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     credentials: 'include',
+    Origin: `${BASE_URL}`,
     headers: {
+      Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
     },
@@ -28,11 +32,13 @@ export const authorize = (email, password) => {
   }).then((res) => checkResponse(res));
 };
 
-export const getContent = (token) => {
+export const getContent = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     credentials: 'include',
+    'Access-Control-Allow-Origin': `${BASE_URL}`,
     headers: {
+      Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
     },
@@ -44,7 +50,9 @@ export const getUserInfo = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     credentials: 'include',
+    'Access-Control-Allow-Origin': `${BASE_URL}`,
     headers: {
+      Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
     },
@@ -57,7 +65,9 @@ export const setUserInfo = (data) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'PATCH', 
     credentials: 'include',
+    'Access-Control-Allow-Origin': `${BASE_URL}`,
     headers: {
+      Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
     }, 
@@ -72,7 +82,9 @@ export const getCards = () => {
   return fetch(`${BASE_URL}/movies`, {
     method: 'GET',
     credentials: 'include',
+    'Access-Control-Allow-Origin': `${BASE_URL}`,
     headers: {
+      Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
     },
@@ -85,7 +97,9 @@ export const postCard = (data) => {
   return fetch(`${BASE_URL}/movies`, {
     method: 'POST',
     credentials: 'include',
+    'Access-Control-Allow-Origin': `${BASE_URL}`,
     headers: {
+      Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
     },
@@ -116,7 +130,9 @@ export const deleteCard = (cardId) => {
   return fetch(`${BASE_URL}/movies/${cardId}`, {
     method: 'DELETE',
     credentials: 'include',
+    'Access-Control-Allow-Origin': `${BASE_URL}`,
     headers: {
+      Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
     },
