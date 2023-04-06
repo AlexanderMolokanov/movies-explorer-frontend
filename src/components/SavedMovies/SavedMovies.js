@@ -37,10 +37,12 @@ function SavedMovies({ loggedIn, savedMovies, onCardDelete }) {
   return (
     <section className="movies">
       <Header loggedIn={loggedIn} />
-      <SearchForm onSearchMovies={onSearchMovies} onFilter={handleShortMovies} />
+      <SearchForm 
+      onSearchMovies={onSearchMovies} 
+      onFilter={handleShortMovies} />
       <MoviesCardList
         isNotFound={isNotFound}
-        isSavedFilms={true}
+        isSavedFilms={true} 
         cards={filteredMovies}
         savedMovies={savedMovies}
         onCardDelete={onCardDelete}

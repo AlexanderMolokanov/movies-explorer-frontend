@@ -10,7 +10,9 @@ function Header(
   // { loggedIn }
   ) {
   const [isClicked, setIsClicked] = useState(false);
-  const loggedIn = true;
+  // костыль
+  const loggedIn = true; 
+  
   function handleOpen() {
     setIsClicked(true);
   }

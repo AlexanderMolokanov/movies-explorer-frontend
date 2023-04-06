@@ -211,7 +211,7 @@ function App() {
             <Route
               path="/saved-movies"
               savedMovies={savedMovies}
-              loggedIn={isLoggedIn}
+              // loggedIn={isLoggedIn}
               onCardDelete={handleCardDelete}
               component={SavedMovies}>
             </Route>
