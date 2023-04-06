@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, useHistory, useLocation, Redirect } from 'react-router-dom';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+// import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -12,6 +12,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
+
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
@@ -211,11 +212,10 @@ function App() {
             <Route
               path="/saved-movies"
               savedMovies={savedMovies}
-              // loggedIn={isLoggedIn}
-              onCardDelete={handleCardDelete}
+              loggedIn={isLoggedIn}
+           onCardDelete={handleCardDelete}
               component={SavedMovies}>
             </Route>
-            {/* </ProtectedRoute> */}
             {/* <ProtectedRoute */}
             <Route
               path="/profile"
@@ -225,7 +225,7 @@ function App() {
               component={Profile}
               isLoading={isLoading}>
             </Route>
-            {/* </ProtectedRoute> */}
+              {/* </ProtectedRoute> */}
             <Route path="/*">
               <NotFound />
             </Route>
