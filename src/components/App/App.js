@@ -17,6 +17,8 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 import * as api from '../../utils/MainApi';
 
+
+
 function App() {
   const history = useHistory();
   const location = useLocation();
@@ -28,6 +30,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
   const path = location.pathname;
+
+  console.log(Movies)
 
   //Проверка токена и авторизация пользователя
   useEffect(() => {
@@ -55,6 +59,7 @@ function App() {
       api
         .getUserInfo()
         .then((profileInfo) => {
+          console.log(profileInfo);
           setCurrentUser(profileInfo);
         })
         .catch((err) => {
@@ -65,6 +70,7 @@ function App() {
         .getCards()
         .then((cardsData) => {
           setSavedMovies(cardsData.reverse());
+          console.log(cardsData);
         })
         .catch((err) => {
           console.log(err);

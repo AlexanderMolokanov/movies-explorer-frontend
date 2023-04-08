@@ -7,7 +7,7 @@ import SearchError from '../SearchError/SearchError';
 import { SHOW_MORE_DECKTOP, SHOW_MORE_TABLET, SHOW_MORE_MOBILE } from '../../utils/constants';
 
 function MoviesCardList({
-  cards,
+  cards, 
   isSavedFilms,
   isLoading,
   isReqErr,
