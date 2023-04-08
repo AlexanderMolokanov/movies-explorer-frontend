@@ -22,7 +22,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="https://github.com/TinaevNK"
+                href="https://github.com/AlexanderMolokanov"
                 target="_blank"
                 rel="noreferrer"
                 className="footer__link"

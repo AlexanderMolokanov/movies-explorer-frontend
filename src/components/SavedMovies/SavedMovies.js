@@ -3,6 +3,7 @@ import './SavedMovies.css';
 import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import Footer from '../Footer/Footer';
 import { filterMovies, filterDuration } from '../../utils/utils';
 
@@ -44,13 +45,22 @@ function SavedMovies({
       <SearchForm 
       onSearchMovies={onSearchMovies} 
       onFilter={handleShortMovies} />
+<<<<<<< HEAD
       <MoviesCardList
+=======
+      <ErrorBoundary>
+        <MoviesCardList
+        isNotFound={isNotFound}
+        isSavedFilms={true} 
+        cards={filteredMovies}
+>>>>>>> 8359271ee0e5cb6c003ce3bb29bf911be6fd2a23
         savedMovies={savedMovies}
         cards={filteredMovies}
         isSavedFilms={true} 
         isNotFound={isNotFound}
         onCardDelete={onCardDelete}
-      />
+        />
+      </ErrorBoundary>
       <Footer />
     </section>
   );

@@ -15,7 +15,7 @@ function AboutMe() {
             и езду на спортивных автомобилях. Благодаря курсу Веб-разработчик в Яндекс Практикуме приобрел новый полезный опыт реализации классных проктов в области фронтенд и бэкенд разработки.
           </p>
           <a
-            href="https://github.com/Andryuha-Nikolaev"
+            href="https://github.com/AlexanderMolokanov"
             className="about-me__link"
             target="_blank"
             rel="noreferrer">
