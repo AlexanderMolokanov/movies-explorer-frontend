@@ -24,8 +24,8 @@ import * as api from '../../utils/MainApi';
 function App() {
   const history = useHistory();
   const location = useLocation();
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
   const [savedMovies, setSavedMovies] = useState([]);
   const [isSuccess, setIsSuccess] = useState(true);
@@ -195,7 +195,7 @@ function App() {
               {!isLoggedIn ? (
                 <Login onAuthorize={handleAuthorize} isLoading={isLoading} />
               ) : (
-                <Redirect to="/" />
+                <Redirect to="/" /> 
               )}
             </Route>
             <Route path="/signup">
@@ -217,7 +217,7 @@ function App() {
               >
               </Route>
             </ErrorBoundary>
-            {/* </ProtectedRoute> */}
+            {/* </ProtectedRoute> */  }
             {/* <ProtectedRoute */}
             {/* <ErrorBoundary> */}
             <ErrorBoundary>

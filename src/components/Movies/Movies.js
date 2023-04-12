@@ -9,6 +9,8 @@ import { filterMovies, filterDuration } from '../../utils/utils';
 import * as movies from '../../utils/MoviesApi';
 
 function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
+
+   loggedIn = true
   const [isLoading, setIsLoading] = useState(false); //прелоадер
   const [allMovies, setAllMovies] = useState([]);
   const [initialMovies, setInitialMovies] = useState([]); //отфильтрованные по запросу

@@ -7,11 +7,11 @@ import logo from '../../images/logo.svg';
 import menu from '../../images/menu-button.svg';
 
 function Header(
-  // { loggedIn }
+  { loggedIn }
   ) {
   const [isClicked, setIsClicked] = useState(false);
   // костыль
-  const loggedIn = true; 
+  // const loggedIn = true; 
   
   function handleOpen() {
     setIsClicked(true);
