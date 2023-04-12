@@ -215,12 +215,13 @@ function App() {
               component={Movies}
               handleLikeClick={handleCardLike}
               >
-            </Route>
+              </Route>
             </ErrorBoundary>
             {/* </ProtectedRoute> */}
             {/* <ProtectedRoute */}
             {/* <ErrorBoundary> */}
-            <Route
+            <ErrorBoundary>
+              <Route
               path="/saved-movies"
               savedMovies={savedMovies}
               loggedIn={isLoggedIn}
@@ -229,7 +230,8 @@ function App() {
               // component={Movies}
               // handleLikeClick={handleCardLike}
               >
-            </Route>
+              </Route>
+            </ErrorBoundary>
             {/* </ErrorBoundary> */}
             {/* <ProtectedRoute */}
             <Route
