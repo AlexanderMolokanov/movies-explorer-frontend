@@ -166,7 +166,7 @@ function App() {
 
   // Выход
   const handleSignOut = () => {
-    // setIsLoggedIn(false);
+    setIsLoggedIn(false);
     setIsLoggedIn(true);
     localStorage.removeItem('jwt');
     localStorage.removeItem('movies');
@@ -210,21 +210,27 @@ function App() {
               <Route
               path="/movies"
               savedMovies={savedMovies}
-              // loggedIn={isLoggedIn}
+              loggedIn={isLoggedIn}
               onCardDelete={handleCardDelete}
               component={Movies}
-              handleLikeClick={handleCardLike}>
+              handleLikeClick={handleCardLike}
+              >
             </Route>
             </ErrorBoundary>
             {/* </ProtectedRoute> */}
             {/* <ProtectedRoute */}
+            {/* <ErrorBoundary> */}
             <Route
               path="/saved-movies"
               savedMovies={savedMovies}
               loggedIn={isLoggedIn}
-           onCardDelete={handleCardDelete}
-              component={SavedMovies}>
+              onCardDelete={handleCardDelete}
+              component={SavedMovies}
+              // component={Movies}
+              // handleLikeClick={handleCardLike}
+              >
             </Route>
+            {/* </ErrorBoundary> */}
             {/* <ProtectedRoute */}
             <Route
               path="/profile"

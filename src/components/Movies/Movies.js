@@ -9,21 +9,14 @@ import { filterMovies, filterDuration } from '../../utils/utils';
 import * as movies from '../../utils/MoviesApi';
 
 function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
-  const [isLoading, setIsLoading] = useState(false); //загрузка прелоадер
-  // const [allMovies, setAllMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false); //прелоадер
+  const [allMovies, setAllMovies] = useState([]);
   const [initialMovies, setInitialMovies] = useState([]); //отфильтрованные по запросу
   const [filteredMovies, setFilteredMovies] = useState([]); //отфильтрованные по запросу и чекбоксу
   const [isShortMovies, setIsShortMovies] = useState(false); //включен ли чекбокс короткометражек
 
   const [isReqErr, setIsReqErr] = useState(false); //ошибка запроса к серверу
   const [isNotFound, setIsNotFound] = useState(false); //фильмы по запросу не найдены
-
-  //!!!!!!!!!!!
-  // function handleSingOut() {
-  //   localStorage.removeItem('movies');
-  //   localStorage.removeItem('movieSearch');
-  //   localStorage.removeItem('shortMovies');
-  // }
 
   //основнай метод фильрации, который отдает массив с фильмами на рендеринг
   function handleFilterMovies(movies, query, short) {
@@ -71,7 +64,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
         .then((cardsData) => {
           handleFilterMovies(cardsData, query, isShortMovies);
           setIsReqErr(false);
-          // setAllMovies(cardsData);
+          setAllMovies(cardsData);
         })
         .catch((err) => {
           setIsReqErr(true);

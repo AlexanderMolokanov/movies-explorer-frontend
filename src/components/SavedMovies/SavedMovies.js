@@ -8,14 +8,14 @@ import Footer from '../Footer/Footer';
 import { filterMovies, filterDuration } from '../../utils/utils';
 
 function SavedMovies({ 
-  // loggedIn, 
+  loggedIn, 
   savedMovies, onCardDelete }) {
   const [filteredMovies, setFilteredMovies] = useState(savedMovies); //отфильтрованные по запросу и чекбоксу
   const [isShortMovies, setIsShortMovies] = useState(false); //включен ли чекбокс короткометражек
   const [isNotFound, setIsNotFound] = useState(false); //фильмы по запросу не найдены
   const [searchQuery, setSearchQuery] = useState('');
 
-  const loggedIn = true; 
+  // const loggedIn = true; 
 
   //submit
   function onSearchMovies(query) {
@@ -45,19 +45,12 @@ function SavedMovies({
       <SearchForm 
       onSearchMovies={onSearchMovies} 
       onFilter={handleShortMovies} />
-<<<<<<< HEAD
-      <MoviesCardList
-=======
       <ErrorBoundary>
         <MoviesCardList
         isNotFound={isNotFound}
         isSavedFilms={true} 
         cards={filteredMovies}
->>>>>>> 8359271ee0e5cb6c003ce3bb29bf911be6fd2a23
         savedMovies={savedMovies}
-        cards={filteredMovies}
-        isSavedFilms={true} 
-        isNotFound={isNotFound}
         onCardDelete={onCardDelete}
         />
       </ErrorBoundary>
