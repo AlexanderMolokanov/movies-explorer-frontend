@@ -1,33 +1,33 @@
-.not-found {
+.wrong-address {
   display: flex;
-  min-height: 100vh;
-  flex-direction: column;
   justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
   align-items: center;
   width: 100%;
 }
 
-.not-found__text-container {
+.wrong-address__text-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   gap: 5px;
   margin: 0;
 }
 
-.not-found__error {
+.wrong-address__error {
   font-weight: 400;
   font-size: 140px;
   line-height: 1.21;
 }
 
-.not-found__error-name {
+.wrong-address__error-name {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.19;
 }
 
-.not-found__button {
+.wrong-address__button {
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -43,31 +43,31 @@
   transition: all .3s ease;
 }
 
-.not-found__button:hover {
+.wrong-address__button:hover {
   opacity: .8;
 }
 
 @media screen and (max-width: 800px) {
-  .not-found__button {
+  .wrong-address__button {
     bottom: 212px;
   }
 }
 
 @media screen and (max-width: 450px) {
-  .not-found__text-container {
+  .wrong-address__text-container {
     gap: 10px;
   }
 
-  .not-found__error {
+  .wrong-address__error {
     font-size: 80px;
   }
 
-  .not-found__error-name {
+  .wrong-address__error-name {
     font-size: 12px;
     line-height: 1.25;
   }
 
-  .not-found__button {
+  .wrong-address__button {
     font-size: 12px;
     line-height: 1.25;
     bottom: 30px;

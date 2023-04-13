@@ -16,14 +16,14 @@ function MoviesCard({ card, isSavedFilms, handleLikeClick, onCardDelete, saved, 
   }
 
   const cardSaveButtonClassName = `${
-    saved ? 'card__save-button card__save-button_active' : 'card__save-button'
+    saved ? 'movies-card__save-button movies-card__save-button_active' : 'movies-card__save-button'
   }`;
 
   return (
     <li className="card">
       <a href={card.trailerLink} target="_blank" rel="noreferrer">
         <img
-          className="card__image"
+          className="movies-card__image"
           alt={card.nameRU}
           src={isSavedFilms ? card.image : 
             // `https://api.nomoreparties.co/${card.image.url}`
@@ -32,13 +32,13 @@ function MoviesCard({ card, isSavedFilms, handleLikeClick, onCardDelete, saved, 
         />
       </a>
 
-      <div className="card__container">
-        <div className="card__info-container">
-          <h2 className="card__text">{card.nameRU}</h2>
-          <span className="card__time">{durationConverter(card.duration)}</span>
+      <div className="movies-card__container">
+        <div className="movies-card__info-container">
+          <h2 className="movies-card__text">{card.nameRU}</h2>
+          <span className="movies-card__time">{durationConverter(card.duration)}</span>
         </div>
         {isSavedFilms ? (
-          <button type="button" className="card__delete-button" onClick={onDelete}></button>
+          <button type="button" className="movies-card__del-button" onClick={onDelete}></button>
         ) : (
           <button type="button" className={cardSaveButtonClassName} onClick={onCardClick}></button>
         )}

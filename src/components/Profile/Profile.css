@@ -1,10 +1,10 @@
 .profile {
-  padding: 74px 0 70px 0;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  max-width: 410px;
   box-sizing: border-box;
+  padding: 74px 0 70px 0;
+  margin: 0 auto;
+  max-width: 410px;
 }
 
 .profile__title {
@@ -12,26 +12,26 @@
   padding: 0;
   margin-bottom: 123px;
   text-align: center;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
 }
 
 .profile__form {
-  display: flex;
   flex-direction: column;
+  display: flex;
   width: 100%;
 }
 
 .profile__field {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
+  justify-content: space-between;
   /* align-items: center; */
   margin: 0;
   padding: 0;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 500;
   font-size: 11px;
   line-height: 13px;
@@ -46,7 +46,7 @@
   /* min-height: 30px; */
   width: 350px;
   text-align: right;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 400;
   font-size: 11px;
   line-height: 13px;
@@ -55,16 +55,16 @@
 }
 
 .profile__input-error {
+  position: absolute;
+  top: 16px;
+  right: 0;
   margin: 0;
   padding: 0;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
   color: #ff4062;
-  position: absolute;
-  top: 16px;
-  right: 0;
   text-align: right;
 }
 
@@ -73,8 +73,8 @@
 }
 
 .profile__border {
-  border-bottom: 1px solid #e8e8e8;
   margin-bottom: 17px;
+  border-bottom: 1px solid #e8e8e8;
   /* margin-top: 16px; */
 }
 
@@ -87,9 +87,9 @@
   line-height: 16px;
   text-align: center;
   border: none;
+  cursor: pointer;
   color: #000;
   background-color: white;
-  cursor: pointer;
 }
 
 .profile__logout {
@@ -100,13 +100,13 @@
   font-size: 13px;
   line-height: 16px;
   text-align: center;
-  color: #ff4062;
   border: none;
   background-color: transparent;
   cursor: pointer;
+  color: #ff4062;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1024px) {
   .profile {
     padding-top: 236px;
     padding-bottom: 269px;
@@ -121,7 +121,7 @@
   }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 577px) {
   .profile {
     padding: 70px 30px 40px 30px;
   }

@@ -11,7 +11,7 @@ function NavTab() {
       <Link to="techs" className="nav-tab__link" smooth={true} duration={600}>
         Технологии
       </Link>
-      <Link to="about-me" className="nav-tab__link" smooth={true} duration={600}>
+      <Link to="my" className="nav-tab__link" smooth={true} duration={600}>
         Студент
       </Link>
     </nav>

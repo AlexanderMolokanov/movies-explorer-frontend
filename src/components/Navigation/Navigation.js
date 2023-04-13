@@ -8,7 +8,7 @@ function Navigation({ handleClose }) {
     <div className="navigation__overlay">
       <div onClick={handleClose} className="navigation__container-empty"></div>
       <div className="navigation__container">
-        <button className="navigation__close-button" onClick={handleClose}></button>
+        <button className="navigation__cl-button" onClick={handleClose}></button>
         <nav className="navigation__nav">
           <NavLink
             exact

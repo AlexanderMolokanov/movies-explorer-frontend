@@ -23,7 +23,7 @@ function MoviesCardList({
     const display = window.innerWidth;
     if (display > 1180) {
       setShownMovies(16);
-    } else if (display > 1023) {
+    } else if (display > 1024) {
       setShownMovies(12);
     } else if (display > 800) {
       setShownMovies(8);
@@ -46,13 +46,13 @@ function MoviesCardList({
     const display = window.innerWidth;
     if (display > 1180) {
       setShownMovies(shownMovies + SHOW_MORE_DECKTOP);
-    } else if (display > 1023) {
+    } else if (display > 1024) {
       setShownMovies(shownMovies + SHOW_MORE_TABLET);
     }
     // else if (display > 800) {
     //   setShownMovies(shownMovies + 2);
     // }
-    else if (display < 1023) {
+    else if (display < 1024) {
       setShownMovies(shownMovies + SHOW_MORE_MOBILE);
     }
   }
@@ -78,7 +78,7 @@ function MoviesCardList({
         <>
           {pathname === '/saved-movies' ? (
             <>
-              <ul className="cards__list">
+              <ul className="movies-cards__list">
                 {cards.map((card) => (
                   <MoviesCard
                     key={isSavedFilms ? card._id : card.id}
@@ -92,11 +92,11 @@ function MoviesCardList({
                   />
                 ))}
               </ul>
-              <div className="cards__button-container"></div>
+              <div className="movies-cards__button-container"></div>
             </>
           ) : (
             <>
-              <ul className="cards__list">
+              <ul className="movies-cards__list">
                 {cards.slice(0, shownMovies).map((card) => (
                   <MoviesCard
                     key={isSavedFilms ? card._id : card.id}
@@ -110,9 +110,9 @@ function MoviesCardList({
                   />
                 ))}
               </ul>
-              <div className="cards__button-container">
+              <div className="movies-cards__button-container">
                 {cards.length > shownMovies ? (
-                  <button className="cards__button" onClick={showMore}>
+                  <button className="movies-cards__button" onClick={showMore}>
                     Ещё
                   </button>
                 ) : (

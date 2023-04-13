@@ -4,7 +4,13 @@
   /* height: 218px; */
 }
 
-.card__image {
+.movies-card__container {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 12px;
+}
+
+.movies-card__image {
   width: 100%;
   height: 151px;
   object-fit: cover;
@@ -12,13 +18,15 @@
   border-top-right-radius: 10px;
 }
 
-.card__container {
-  display: flex;
-  justify-content: space-between;
-  padding: 14px 12px;
+.movies-card__text {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  max-width: 250px;
 }
 
-.card__time {
+.movies-card__time {
   margin-top: 10px;
   font-style: normal;
   font-weight: 400;
@@ -29,60 +37,52 @@
   color: #a0a0a0;
 }
 
-.card__text {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 16px;
-  max-width: 250px;
-}
-
-.card__save-button {
-  background: #f9f9f9;
+.movies-card__save-button {
   border: none;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.09);
   border-radius: 50px;
-  background-image: url(../../images/save-button.svg);
   background-position: center;
   background-repeat: no-repeat;
   width: 16px;
   height: 16px;
   cursor: pointer;
+  background: #f9f9f9;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.09);
+  background-image: url(../../images/save-button.svg);
 }
 
-.card__save-button:hover {
-  box-shadow: 0px 0px 9px 7px rgba(43, 224, 128, 0.8);
-  opacity: 0.6;
-}
-
-.card__save-button_active {
+.movies-card__save-button_active {
   background: #2be080;
   background-image: url(../../images/save-button.svg);
 }
 
-.card__delete-button {
-  background-image: url('../../images/delete-button.svg');
+.movies-card__save-button:hover {
+  box-shadow: 0px 0px 9px 7px rgba(43, 224, 128, 0.8);
+  opacity: 0.6;
+}
+
+.movies-card__del-button {
   width: 16px;
   height: 16px;
   border: none;
   background-position: center;
   background-repeat: no-repeat;
   background-color: transparent;
+  background-image: url('../../images/del-button.svg');
 }
 
-.card__delete-button:hover {
+.movies-card__del-button:hover {
   cursor: pointer;
   opacity: 0.6;
 }
 
-@media screen and (max-width: 1023px) {
-  .card__image {
+@media screen and (max-width: 1024px) {
+  .movies-card__image {
     height: 190px;
   }
 }
 
-@media screen and (max-width: 576px) {
-  .card__image {
+@media screen and (max-width: 577px) {
+  .movies-card__image {
     height: 168px;
   }
 }

@@ -1,25 +1,25 @@
-.about-me {
+.my {
   box-sizing: border-box;
   padding: 110px 70px 100px 70px;
 }
 
-.about-me__container {
+.my__container {
   display: flex;
-  margin-top: 66px;
   justify-content: space-between;
+  margin-top: 66px;
 }
 
-.about-me__content {
+.my__content {
   display: flex;
   flex-direction: column;
   max-width: 600px;
 }
 
-.about-me__title {
+.my__title {
   margin: 0;
   padding: 0;
   padding-bottom: 23px;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 400;
   font-size: 22px;
   line-height: 27px;
@@ -27,150 +27,150 @@
   border-bottom: 1px solid #000000;
 }
 
-.about-me__large-title {
+.my__large-title {
   margin: 0;
   padding: 0;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 400;
   font-size: 50px;
   line-height: 58px;
   letter-spacing: -0.04em;
 }
 
-.about-me__info {
+.my__info {
   margin: 0;
   padding: 0;
   margin-top: 18px;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 500;
   font-size: 18px;
   line-height: 20px;
 }
 
-.about-me__description {
+.my__description {
   margin: 0;
   padding: 0;
   margin-top: 26px;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   flex: 1 1 auto;
 }
 
-.about-me__link {
+.my__link {
   margin: 0;
   padding: 0;
   text-decoration: none;
-  color: #000;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
+  color: #000;
 }
 
-.about-me__link:hover {
+.my__link:hover {
   color: #a0a0a0;
 }
 
-.about-me__photo {
+.my__photo {
   width: 270px;
   height: 327px;
+  border-radius: 10px;
   object-fit: cover;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 10px;
 }
 
-@media screen and (max-width: 1023px) {
-  .about-me {
+@media screen and (max-width: 1024px) {
+  .my {
     padding: 90px 50px;
   }
 
-  .about-me__content {
+  .my__content {
     /* max-width: 364px; */
     margin-right: 49px;
   }
 
-  .about-me__large-title {
-    font-size: 40px;
+  .my__large-title {
     line-height: 40px;
+    font-size: 40px;
   }
 
-  .about-me__info {
+  .my__info {
+    font-size: 12px;
     margin-top: 16px;
-    font-size: 12px;
     line-height: 18px;
   }
 
-  .about-me__description {
+  .my__description {
+    font-size: 12px;
     margin-top: 20px;
-    font-size: 12px;
     line-height: 18px;
   }
 
-  .about-me__link {
+  .my__link {
     font-size: 14px;
     line-height: 17px;
   }
 
-  .about-me__photo {
+  .my__photo {
     width: 255px;
     height: 307px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .about-me__container {
-    margin-top: 60px;
+  .my__container {
     flex-direction: column-reverse;
     align-items: center;
+    margin-top: 60px;
   }
 
-  .about-me__content {
+  .my__content {
     margin-right: 0px;
   }
-  .about-me__large-title {
+  .my__large-title {
     margin-top: 40px;
   }
 }
 
-@media screen and (max-width: 576px) {
-  .about-me {
+@media screen and (max-width: 577px) {
+  .my {
     padding: 70px 14px;
   }
+  
+  .my__info {
+    font-size: 11px;
+    line-height: 16px;
+  }
 
-  .about-me__title {
-    padding-bottom: 28px;
+  .my__title {
     font-size: 18px;
+    padding-bottom: 28px;
     line-height: 22px;
   }
 
-  .about-me__large-title {
-    margin-top: 40px;
+  .my__large-title {
     font-size: 30px;
+    margin-top: 40px;
     line-height: 36px;
   }
 
-  .about-me__info {
+  .my__description {
     font-size: 11px;
     line-height: 16px;
   }
 
-  .about-me__description {
-    font-size: 11px;
-    line-height: 16px;
-  }
-
-  .about-me__link {
-    margin-top: 40px;
-    font-size: 14px;
-    line-height: 17px;
-  }
-
-  .about-me__photo {
+  .my__photo {
     width: 292px;
     height: 352px;
+  }
+
+  .my__link {
+    font-size: 14px;
+    margin-top: 40px;
+    line-height: 17px;
   }
 }

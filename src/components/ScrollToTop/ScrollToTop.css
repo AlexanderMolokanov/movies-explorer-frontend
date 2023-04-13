@@ -2,15 +2,16 @@
   position: fixed;
   right: calc(50% - 25px);
   width: 40px;
-  bottom: 16px;
   z-index: 1;
-}
-
-.scroll:hover {
-  cursor: pointer;
-  opacity: 0.6;
+  bottom: 16px;
 }
 
 .scroll__image {
   width: 30px;
+} 
+
+.scroll:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
+

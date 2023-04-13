@@ -1,14 +1,14 @@
 .form__container {
-  padding: 70px 0;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  padding: 70px 0;
+  margin: 0 auto;
   max-width: 396px;
 }
 
 .form__logo {
-  width: 38px;
   height: 38px;
+  width: 38px;
   fill: #2BE080;
 }
 
@@ -19,18 +19,18 @@
 
 .form__title {
   margin: 0;
-  padding: 40px 0;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
+  padding: 40px 0;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  min-height: 380px;
   width: 100%;
+  min-height: 380px;
 }
 
 .form__button-save {
@@ -38,15 +38,15 @@
   /* width: 396px; */
   height: 45px;
   border: none;
-  background-color: black;
-  color: white;
   border-radius: 3px;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
   text-align: center;
   cursor: pointer;
+  background-color: black;
+  color: white;
 }
 
 .form__button-save:hover {
@@ -55,11 +55,11 @@
 
 .form__button-save_inactive {
   pointer-events: none;
+  box-sizing: border-box;
+  opacity: 0.2;
   background: #ffffff;
   border: 1px solid #000000;
-  box-sizing: border-box;
   color: #000000;
-  opacity: 0.2;
 }
 
 .form__button-save_loading {
@@ -71,8 +71,8 @@
   margin: 0;
   padding: 0;
   padding-top: 16px;
+  /* font-style: normal; */
   text-align: center;
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -81,11 +81,11 @@
 
 .form__link {
   text-decoration: none;
-  color: #000;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
+  color: #000;
 }
 
 .form__link:hover {
@@ -93,35 +93,32 @@
 }
 
 .form__field {
+  position: relative;
   margin: 0;
   padding: 0;
   margin-bottom: 24px;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
   color: #a0a0a0;
-  position: relative;
 }
 
 .form__input {
   margin: 0;
   padding: 5px 0 10px 0;
   width: 100%;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   border: none;
-  border-bottom: 1px solid #e8e8e8;
   outline: none;
+  border-bottom: 1px solid #e8e8e8;
 }
 
 .form__input:focus {
   background-color: rgba(43, 224, 128, 0.4);
-}
-
-.form__input:focus {
   border-bottom: 1px solid #000000;
 }
 
@@ -134,30 +131,35 @@
 }
 
 .form__input-error {
+  position: absolute;
   margin: 0;
   padding: 0;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
-  color: #ff4062;
-  position: absolute;
   top: 50px;
   left: 0;
+  color: #ff4062;
 }
 
 .form__input-error_active {
   visibility: visible;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1024px) {
   .form__container {
-    padding-top: 232px;
     padding-bottom: 232px;
+    padding-top: 232px;
   }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 577px) {
+  .form {
+    /* min-height: 310px; */
+    min-height: 468px;
+  }
+
   .form__container {
     padding: 56px 30px 30px 30px;
     align-items: center;
@@ -169,24 +171,19 @@
     text-align: center;
   }
 
-  .form {
-    /* min-height: 310px; */
-    min-height: 468px;
-  }
-
   .form__button-save {
     font-size: 12px;
     line-height: 15px;
     /* margin-top: 80px; */
   }
 
-  .form__text {
-    padding-top: 14px;
+  .form__link {
     font-size: 12px;
     line-height: 15px;
   }
 
-  .form__link {
+  .form__text {
+    padding-top: 14px;
     font-size: 12px;
     line-height: 15px;
   }
