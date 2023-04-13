@@ -3,12 +3,14 @@ import './Movies.css';
 import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import Footer from '../Footer/Footer'; 
+import Footer from '../Footer/Footer';  
 import { filterMovies, filterDuration } from '../../utils/utils';
 
 import * as movies from '../../utils/MoviesApi';
 
 function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
+
+  // console.log(movies)
 
    loggedIn = true
   const [isLoading, setIsLoading] = useState(false); //прелоадер
@@ -26,7 +28,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
     setInitialMovies(moviesList); //записываем в стейт
     setFilteredMovies(short ? filterDuration(moviesList) : moviesList); //если чекбокс тру, то фильруем по длине и записываем в стейт
     localStorage.setItem('movies', JSON.stringify(moviesList));
-    localStorage.setItem('allMovies', JSON.stringify(movies));
+    localStorage.setItem('allMovies', JSON.stringify(allMovies));
     // setIsNotFound(moviesList.length === 0 ? true : false);
   }
 

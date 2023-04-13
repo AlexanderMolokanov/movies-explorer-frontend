@@ -11,8 +11,11 @@ export function getCards() {
   return fetch(BASE_URL, { 
     method: 'GET',
     credentials: 'include',
+    // 'Access-Control-Allow-Origin': `${BASE_URL}`,
+    'Access-Control-Allow-Origin': `true`,
     headers: {
-      Origin: `${BASE_URL}`,
+      // Origin: `${BASE_URL}`,
+      // 'Access-Control-Allow-Origin': `${BASE_URL}`,
       "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
     },

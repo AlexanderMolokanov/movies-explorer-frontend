@@ -19,6 +19,9 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 import * as api from '../../utils/MainApi';
 
+import * as apii from '../../utils/MoviesApi';
+
+// console.log(api)
 
 
 function App() {
@@ -33,7 +36,7 @@ function App() {
   const [isUpdate, setIsUpdate] = useState(false);
   const path = location.pathname;
 
-  console.log(Movies)
+  // console.log(Movies)
 
   //Проверка токена и авторизация пользователя
   useEffect(() => {
@@ -56,19 +59,21 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // isLoggedIn = true
   useEffect(() => {
+
     if (isLoggedIn) {
       api
         .getUserInfo()
         .then((profileInfo) => {
-          console.log(profileInfo);
+          // console.log(profileInfo);
           setCurrentUser(profileInfo);
         })
         .catch((err) => {
           console.log(err);
         });
 
-      api
+      apii
         .getCards()
         .then((cardsData) => {
           setSavedMovies(cardsData.reverse());
@@ -77,6 +82,9 @@ function App() {
         .catch((err) => {
           console.log(err);
         });
+    }
+    else {
+      setIsLoggedIn(true);
     }
   }, [isLoggedIn, history]);
 
