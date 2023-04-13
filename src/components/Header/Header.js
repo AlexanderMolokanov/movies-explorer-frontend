@@ -4,7 +4,7 @@ import './Header.css';
 import Navigation from '../Navigation/Navigation';
 import logo from '../../images/logo.svg';
 // import account from '../../images/acc-button.svg';
-import menu from '../../images/menu-button.svg';
+import menu from '../../images/burger-button.svg';
 
 function Header(
   { loggedIn }
@@ -38,7 +38,7 @@ function Header(
           </div>
         </header>
       ) : (
-        <header className="header" id="header">
+        <header className="header" id="header"> 
           <Link to="/" className="form__logo">
             <img src={logo} alt="логотип" />
           </Link>
@@ -61,7 +61,7 @@ function Header(
               {/* <img src={account} alt="аккаунт" /> */}
               Аккаунт
             </Link>
-            <button onClick={handleOpen} className="header__menu-button">
+            <button onClick={handleOpen} className="header__burger-button">
               <img src={menu} alt="меню" />
             </button>
           </div>

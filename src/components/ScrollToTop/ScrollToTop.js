@@ -1,7 +1,7 @@
 import React from 'react';
 import './ScrollToTop.css';
 import { Link } from 'react-scroll';
-import arrow from '../../images/up-arrow.svg';
+import arrow from '../../images/upArrow.svg';
 
 function ScrollToTop() {
   return (

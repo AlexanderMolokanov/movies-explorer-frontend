@@ -48,7 +48,7 @@
   background-color: #2BE080;
 }
 
-.header__menu-button {
+.header__burger-button {
   display: none;
   border: none;
   width: 44px;
@@ -56,7 +56,7 @@
   background-color: #ffffff;
 }
 
-.header__menu-button:hover {
+.header__burger-button:hover {
   cursor: pointer;
   opacity: 0.6;
 }
@@ -86,7 +86,7 @@
     padding: 0 30px;
   }
   
-    .header__menu-button {
+    .header__burger-button {
       display: flex;
     }
 

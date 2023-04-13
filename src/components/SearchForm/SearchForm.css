@@ -86,7 +86,7 @@ input:-ms-input-placeholder {
 }
 
 .search__button {
-  background-image: url('../../images/search-button1.svg');
+  background-image: url('../../images/search-button.svg');
   width: 34px;
   height: 34px;
   border: none;
