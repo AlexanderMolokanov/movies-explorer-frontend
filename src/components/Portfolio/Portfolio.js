@@ -24,7 +24,7 @@ function Portfolio() {
           <img className="portfolio__image" src={arrow} alt="стрелка" />
         </a>
         <a
-          href="https://alexandermolokanov.github.io/react-mesto-auth/"
+          href="https://github.com/AlexanderMolokanov/react-mesto-api-full"
           className="portfolio__link"
           target="_blank"
           rel="noreferrer">

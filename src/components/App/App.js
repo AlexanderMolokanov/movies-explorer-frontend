@@ -13,6 +13,7 @@ import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import { FILMS } from '../../utils/constants';
 
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
@@ -82,6 +83,14 @@ function App() {
         .catch((err) => {
           console.log(err);
         });
+        
+        function getCardss(FILMS) {
+        
+          setSavedMovies(FILMS);
+          // console.log(FILMS);
+        }
+        getCardss(FILMS)
+        
     }
     else {
       setIsLoggedIn(true);
@@ -214,7 +223,7 @@ function App() {
               )}
             </Route>
             {/* <ProtectedRoute */}
-            <ErrorBoundary>
+            {/* <ErrorBoundary> */}
               <Route
               path="/movies"
               savedMovies={savedMovies}
@@ -224,7 +233,7 @@ function App() {
               handleLikeClick={handleCardLike}
               >
               </Route>
-            </ErrorBoundary>
+            {/* </ErrorBoundary> */}
             {/* </ProtectedRoute> */  }
             {/* <ProtectedRoute */}
             {/* <ErrorBoundary> */}

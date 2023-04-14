@@ -12,15 +12,15 @@ function SearchForm({ onSearchMovies, onFilter, isShortMovies }) {
     setQuery(e.target.value);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (query.trim().length === 0) {
-      setIsQueryError(true);
-    } else {
-      setIsQueryError(false);
-      onSearchMovies(query);
-    }
-  }
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   if (query.trim().length === 0) {
+  //     setIsQueryError(true);
+  //   } else {
+  //     setIsQueryError(false);
+  //     onSearchMovies(query);
+  //   }
+  // }
 
   useEffect(() => {
     if (location.pathname === '/movies' && localStorage.getItem('movieSearch')) {
@@ -31,7 +31,9 @@ function SearchForm({ onSearchMovies, onFilter, isShortMovies }) {
 
   return (
     <section className="search">
-      <form className="search__form" id="form" onSubmit={handleSubmit}>
+      <form className="search__form" id="form" 
+      // onSubmit={handleSubmit}
+      >
         <label className="search__label" htmlFor="search-input"></label>
         <input
           name="query"

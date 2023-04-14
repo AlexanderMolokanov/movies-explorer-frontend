@@ -4,7 +4,7 @@ import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
-import ScrollToTop from '../ScrollToTop/ScrollToTop';
+// import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 function Main() {
   return (

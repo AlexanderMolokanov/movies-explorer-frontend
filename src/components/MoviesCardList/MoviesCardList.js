@@ -16,7 +16,7 @@ function MoviesCardList({
   savedMovies,
   onCardDelete,
 }) {
-  const [shownMovies, setShownMovies] = useState(0);
+  const [shownMovies, setShownMovies] = useState(0);  
   const { pathname } = useLocation();
 
   function shownCount() {
@@ -73,7 +73,7 @@ function MoviesCardList({
         />
       )} 
       {
-      // !isLoading && !isReqErr && !isNotFound && 
+      !isLoading && !isReqErr && !isNotFound && 
       (
         <>
           {pathname === '/saved-movies' ? (

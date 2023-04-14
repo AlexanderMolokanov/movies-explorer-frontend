@@ -26,8 +26,8 @@ function MoviesCard({ card, isSavedFilms, handleLikeClick, onCardDelete, saved, 
           className="movies-card__image"
           alt={card.nameRU}
           src={isSavedFilms ? card.image : 
-            // `https://api.nomoreparties.co/${card.image.url}`
-            `http://localhost:3000/${card.image.url}`
+            `https://api.nomoreparties.co/${card.image.url}`
+            // `http://localhost:3000/${card.image.url}`
           }
         />
       </a>
