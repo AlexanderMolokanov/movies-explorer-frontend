@@ -61,6 +61,10 @@ function MoviesCardList({
     return savedMovies.find((savedMovie) => savedMovie.movieId === card.id);
   }
 
+  // isLoading = false
+  // isReqErr = false
+  // isNotFound  = false
+
   return (
     <section className="cards">
       {isLoading && <Preloader />}
