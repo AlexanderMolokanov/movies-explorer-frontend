@@ -13,7 +13,7 @@ import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
-import { FILMS } from '../../utils/constants';
+import { FILMS, PROFILE } from '../../utils/constants';
 
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
@@ -36,27 +36,28 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
   const path = location.pathname;
+  const profileInfo = 
 
   // console.log(Movies)
 
   //Проверка токена и авторизация пользователя
   useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
+    // const jwt = localStorage.getItem('jwt');
 
-    if (jwt) {
-      api
-        .getContent(jwt)
-        .then((res) => {
-          if (res) {
-            localStorage.removeItem('allMovies');
-            setIsLoggedIn(true);
-          }
-          history.push(path);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+    // if (jwt) {
+    //   api
+    //     .getContent(jwt)
+    //     .then((res) => {
+    //       if (res) {
+    //         localStorage.removeItem('allMovies');
+    //         setIsLoggedIn(true);
+    //       }
+    //       history.push(path);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -64,28 +65,33 @@ function App() {
   useEffect(() => {
 
     if (isLoggedIn) {
-      api
-        .getUserInfo()
-        .then((profileInfo) => {
-          // console.log(profileInfo);
-          setCurrentUser(profileInfo);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      // api
+      //   .getUserInfo()
+      //   .then((profileInfo) => {
+      //     // console.log(profileInfo);
+      //     setCurrentUser(profileInfo);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
 
-      apii
-        .getCards()
-        .then((cardsData) => {
-          setSavedMovies(cardsData.reverse());
-          console.log(cardsData);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      // apii
+      //   .getCards()
+      //   .then((cardsData) => {
+      //     setSavedMovies(cardsData.reverse());
+      //     console.log(cardsData);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
         
+       
+        
+        
+
+
         function getCardss(FILMS) {
-        
+          setCurrentUser(PROFILE);
           setSavedMovies(FILMS);
           // console.log(FILMS);
         }
@@ -96,6 +102,8 @@ function App() {
       setIsLoggedIn(true);
     }
   }, [isLoggedIn, history]);
+
+  // console.log(savedMovies)
 
   //регистрация пользователя
   function handleRegister({ name, email, password }) {
@@ -110,25 +118,28 @@ function App() {
       });
   }
 
+ 
+
   //авторизация пользователя
   function handleAuthorize({ email, password }) {
-    setIsLoading(true);
-    api
-      .authorize(email, password)
-      .then((res) => {
-        if (res) {
-          setIsLoggedIn(true);
-          localStorage.setItem('jwt', res.token);
-          history.push('./movies');
-        }
-      })
-      .catch((err) => {
-        setIsSuccess(false);
-        console.log(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    console.log('handleAuthorize', email, password)
+    // setIsLoading(true);
+    // api
+    //   .authorize(email, password)
+    //   .then((res) => {
+    //     if (res) {
+    //       setIsLoggedIn(true);
+    //       localStorage.setItem('jwt', res.token);
+    //       history.push('./movies');
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     setIsSuccess(false);
+    //     console.log(err);
+    //   })
+    //   .finally(() => {
+    //     setIsLoading(false);
+    //   });
   }
 
   function handleUpdateUser(newUserInfo) {
@@ -244,7 +255,6 @@ function App() {
               loggedIn={isLoggedIn}
               onCardDelete={handleCardDelete}
               component={SavedMovies}
-              // component={Movies}
               // handleLikeClick={handleCardLike}
               >
               </Route>

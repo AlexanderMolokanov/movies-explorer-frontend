@@ -2,16 +2,22 @@
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  /* justify-content: center; */ 
+  
 }
 
 .movies-cards__list {
-  padding: 70px 70px 30px;
-  list-style: none;
   display: grid;
-  grid-template-columns: repeat(4, 270px);
-  gap: 32px 20px;
-  justify-content: center;
+  grid-template-columns: repeat(3, 367px);
+  /* grid-row-gap: 300px; */
+  padding: 80px 0 30px;
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-top: -10px;
+  list-style: none;
+  gap: 25px 20px;
+  /* justify-content: center; */
+  border-top: solid 1px #E8E8E8
 }
 
 .movies-cards__button-container {

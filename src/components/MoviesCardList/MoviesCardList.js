@@ -110,7 +110,7 @@ function MoviesCardList({
                     isSavedFilms={isSavedFilms}
                     handleLikeClick={handleLikeClick}
                     onCardDelete={onCardDelete}
-                    savedMovies={savedMovies}
+                    savedMovies={savedMovies} 
                   />
                 ))}
               </ul>

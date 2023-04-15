@@ -21,18 +21,7 @@ function MoviesCard({ card, isSavedFilms, handleLikeClick, onCardDelete, saved, 
 
   return (
     <li className="card">
-      <a href={card.trailerLink} target="_blank" rel="noreferrer">
-        <img
-          className="movies-card__image"
-          alt={card.nameRU}
-          src={isSavedFilms ? card.image : 
-            `https://api.nomoreparties.co/${card.image.url}`
-            // `http://localhost:3000/${card.image.url}`
-          }
-        />
-      </a>
-
-      <div className="movies-card__container">
+       <div className="movies-card__container">
         <div className="movies-card__info-container">
           <h2 className="movies-card__text">{card.nameRU}</h2>
           <span className="movies-card__time">{durationConverter(card.duration)}</span>
@@ -43,6 +32,15 @@ function MoviesCard({ card, isSavedFilms, handleLikeClick, onCardDelete, saved, 
           <button type="button" className={cardSaveButtonClassName} onClick={onCardClick}></button>
         )}
       </div>
+      <a href={card.trailerLink} target="_blank" rel="noreferrer">
+        <img
+          className="movies-card__image"
+          alt={card.nameRU}
+          src={isSavedFilms ? card.image : 
+            `https://api.nomoreparties.co${card.image.url}`  
+          }
+        />
+      </a>
     </li>
   );
 }

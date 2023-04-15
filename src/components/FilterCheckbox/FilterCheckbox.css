@@ -4,6 +4,7 @@
   /* justify-content: left; */
   border-left: 1px  solid #E8E8E8;
   padding: 7px 30px 7px 30px;
+  
 }
 
 .filter__checkbox {
@@ -24,7 +25,7 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
-  margin-left: 12px;
+  margin-left: 14px;
 }
 
 .filter__checkbox:checked {
