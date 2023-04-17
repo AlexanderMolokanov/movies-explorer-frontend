@@ -58,12 +58,20 @@ function MoviesCardList({
   }
 
   function getSavedMovieCard(savedMovies, card) {
+    // console.log(savedMovies)
     return savedMovies.find((savedMovie) => savedMovie.movieId === card.id);
   }
 
   // isLoading = false
   // isReqErr = false
   // isNotFound  = false
+  console.log(cards)
+  cards.map((card) => {
+
+    console.log(card)
+    console.log(card)
+   })
+
 
   return (
     <section className="cards">
@@ -98,7 +106,7 @@ function MoviesCardList({
               </ul>
               <div className="movies-cards__button-container"></div>
             </>
-          ) : (
+          ) : (  
             <>
               <ul className="movies-cards__list">
                 {cards.slice(0, shownMovies).map((card) => (

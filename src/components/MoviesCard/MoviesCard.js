@@ -17,6 +17,7 @@ function MoviesCard({ card, isSavedFilms, handleLikeClick, onCardDelete, saved, 
 
   const cardSaveButtonClassName = `${
     saved ? 'movies-card__save-button movies-card__save-button_active' : 'movies-card__save-button'
+    //  'movies-card__save-button movies-card__save-button_active movies-card__save-button'
   }`;
 
   return (
