@@ -36,6 +36,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
   const path = location.pathname;
+  const [isSaved, setSaved] = useState(false);
   const profileInfo = 
 
   // console.log(Movies)
@@ -186,6 +187,7 @@ function App() {
       });
   }
 
+ 
   function handleCardDelete(card) {
     api
       .deleteCard(card._id)
@@ -261,7 +263,7 @@ function App() {
             {/* </ProtectedRoute> */  }
             {/* <ProtectedRoute */}
             {/* <ErrorBoundary> */}
-            <ErrorBoundary>
+            {/* <ErrorBoundary> */}
               <Route
               path="/saved-movies"
               savedMovies={savedMovies}
@@ -271,7 +273,7 @@ function App() {
               // handleLikeClick={handleCardLike}
               >
               </Route>
-            </ErrorBoundary>
+            {/* </ErrorBoundary> */}
             {/* </ErrorBoundary> */}
             {/* <ProtectedRoute */}
             <Route

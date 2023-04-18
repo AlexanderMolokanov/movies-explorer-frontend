@@ -11,7 +11,8 @@ function Header(
   ) {
   const [isClicked, setIsClicked] = useState(false);
   // костыль
-  // const loggedIn = true; 
+  // var loggedInQ = loggedIn; 
+  // loggedInQ = false
   
   function handleOpen() {
     setIsClicked(true);
@@ -23,7 +24,7 @@ function Header(
 
   return (
     <>
-      {!loggedIn ? (
+      {loggedIn ? (
         <header className="header" id="header">
           <Link to="/" className="form__logo">
             <img src={logo} alt="логотип" />
