@@ -5,7 +5,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';  
 import { filterMovies, filterDuration } from '../../utils/utils';
-import { FILMS } from '../../utils/constants';
+import { FILMS, SAVED_FILMS } from '../../utils/constants';
 
 
 import * as movies from '../../utils/MoviesApi';
@@ -158,8 +158,8 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
       
         // savedMovies={savedMovies}
         // cards={filteredMovies}
-        savedMovies={FILMS}
         cards={FILMS}
+        savedMovies={SAVED_FILMS}
         isSavedFilms={false}
         handleLikeClick={handleLikeClick}  
         onCardDelete={onCardDelete}

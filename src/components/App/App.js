@@ -160,6 +160,19 @@ function App() {
       });
   }
 
+  // function handleCardLike(card) {
+  //   api
+  //     .postCard(card)
+  //     .then((newMovie) => {
+  //       setSavedMovies([newMovie, ...savedMovies]);
+  //     })
+  //     .catch((err) => {
+  //       setIsSuccess(false);
+  //       console.log(err);
+  //       handleUnauthorized(err);
+  //     });
+  // }
+
   function handleCardLike(card) {
     api
       .postCard(card)

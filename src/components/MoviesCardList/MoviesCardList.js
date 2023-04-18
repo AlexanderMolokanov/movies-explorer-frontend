@@ -8,12 +8,12 @@ import { SHOW_MORE_DECKTOP, SHOW_MORE_TABLET, SHOW_MORE_MOBILE } from '../../uti
 
 function MoviesCardList({
   cards, 
+  savedMovies,
   isSavedFilms,
   isLoading,
   isReqErr,
   isNotFound,
   handleLikeClick,
-  savedMovies,
   onCardDelete,
 }) {
   const [shownMovies, setShownMovies] = useState(0);  
@@ -22,13 +22,17 @@ function MoviesCardList({
   function shownCount() {
     const display = window.innerWidth;
     if (display > 1180) {
-      setShownMovies(16);
+      // setShownMovies(16);
+      setShownMovies(6);
     } else if (display > 1024) {
-      setShownMovies(12);
+      // setShownMovies(12);
+      setShownMovies(6);
     } else if (display > 800) {
-      setShownMovies(8);
+      // setShownMovies(8);
+      setShownMovies(6);
     } else if (display < 800) {
-      setShownMovies(5);
+      // setShownMovies(5);
+      setShownMovies(6);
     }
   }
 
@@ -59,17 +63,26 @@ function MoviesCardList({
 
   function getSavedMovieCard(savedMovies, card) {
     // console.log(savedMovies)
-    return savedMovies.find((savedMovie) => savedMovie.movieId === card.id);
+    // return savedMovies.find((savedMovie) => savedMovie.movieId === card.id);
+    return savedMovies.find((savedMovie) => savedMovie._id === card.id);
   }
 
   // isLoading = false
   // isReqErr = false
   // isNotFound  = false
-  console.log(cards)
-  cards.map((card) => {
+  // console.log(cards)
+    cards.map((card) => {
+    // console.log(getSavedMovieCard(card, card))
+    // console.log(card._id)
+    console.log(card.id)
+    // console.log(card)
+   })
 
-    console.log(card)
-    console.log(card)
+   savedMovies.map((savedMovie) => {
+    // console.log(getSavedMovieCard(card, card))
+    // console.log(card._id)
+    console.log(savedMovie._id)
+    // console.log(savedMovie)
    })
 
 
