@@ -1,4 +1,4 @@
-import { SHORTS } from './constants';
+import { SHORTS } from './constants'; 
 
 export const checkResponse = (res) => {
   if (res.ok) {

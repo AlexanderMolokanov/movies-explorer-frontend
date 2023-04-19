@@ -6,6 +6,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import Footer from '../Footer/Footer';
 import { filterMovies, filterDuration } from '../../utils/utils';
+import { FILMS, SAVED_FILMS } from '../../utils/constants';
 
 function SavedMovies({ 
   loggedIn, 
@@ -47,10 +48,13 @@ function SavedMovies({
       onFilter={handleShortMovies} />
       <ErrorBoundary>
         <MoviesCardList
-        isNotFound={isNotFound}
+        // isNotFound={isNotFound}
+        isNotFound={false}
         isSavedFilms={true} 
-        cards={filteredMovies}
-        savedMovies={savedMovies}
+        // cards={filteredMovies}
+        cards={FILMS}
+        // savedMovies={savedMovies}
+        savedMovies={SAVED_FILMS}
         onCardDelete={onCardDelete}
         />
       </ErrorBoundary>

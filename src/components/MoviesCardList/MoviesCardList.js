@@ -106,10 +106,10 @@ function MoviesCardList({
               <ul className="movies-cards__list">
                 {cards.map((card) => (
                   <MoviesCard
-                    key={isSavedFilms ? card._id : card.id}
-                    saved={getSavedMovieCard(savedMovies, card)}
                     cards={cards}
                     card={card}
+                    key={isSavedFilms ? card._id : card.id}
+                    saved={getSavedMovieCard(savedMovies, card)}
                     isSavedFilms={isSavedFilms}
                     handleLikeClick={handleLikeClick}
                     onCardDelete={onCardDelete}
@@ -124,10 +124,10 @@ function MoviesCardList({
               <ul className="movies-cards__list">
                 {cards.slice(0, shownMovies).map((card) => (
                   <MoviesCard
-                    key={isSavedFilms ? card._id : card.id}
-                    saved={getSavedMovieCard(savedMovies, card)}
                     cards={cards}
                     card={card}
+                    key={isSavedFilms ? card._id : card.id}
+                    saved={getSavedMovieCard(savedMovies, card)}
                     isSavedFilms={isSavedFilms}
                     handleLikeClick={handleLikeClick}
                     onCardDelete={onCardDelete}
