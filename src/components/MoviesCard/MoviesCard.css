@@ -70,13 +70,18 @@
 }
 
 .movies-card__del-button {
-  width: 16px;
-  height: 16px;
+  width: 30px;
+  height: 30px;
   border: none;
+  margin-top: 12px;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: transparent;
+  background-color: #F9F9F9;
   background-image: url('../../images/del-button.svg');
+  border: 1px solid #F9F9F9;
+  
+  border-radius: 50px;
+
 }
 
 .movies-card__del-button:hover {

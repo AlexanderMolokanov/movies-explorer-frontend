@@ -28,6 +28,11 @@
   min-height: 140px;
 }
 
+.movies-cards__button-container_pudding {
+  padding: 0px;
+  min-height: 120px;
+}
+
 .movies-cards__button {
   display: flex;
   align-items: center;

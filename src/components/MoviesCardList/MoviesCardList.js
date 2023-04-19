@@ -117,7 +117,7 @@ function MoviesCardList({
                   />
                 ))}
               </ul>
-              <div className="movies-cards__button-container"></div>
+              <div className="movies-cards__button-container movies-cards__button-container_pudding"></div>
             </>
           ) : (  
             <>
