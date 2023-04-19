@@ -26,18 +26,18 @@ function SavedMovies({
     setIsShortMovies(!isShortMovies);
   }
 
-  useEffect(() => {
-    const moviesList = filterMovies(savedMovies, searchQuery);
-    setFilteredMovies(isShortMovies ? filterDuration(moviesList) : moviesList);
-  }, [savedMovies, isShortMovies, searchQuery]);
+  // useEffect(() => {
+  //   const moviesList = filterMovies(savedMovies, searchQuery);
+  //   setFilteredMovies(isShortMovies ? filterDuration(moviesList) : moviesList);
+  // }, [savedMovies, isShortMovies, searchQuery]);
 
-  useEffect(() => {
-    if (filteredMovies.length === 0) {
-      setIsNotFound(true);
-    } else {
-      setIsNotFound(false);
-    }
-  }, [filteredMovies]);
+  // useEffect(() => {
+  //   if (filteredMovies.length === 0) {
+  //     setIsNotFound(true);
+  //   } else {
+  //     setIsNotFound(false);
+  //   }
+  // }, [filteredMovies]);
 
   return (
     <section className="movies">
