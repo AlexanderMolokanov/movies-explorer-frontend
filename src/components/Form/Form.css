@@ -36,6 +36,7 @@
 .form__button-save {
   margin-top: auto;
   /* width: 396px; */
+  padding-top: 20px;
   height: 45px;
   border: none;
   border-radius: 3px;

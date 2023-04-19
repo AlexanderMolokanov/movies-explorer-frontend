@@ -12,8 +12,8 @@ const USER_NAME_REGEX = '^[A-Za-zА-Яа-яЁё /s -]+$';
 
 const PROFILE = 
 {
-	name: "иван",
-	email: "dsds@sdsd.ru",
+	name: "Виталий",
+	email: "pochta@yandex.ru",
 	password: "sdfsdfadsf334KJKJK"
 }
 

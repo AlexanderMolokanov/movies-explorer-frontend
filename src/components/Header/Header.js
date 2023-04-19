@@ -52,7 +52,7 @@ function Header(
             </NavLink>
             <NavLink
               to="/saved-movies"
-              className="header__button" 
+              className="header__button  header__button_save-films" 
               activeClassName="header__button_active">
               Сохранённые фильмы
             </NavLink>
