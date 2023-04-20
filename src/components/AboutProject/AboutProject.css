@@ -39,7 +39,6 @@
   margin: 0;
   padding: 0;
   min-height: 24px;
-  /* font-style: normal; */
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
@@ -51,7 +50,6 @@
   padding: 0;
   max-width: 550px;
   min-height: 40px;
-  /* font-style: normal; */
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -71,7 +69,6 @@
   padding: 0;
   min-height: 36px;
   justify-content: center;
-  /* font-style: normal; */
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -80,14 +77,13 @@
 
 .project__time-header_green {
   color: white;
-  background-color: #2BE080;
+  background-color: #2be080;
 }
 
 .project__time-description {
   text-align: center;
   margin: 0;
   padding: 0;
-  /* font-style: normal; */
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;

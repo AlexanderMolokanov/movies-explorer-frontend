@@ -1,5 +1,5 @@
 .portfolio {
-  padding: 0 70px 125px 70px;
+  padding: 0 70px 105px 70px;
   box-sizing: border-box;
 }
 
@@ -27,6 +27,18 @@
   color: #000;
   /* width: 18px;
   height: 28px; */
+
+
+
+    background-repeat: no-repeat;
+    background-position: right ;
+    /* background-position: bottom; */
+    background-size: 18px;
+    background-image: url(../../images/Arrow.svg);
+}
+
+.portfolio__link:last-child {
+padding-bottom: 20px;
 }
 
 .portfolio__link:hover {
@@ -50,7 +62,7 @@
 
 @media screen and (max-width: 1024px) {
   .portfolio {
-    padding: 0 50px 90px 50px;
+    padding: 0 55px 90px 50px;
   }
 
   .portfolio__text {
@@ -60,6 +72,18 @@
   .portfolio__image {
     margin-top: 10px;
     margin-right: 5px;
+  }
+
+  .portfolio__link {
+    
+/* width: 18px;
+height: 18px; */
+    background-repeat: no-repeat;
+    background-position: right ;
+    /* background-position: bottom; */
+    background-size:  18px 18px;
+
+    background-image: url(../../images/Arrow.svg);
   }
 }
 

@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import './Header.css';
-import Navigation from '../Navigation/Navigation';
-import logo from '../../images/logo.svg';
+import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import "./Header.css";
+import Navigation from "../Navigation/Navigation";
+import logo from "../../images/logo.svg";
 // import account from '../../images/acc-button.svg';
-import menu from '../../images/burger-button.svg';
+import menu from "../../images/burger-button.svg";
 
-function Header(
-  { loggedIn }
-  ) {
+function Header({ loggedIn }) {
   const [isClicked, setIsClicked] = useState(false);
   // костыль
-  // var loggedInQ = loggedIn; 
+  // var loggedInQ = loggedIn;
   // loggedInQ = false
-  
+
   function handleOpen() {
     setIsClicked(true);
   }
@@ -39,7 +37,7 @@ function Header(
           </div>
         </header>
       ) : (
-        <header className="header" id="header"> 
+        <header className="header" id="header">
           <Link to="/" className="form__logo">
             <img src={logo} alt="логотип" />
           </Link>
@@ -47,13 +45,15 @@ function Header(
             <NavLink
               to="/movies"
               className="header__button"
-              activeClassName="header__button_active">
+              activeClassName="header__button_active"
+            >
               Фильмы
             </NavLink>
             <NavLink
               to="/saved-movies"
-              className="header__button  header__button_save-films" 
-              activeClassName="header__button_active">
+              className="header__button  header__button_save-films"
+              activeClassName="header__button_active"
+            >
               Сохранённые фильмы
             </NavLink>
           </div>
@@ -63,10 +63,14 @@ function Header(
               Аккаунт
             </Link>
             <button onClick={handleOpen} className="header__burger-button">
-              <img className="header__burger-button-img" src={menu} alt="меню" />
+              <img
+                className="header__burger-button-img"
+                src={menu}
+                alt="меню"
+              />
             </button>
           </div>
-          {isClicked ? <Navigation handleClose={handleClose} /> : ''}
+          {isClicked ? <Navigation handleClose={handleClose} /> : ""}
         </header>
       )}
     </>

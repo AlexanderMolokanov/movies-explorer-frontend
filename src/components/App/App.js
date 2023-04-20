@@ -1,29 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { Route, Switch, useHistory, useLocation, Redirect } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import {
+  Route,
+  Switch,
+  useHistory,
+  useLocation,
+  Redirect,
+} from "react-router-dom";
 // import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import './App.css';
-import Header from '../Header/Header';
-import Main from '../Main/Main';
-import Footer from '../Footer/Footer'; 
-import Register from '../Register/Register';
-import Login from '../Login/Login';
-import Movies from '../Movies/Movies';
-import SavedMovies from '../SavedMovies/SavedMovies';
-import Profile from '../Profile/Profile';
-import NotFound from '../NotFound/NotFound';
-import InfoTooltip from '../InfoTooltip/InfoTooltip';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
-import { FILMS, PROFILE } from '../../utils/constants';
+import "./App.css";
+import Header from "../Header/Header";
+import Main from "../Main/Main";
+import Footer from "../Footer/Footer";
+import Register from "../Register/Register";
+import Login from "../Login/Login";
+import Movies from "../Movies/Movies";
+import SavedMovies from "../SavedMovies/SavedMovies";
+import Profile from "../Profile/Profile";
+import NotFound from "../NotFound/NotFound";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import { FILMS, PROFILE } from "../../utils/constants";
 
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-import CurrentUserContext from '../../contexts/CurrentUserContext';
+import * as api from "../../utils/MainApi";
 
-import * as api from '../../utils/MainApi';
-
-import * as apii from '../../utils/MoviesApi';
+import * as apii from "../../utils/MoviesApi";
 
 // console.log(api)
-
 
 function App() {
   const history = useHistory();
@@ -37,34 +41,31 @@ function App() {
   const [isUpdate, setIsUpdate] = useState(false);
   const path = location.pathname;
   const [isSaved, setSaved] = useState(false);
-  const profileInfo = 
+  const profileInfo =
+    // console.log(Movies)
 
-  // console.log(Movies)
-
-  //Проверка токена и авторизация пользователя
-  useEffect(() => {
-    // const jwt = localStorage.getItem('jwt');
-
-    // if (jwt) {
-    //   api
-    //     .getContent(jwt)
-    //     .then((res) => {
-    //       if (res) {
-    //         localStorage.removeItem('allMovies');
-    //         setIsLoggedIn(true);
-    //       }
-    //       history.push(path);
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-    // }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    //Проверка токена и авторизация пользователя
+    useEffect(() => {
+      // const jwt = localStorage.getItem('jwt');
+      // if (jwt) {
+      //   api
+      //     .getContent(jwt)
+      //     .then((res) => {
+      //       if (res) {
+      //         localStorage.removeItem('allMovies');
+      //         setIsLoggedIn(true);
+      //       }
+      //       history.push(path);
+      //     })
+      //     .catch((err) => {
+      //       console.log(err);
+      //     });
+      // }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
   // isLoggedIn = true
   useEffect(() => {
-
     if (isLoggedIn) {
       // api
       //   .getUserInfo()
@@ -85,21 +86,14 @@ function App() {
       //   .catch((err) => {
       //     console.log(err);
       //   });
-        
-       
-        
-        
 
-
-        function getCardss(FILMS) {
-          setCurrentUser(PROFILE);
-          setSavedMovies(FILMS);
-          // console.log(FILMS);
-        }
-        getCardss(FILMS)
-        
-    }
-    else {
+      function getCardss(FILMS) {
+        setCurrentUser(PROFILE);
+        setSavedMovies(FILMS);
+        // console.log(FILMS);
+      }
+      getCardss(FILMS);
+    } else {
       setIsLoggedIn(true);
     }
   }, [isLoggedIn, history]);
@@ -108,7 +102,7 @@ function App() {
 
   //регистрация пользователя
   function handleRegister({ name, email, password }) {
-    console.log('handleRegister', name, email, password)
+    console.log("handleRegister", name, email, password);
     // api
     //   .register(name, email, password)
     //   .then(() => {
@@ -120,11 +114,9 @@ function App() {
     //   });
   }
 
- 
-
   //авторизация пользователя
   function handleAuthorize({ email, password }) {
-    console.log('handleAuthorize', email, password)
+    console.log("handleAuthorize", email, password);
     // setIsLoading(true);
     // api
     //   .authorize(email, password)
@@ -188,12 +180,13 @@ function App() {
       });
   }
 
- 
   function handleCardDelete(card) {
     api
       .deleteCard(card._id)
       .then(() => {
-        setSavedMovies((state) => state.filter((item) => item._id !== card._id));
+        setSavedMovies((state) =>
+          state.filter((item) => item._id !== card._id)
+        );
       })
       .catch((err) => {
         setIsSuccess(false);
@@ -203,7 +196,7 @@ function App() {
   }
 
   function handleUnauthorized(err) {
-    if (err === 'Error: 401') {
+    if (err === "Error: 401") {
       handleSignOut();
     }
   }
@@ -212,12 +205,12 @@ function App() {
   const handleSignOut = () => {
     setIsLoggedIn(false);
     setIsLoggedIn(true);
-    localStorage.removeItem('jwt');
-    localStorage.removeItem('movies');
-    localStorage.removeItem('movieSearch');
-    localStorage.removeItem('shortMovies');
-    localStorage.removeItem('allMovies');
-    history.push('/');
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("movies");
+    localStorage.removeItem("movieSearch");
+    localStorage.removeItem("shortMovies");
+    localStorage.removeItem("allMovies");
+    history.push("/");
   };
 
   function closeUnsuccessPopup() {
@@ -237,49 +230,41 @@ function App() {
             </Route>
             <Route path="/signin">
               {/* {!isLoggedIn ? ( */}
-                <Login 
-                onAuthorize={handleAuthorize} 
-                isLoading={isLoading} 
-                />
+              <Login onAuthorize={handleAuthorize} isLoading={isLoading} />
               {/* ) : (
                 <Redirect to="/" /> 
               )} */}
             </Route>
             <Route path="/signup">
               {/* {!isLoggedIn ? ( */}
-                <Register 
-                onRegister={handleRegister} 
-                isLoading={isLoading} 
-                />
+              <Register onRegister={handleRegister} isLoading={isLoading} />
               {/* ) : (
                 <Redirect to="/" />
               )} */}
             </Route>
             {/* <ProtectedRoute */}
             {/* <ErrorBoundary> */}
-              <Route
+            <Route
               path="/movies"
               savedMovies={savedMovies}
               loggedIn={isLoggedIn}
               onCardDelete={handleCardDelete}
               component={Movies}
               handleLikeClick={handleCardLike}
-              >
-              </Route>
+            ></Route>
             {/* </ErrorBoundary> */}
-            {/* </ProtectedRoute> */  }
+            {/* </ProtectedRoute> */}
             {/* <ProtectedRoute */}
             {/* <ErrorBoundary> */}
             {/* <ErrorBoundary> */}
-              <Route
+            <Route
               path="/saved-movies"
               savedMovies={savedMovies}
               loggedIn={isLoggedIn}
               onCardDelete={handleCardDelete}
               component={SavedMovies}
               // handleLikeClick={handleCardLike}
-              >
-              </Route>
+            ></Route>
             {/* </ErrorBoundary> */}
             {/* </ErrorBoundary> */}
             {/* <ProtectedRoute */}
@@ -289,15 +274,19 @@ function App() {
               onUpdateUser={handleUpdateUser}
               loggedIn={isLoggedIn}
               component={Profile}
-              isLoading={isLoading}>
-            </Route>
-              {/* </ProtectedRoute> */}
+              isLoading={isLoading}
+            ></Route>
+            {/* </ProtectedRoute> */}
             <Route path="/*">
               <NotFound />
             </Route>
           </Switch>
           <InfoTooltip isSuccess={isSuccess} onClose={closeUnsuccessPopup} />
-          <InfoTooltip isSuccess={!isUpdate} isUpdate={isUpdate} onClose={closeUnsuccessPopup} />
+          <InfoTooltip
+            isSuccess={!isUpdate}
+            isUpdate={isUpdate}
+            onClose={closeUnsuccessPopup}
+          />
         </div>
       </div>
     </CurrentUserContext.Provider>
@@ -305,4 +294,3 @@ function App() {
 }
 
 export default App;
- 
