@@ -25,6 +25,11 @@
   line-height: 18px;
   max-width: 280px;
   margin-top: 0;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  
 }
 
 .movies-card__time {
@@ -93,10 +98,35 @@
   .movies-card__image {
     height: 190px;
   }
+
+  .movies-card__del-button {
+    margin-top: 19px; ;
+    /* padding-top: 10px; */
+  }
+
+  .movies-card__container { 
+    padding: 0 14px ;
+  }
+
+  .movies-card__text {
+    margin-top: 14px;
+  }
+
+  .movies-card__time {
+  margin-bottom: 10px;
+  }
 }
 
 @media screen and (max-width: 577px) {
   .movies-card__image {
     height: 168px;
   }
+
+.movies-card__save-button {
+margin-top: 18px;
+}
+.movies-card__text {
+  max-width: 235px;
+}
+
 }

@@ -34,9 +34,12 @@
 }
 
 .form__button-save {
+  /* display: flex;
+  justify-content: center; */
   margin-top: auto;
   /* width: 396px; */
-  padding-top: 20px;
+  /* padding-top: 20px;
+  padding-top: 20px; */
   height: 45px;
   border: none;
   border-radius: 3px;
@@ -45,9 +48,11 @@
   font-size: 14px;
   line-height: 17px;
   text-align: center;
+  /* margin: 0; */
   cursor: pointer;
-  background-color: black;
+  background-color: #2BE080;
   color: white;
+  /* align-content: center; */
 }
 
 .form__button-save:hover {
@@ -86,7 +91,8 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: #000;
+  color: #2BE080
+  ;
 }
 
 .form__link:hover {

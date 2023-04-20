@@ -38,7 +38,13 @@
     max-width: 680px;
     font-size: 40px;
     line-height: 52px;
+    padding-bottom: 30px;
   }
+  /* .header__button {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+  } */
 }
 
 @media screen and (max-width: 577px) {
@@ -52,5 +58,6 @@
     font-size: 29px;
     max-width: 292px;
     line-height: 37px;
+    padding-bottom: 33px;
   }
 }

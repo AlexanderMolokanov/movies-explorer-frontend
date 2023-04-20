@@ -108,15 +108,16 @@ function App() {
 
   //регистрация пользователя
   function handleRegister({ name, email, password }) {
-    api
-      .register(name, email, password)
-      .then(() => {
-        handleAuthorize({ email, password });
-      })
-      .catch((err) => {
-        setIsSuccess(false);
-        console.log(err);
-      });
+    console.log('handleRegister', name, email, password)
+    // api
+    //   .register(name, email, password)
+    //   .then(() => {
+    //     handleAuthorize({ email, password });
+    //   })
+    //   .catch((err) => {
+    //     setIsSuccess(false);
+    //     console.log(err);
+    //   });
   }
 
  
@@ -230,23 +231,29 @@ function App() {
         <div className="page__content">
           <Switch>
             <Route path="/" exact>
-              <Header loggedIn={isLoggedIn} />
+              <Header loggedIn={!isLoggedIn} />
               <Main />
               <Footer />
             </Route>
             <Route path="/signin">
-              {!isLoggedIn ? (
-                <Login onAuthorize={handleAuthorize} isLoading={isLoading} />
-              ) : (
+              {/* {!isLoggedIn ? ( */}
+                <Login 
+                onAuthorize={handleAuthorize} 
+                isLoading={isLoading} 
+                />
+              {/* ) : (
                 <Redirect to="/" /> 
-              )}
+              )} */}
             </Route>
             <Route path="/signup">
-              {!isLoggedIn ? (
-                <Register onRegister={handleRegister} isLoading={isLoading} />
-              ) : (
+              {/* {!isLoggedIn ? ( */}
+                <Register 
+                onRegister={handleRegister} 
+                isLoading={isLoading} 
+                />
+              {/* ) : (
                 <Redirect to="/" />
-              )}
+              )} */}
             </Route>
             {/* <ProtectedRoute */}
             {/* <ErrorBoundary> */}

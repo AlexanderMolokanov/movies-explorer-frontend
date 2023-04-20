@@ -35,25 +35,27 @@ function SearchForm({ onSearchMovies, onFilter, isShortMovies }) {
   return (
     <section className="search">
       <div className="search__forms-container">
-        <form
-          className="search__form"
-          id="form"
-          // onSubmit={handleSubmit}
-        >
-          <label className="search__label" htmlFor="search-input"></label>
-          <input
-            name="query"
-            className="search__input"
-            id="search-input"
-            type="text"
-            placeholder="Фильм"
-            // required
-            onChange={handleChangeQuery}
-            value={query || ""}
-          ></input>
+        <div className="search__form-container">
+          <form
+            className="search__form"
+            id="form"
+            // onSubmit={handleSubmit}
+          >
+            <label className="search__label" htmlFor="search-input"></label>
+            <input
+              name="query"
+              className="search__input"
+              id="search-input"
+              type="text"
+              placeholder="Фильм"
+              required
+              onChange={handleChangeQuery}
+              // value={query || ""}
+            ></input>
 
-          <button className="search__button" type="submit"></button>
-        </form>
+            <button className="search__button" type="submit"></button>
+          </form>
+        </div>
         <FilterCheckbox onFilter={onFilter} isShortMovies={isShortMovies} />
         {isQueryError && (
           <span className="search__form-error">

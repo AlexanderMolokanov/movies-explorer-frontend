@@ -139,9 +139,9 @@ letter-spacing: -0.04em;
     max-width: 292px;
     font-size: 11px;
     line-height: 16px;
-    margin: 0 auto;
+    margin: 24px auto 50px;
     padding: 0;
-    padding-bottom: 50px;
+    /* padding-bottom: 50px; */
   }
 
   .techs__container {

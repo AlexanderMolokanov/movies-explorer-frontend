@@ -42,7 +42,7 @@ function SavedMovies({
 
   return (
     <section className="movies">
-      <Header loggedIn={loggedIn} />
+      <Header loggedIn={!loggedIn} />
       <SearchForm 
       onSearchMovies={onSearchMovies} 
       onFilter={handleShortMovies} />

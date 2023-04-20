@@ -24,7 +24,7 @@ function Header(
 
   return (
     <>
-      {loggedIn ? (
+      {!loggedIn ? (
         <header className="header" id="header">
           <Link to="/" className="form__logo">
             <img src={logo} alt="логотип" />
@@ -63,7 +63,7 @@ function Header(
               Аккаунт
             </Link>
             <button onClick={handleOpen} className="header__burger-button">
-              <img src={menu} alt="меню" />
+              <img className="header__burger-button-img" src={menu} alt="меню" />
             </button>
           </div>
           {isClicked ? <Navigation handleClose={handleClose} /> : ''}
