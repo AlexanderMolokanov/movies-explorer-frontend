@@ -32,8 +32,8 @@ const useForm = () => {
   );
 
   return {
-    enteredValues,
     errors,
+    enteredValues,
     handleChange,
     isFormValid,
     resetForm,

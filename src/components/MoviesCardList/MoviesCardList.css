@@ -88,7 +88,7 @@
 @media screen and (max-width: 700px) {
   .movies-cards__list {
     grid-template-columns: repeat(1, 339px);
-    display: flex;
+    /* display: flex; */
     justify-items: center;
   }
 }
@@ -98,6 +98,7 @@
     padding: 40px 10px 30px;
     grid-template-columns: repeat(1, 300px);
     gap: 16px;
+    justify-content: center;
   }
 
   .movies-cards__button {

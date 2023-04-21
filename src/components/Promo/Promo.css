@@ -19,7 +19,6 @@
   padding: 0;
   padding-bottom: 55px;
   max-width: 730px;
-  /* font-style: normal; */
   font-weight: 400;
   font-size: 50px;
   line-height: 58px;
@@ -40,11 +39,6 @@
     line-height: 52px;
     padding-bottom: 30px;
   }
-  /* .header__button {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-  } */
 }
 
 @media screen and (max-width: 577px) {

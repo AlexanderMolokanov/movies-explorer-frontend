@@ -59,7 +59,7 @@
 
 .popup__cl-button:before {
   position: absolute;
-  content: '';
+  content: "";
   height: 35px;
   top: 0;
   transform: rotate(45deg);
@@ -68,7 +68,7 @@
 
 .popup__cl-button:after {
   position: absolute;
-  content: '';
+  content: "";
   height: 35px;
   top: 0;
   transform: rotate(-45deg);
