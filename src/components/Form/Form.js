@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Form.css';
-import logo from '../../images/logo.svg';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Form.css";
+import logo from "../../images/logo.svg";
 
 function Form({
   children,
@@ -27,9 +27,11 @@ function Form({
           disabled={isDisabled ? true : false}
           className={
             isDisabled || isLoading
-              ? 'form__button-save form__button-save_inactive'
-              : 'form__button-save'
-          }>
+              ? // ? 'form__button-save form__button-save_inactive'
+                "form__button-save "
+              : "form__button-save"
+          }
+        >
           {buttonText}
         </button>
       </form>

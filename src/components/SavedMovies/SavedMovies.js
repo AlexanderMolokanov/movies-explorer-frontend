@@ -3,7 +3,6 @@ import "./SavedMovies.css";
 import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import Footer from "../Footer/Footer";
 import { FILMS, SAVED_FILMS } from "../../utils/constants";
 
@@ -25,7 +24,6 @@ function SavedMovies({ loggedIn, savedMovies, onCardDelete }) {
         onSearchMovies={onSearchMovies}
         onFilter={handleShortMovies}
       />
-      <ErrorBoundary>
         <MoviesCardList
           isNotFound={false}
           isSavedFilms={true}
@@ -33,7 +31,6 @@ function SavedMovies({ loggedIn, savedMovies, onCardDelete }) {
           savedMovies={SAVED_FILMS}
           onCardDelete={onCardDelete}
         />
-      </ErrorBoundary>
       <Footer />
     </section>
   );

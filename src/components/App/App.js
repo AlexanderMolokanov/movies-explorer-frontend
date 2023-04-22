@@ -26,7 +26,8 @@ function App() {
   const [isUpdate, setIsUpdate] = useState(false);
   const path = location.pathname;
   const [isSaved, setSaved] = useState(false);
-  const profileInfo = 
+  const profileInfo =
+    // console.log(Movies)
 
 
   //Проверка токена и авторизация пользователя
@@ -35,7 +36,6 @@ function App() {
 
   // isLoggedIn = true
   useEffect(() => {
-
     if (isLoggedIn) {
         function getCardss(FILMS) {
           setCurrentUser(PROFILE);
@@ -50,15 +50,16 @@ function App() {
   }, [isLoggedIn, history]);
 
   function handleRegister({ name, email, password }) {
-    api
-      .register(name, email, password)
-      .then(() => {
-        handleAuthorize({ email, password });
-      })
-      .catch((err) => {
-        setIsSuccess(false);
-        console.log(err);
-      });
+    console.log("handleRegister", name, email, password);
+    // api
+    //   .register(name, email, password)
+    //   .then(() => {
+    //     handleAuthorize({ email, password });
+    //   })
+    //   .catch((err) => {
+    //     setIsSuccess(false);
+    //     console.log(err);
+    //   });
   }
 
   function handleAuthorize({ email, password }) {
@@ -96,12 +97,13 @@ function App() {
       });
   }
 
- 
   function handleCardDelete(card) {
     api
       .deleteCard(card._id)
       .then(() => {
-        setSavedMovies((state) => state.filter((item) => item._id !== card._id));
+        setSavedMovies((state) =>
+          state.filter((item) => item._id !== card._id)
+        );
       })
       .catch((err) => {
         setIsSuccess(false);
@@ -111,7 +113,7 @@ function App() {
   }
 
   function handleUnauthorized(err) {
-    if (err === 'Error: 401') {
+    if (err === "Error: 401") {
       handleSignOut();
     }
   }
@@ -120,12 +122,12 @@ function App() {
   const handleSignOut = () => {
     setIsLoggedIn(false);
     setIsLoggedIn(true);
-    localStorage.removeItem('jwt');
-    localStorage.removeItem('movies');
-    localStorage.removeItem('movieSearch');
-    localStorage.removeItem('shortMovies');
-    localStorage.removeItem('allMovies');
-    history.push('/');
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("movies");
+    localStorage.removeItem("movieSearch");
+    localStorage.removeItem("shortMovies");
+    localStorage.removeItem("allMovies");
+    history.push("/");
   };
 
   function closeUnsuccessPopup() {
@@ -139,7 +141,7 @@ function App() {
         <div className="page__content">
           <Switch>
             <Route path="/" exact>
-              <Header loggedIn={isLoggedIn} />
+              <Header loggedIn={!isLoggedIn} />
               <Main />
               <Footer />
             </Route>
@@ -148,58 +150,55 @@ function App() {
                 <Login onAuthorize={handleAuthorize} isLoading={isLoading} />
               ) : (
                 <Redirect to="/" /> 
-              )}
+              )} */}
             </Route>
             <Route path="/signup">
-              {!isLoggedIn ? (
-                <Register onRegister={handleRegister} isLoading={isLoading} />
-              ) : (
+              {/* {!isLoggedIn ? ( */}
+              <Register onRegister={handleRegister} isLoading={isLoading} />
+              {/* ) : (
                 <Redirect to="/" />
-              )}
+              )} */}
             </Route>
             {/* <ProtectedRoute */}
             {/* <ErrorBoundary> */}
-              <Route
+            <Route
               path="/movies"
               savedMovies={savedMovies}
               loggedIn={isLoggedIn}
               onCardDelete={handleCardDelete}
               component={Movies}
               handleLikeClick={handleCardLike}
-              >
-              </Route>
+            ></Route>
             {/* </ErrorBoundary> */}
-            {/* </ProtectedRoute> */  }
+            {/* </ProtectedRoute> */}
             {/* <ProtectedRoute */}
             {/* <ErrorBoundary> */}
             {/* <ErrorBoundary> */}
-              <Route
+            <Route
               path="/saved-movies"
               savedMovies={savedMovies}
               loggedIn={isLoggedIn}
               onCardDelete={handleCardDelete}
               component={SavedMovies}
-              // handleLikeClick={handleCardLike}
-              >
-              </Route>
-            {/* </ErrorBoundary> */}
-            {/* </ErrorBoundary> */}
-            {/* <ProtectedRoute */}
+            ></Route>
             <Route
               path="/profile"
               signOut={handleSignOut}
               onUpdateUser={handleUpdateUser}
               loggedIn={isLoggedIn}
               component={Profile}
-              isLoading={isLoading}>
-            </Route>
-              {/* </ProtectedRoute> */}
+              isLoading={isLoading}
+            ></Route>
             <Route path="/*">
               <NotFound />
             </Route>
           </Switch>
           <InfoTooltip isSuccess={isSuccess} onClose={closeUnsuccessPopup} />
-          <InfoTooltip isSuccess={!isUpdate} isUpdate={isUpdate} onClose={closeUnsuccessPopup} />
+          <InfoTooltip
+            isSuccess={!isUpdate}
+            isUpdate={isUpdate}
+            onClose={closeUnsuccessPopup}
+          />
         </div>
       </div>
     </CurrentUserContext.Provider>
@@ -207,4 +206,3 @@ function App() {
 }
 
 export default App;
- 

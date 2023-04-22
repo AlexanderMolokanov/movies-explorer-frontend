@@ -1,10 +1,7 @@
 .filter {
-  /* margin: 0 auto; */
   display: flex;
-  /* justify-content: left; */
-  border-left: 1px  solid #E8E8E8;
+  border-left: 1px solid #e8e8e8;
   padding: 7px 30px 7px 30px;
-  
 }
 
 .filter__checkbox {
@@ -12,7 +9,6 @@
   height: 20px;
   border: none;
   outline: none;
-  /* box-shadow: 0px 4px 4px rgba(50, 50, 71, 0.08), 0px 4px 8px rgba(50, 50, 71, 0.06); */
   border-radius: 16px;
   position: relative;
   appearance: none;
@@ -21,7 +17,6 @@
 }
 
 .filter__text {
-  /* font-style: normal; */
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
@@ -33,7 +28,6 @@
   height: 20px;
   border: none;
   outline: none;
-  /* box-shadow: 0px 4px 4px rgba(50, 50, 71, 0.08), 0px 4px 8px rgba(50, 50, 71, 0.06); */
   position: relative;
   cursor: pointer;
   appearance: none;
@@ -46,7 +40,7 @@
   width: 16px;
   top: 2px;
   left: 2px;
-  content: '';
+  content: "";
   position: absolute;
   border-radius: 50%;
   transition: 0.3s ease;
@@ -59,16 +53,37 @@
   width: 16px;
   top: 2px;
   right: 2px;
-  content: '';
+  content: "";
   border-radius: 50%;
   transition: 0.4s ease;
   transform: translate(16px);
-  background-color: #FFFFFF;
+  background-color: #ffffff;
+}
+
+@media screen and (max-width: 1024px) {
+  .filter {
+    padding: 7px 15px 7px 17px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+  }
 }
 
 @media screen and (max-width: 577px) {
   .filter__text {
     line-height: 18px;
     font-size: 11px;
+    color: #000000;
+  }
+
+  .filter {
+    padding: 7px 15px 7px 17px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    border-left: none;
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 36px;
   }
 }

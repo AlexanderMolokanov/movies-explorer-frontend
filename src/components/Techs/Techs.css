@@ -9,7 +9,6 @@
   margin: 0;
   padding: 0;
   padding-bottom: 23px;
-  /* font-style: normal; */
   font-weight: 400;
   font-size: 22px;
   letter-spacing: -0.04em;
@@ -17,8 +16,7 @@
 }
 
 .techs__large-title {
-  margin: 90px auto 26px; 
-  /* margin: 0; */
+  margin: 90px auto 26px;
   padding: 0;
   font-style: normal;
   text-align: center;
@@ -45,8 +43,8 @@
   text-align: center;
   font-size: 14px;
   font-style: normal;
-line-height: 20px;
-letter-spacing: -0.04em;
+  line-height: 20px;
+  letter-spacing: -0.04em;
 }
 
 .techs__list {
@@ -70,13 +68,12 @@ letter-spacing: -0.04em;
   height: 60px;
   border-radius: 10px;
   background-color: #e8e8e8;
-
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 17px;
-text-align: center;
-letter-spacing: -0.04em;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  letter-spacing: -0.04em;
 }
 
 @media screen and (max-width: 1024px) {
@@ -109,7 +106,6 @@ letter-spacing: -0.04em;
     font-size: 12px;
     width: 84px;
     line-height: 15px;
-    /* grid-row-gap: 10px; */
   }
 }
 
@@ -139,9 +135,8 @@ letter-spacing: -0.04em;
     max-width: 292px;
     font-size: 11px;
     line-height: 16px;
-    margin: 0 auto;
+    margin: 24px auto 50px;
     padding: 0;
-    padding-bottom: 50px;
   }
 
   .techs__container {

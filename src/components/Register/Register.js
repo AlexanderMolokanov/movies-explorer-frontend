@@ -65,7 +65,7 @@ function Register({ onRegister, isLoading }) {
           type="password"
           required
           onChange={handleChange}
-          value={enteredValues.password || ''}
+          value={enteredValues.password || ''} 
         />
         <span className="form__input-error">{errors.password}</span>
       </label>

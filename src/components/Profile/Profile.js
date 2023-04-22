@@ -35,7 +35,7 @@ function Profile({ signOut, onUpdateUser, loggedIn, isLoading }) {
 
   return (
     <>
-      <Header loggedIn={loggedIn} />
+      <Header loggedIn={!loggedIn} />
       <section className="profile">
         <h3 className="profile__title">Привет, {currentUser.name}!</h3>
         <form id="form" className="profile__form" onSubmit={handleSubmit} noValidate>

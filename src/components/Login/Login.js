@@ -18,7 +18,7 @@ function Login({ onAuthorize, isLoading }) {
   return (
     <Form
       title="Рады видеть!"
-      buttonText="Войти"
+      buttonText="  Войти"
       question="Еще не зарегистрированы?"
       linkText=" Регистрация"
       link="/signup"
