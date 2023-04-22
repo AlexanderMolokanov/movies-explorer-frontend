@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './Navigation.css';
-// import account from '../../images/acc-button.svg';
 
 function Navigation({ handleClose }) {
   return (
@@ -34,7 +33,6 @@ function Navigation({ handleClose }) {
           </NavLink>
         </nav>
         <Link to="/profile" onClick={handleClose} className="navigation__account-button">
-          {/* <img src={account} alt="аккаунт" /> */}
           Аккаунт
         </Link>
       </div>

@@ -12,11 +12,6 @@ function MoviesCard({ card, isSavedFilms, handleLikeClick, onCardDelete, saved, 
     } else {
       handleLikeClick(card);
     }
-    //   setSaved(false);
-    //  }
-    //  else {
-    //   setSaved(true);
-    //  }
   }
 
   function onDelete() {
@@ -25,7 +20,6 @@ function MoviesCard({ card, isSavedFilms, handleLikeClick, onCardDelete, saved, 
 
   const cardSaveButtonClassName = `${
     saved ? 'movies-card__save-button movies-card__save-button_active' : 'movies-card__save-button'
-    //  'movies-card__save-button movies-card__save-button_active movies-card__save-button'
   }`;
 
   return (
@@ -45,7 +39,6 @@ function MoviesCard({ card, isSavedFilms, handleLikeClick, onCardDelete, saved, 
         <img
           className="movies-card__image"
           alt={card.nameRU}
-          // src={isSavedFilms ? card.image : 
           src={isSavedFilms ? `https://api.nomoreparties.co${card.image.url}` : 
             `https://api.nomoreparties.co${card.image.url}`  
           }

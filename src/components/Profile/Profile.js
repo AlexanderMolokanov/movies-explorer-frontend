@@ -31,8 +31,6 @@ function Profile({ signOut, onUpdateUser, loggedIn, isLoading }) {
     } else {
       setIsLastValues(false);
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [enteredValues]);
 
   return (
@@ -78,7 +76,6 @@ function Profile({ signOut, onUpdateUser, loggedIn, isLoading }) {
             disabled={!isFormValid ? true : false}
             className={
               !isFormValid || isLoading || isLastValues
-                // ? 'profile__button-save form__button-save_inactive'
                 ? 'profile__button-save'
                 : 'profile__button-save'
             }>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, useHistory, useLocation, Redirect } from 'react-router-dom';
-// import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -12,24 +11,14 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import { FILMS, PROFILE } from '../../utils/constants';
-
-
 import CurrentUserContext from '../../contexts/CurrentUserContext';
-
 import * as api from '../../utils/MainApi';
-
-import * as apii from '../../utils/MoviesApi';
-
-// console.log(api)
-
 
 function App() {
   const history = useHistory();
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
   const [savedMovies, setSavedMovies] = useState([]);
   const [isSuccess, setIsSuccess] = useState(true);
@@ -39,62 +28,18 @@ function App() {
   const [isSaved, setSaved] = useState(false);
   const profileInfo = 
 
-  // console.log(Movies)
 
   //Проверка токена и авторизация пользователя
   useEffect(() => {
-    // const jwt = localStorage.getItem('jwt');
-
-    // if (jwt) {
-    //   api
-    //     .getContent(jwt)
-    //     .then((res) => {
-    //       if (res) {
-    //         localStorage.removeItem('allMovies');
-    //         setIsLoggedIn(true);
-    //       }
-    //       history.push(path);
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-    // }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // isLoggedIn = true
   useEffect(() => {
 
     if (isLoggedIn) {
-      // api
-      //   .getUserInfo()
-      //   .then((profileInfo) => {
-      //     // console.log(profileInfo);
-      //     setCurrentUser(profileInfo);
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
-
-      // apii
-      //   .getCards()
-      //   .then((cardsData) => {
-      //     setSavedMovies(cardsData.reverse());
-      //     console.log(cardsData);
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
-        
-       
-        
-        
-
-
         function getCardss(FILMS) {
           setCurrentUser(PROFILE);
           setSavedMovies(FILMS);
-          // console.log(FILMS);
         }
         getCardss(FILMS)
         
@@ -104,9 +49,6 @@ function App() {
     }
   }, [isLoggedIn, history]);
 
-  // console.log(savedMovies)
-
-  //регистрация пользователя
   function handleRegister({ name, email, password }) {
     api
       .register(name, email, password)
@@ -119,28 +61,8 @@ function App() {
       });
   }
 
- 
-
-  //авторизация пользователя
   function handleAuthorize({ email, password }) {
     console.log('handleAuthorize', email, password)
-    // setIsLoading(true);
-    // api
-    //   .authorize(email, password)
-    //   .then((res) => {
-    //     if (res) {
-    //       setIsLoggedIn(true);
-    //       localStorage.setItem('jwt', res.token);
-    //       history.push('./movies');
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     setIsSuccess(false);
-    //     console.log(err);
-    //   })
-    //   .finally(() => {
-    //     setIsLoading(false);
-    //   });
   }
 
   function handleUpdateUser(newUserInfo) {
@@ -160,19 +82,6 @@ function App() {
         setIsLoading(false);
       });
   }
-
-  // function handleCardLike(card) {
-  //   api
-  //     .postCard(card)
-  //     .then((newMovie) => {
-  //       setSavedMovies([newMovie, ...savedMovies]);
-  //     })
-  //     .catch((err) => {
-  //       setIsSuccess(false);
-  //       console.log(err);
-  //       handleUnauthorized(err);
-  //     });
-  // }
 
   function handleCardLike(card) {
     api
@@ -235,7 +144,7 @@ function App() {
               <Footer />
             </Route>
             <Route path="/signin">
-              {!isLoggedIn ? (
+              {isLoggedIn ? (
                 <Login onAuthorize={handleAuthorize} isLoading={isLoading} />
               ) : (
                 <Redirect to="/" /> 

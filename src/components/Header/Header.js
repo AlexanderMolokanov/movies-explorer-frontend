@@ -3,16 +3,12 @@ import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
 import logo from '../../images/logo.svg';
-// import account from '../../images/acc-button.svg';
 import menu from '../../images/burger-button.svg';
 
 function Header(
   { loggedIn }
   ) {
   const [isClicked, setIsClicked] = useState(false);
-  // костыль
-  // var loggedInQ = loggedIn; 
-  // loggedInQ = false
   
   function handleOpen() {
     setIsClicked(true);
@@ -59,7 +55,6 @@ function Header(
           </div>
           <div className="header__button-container">
             <Link to="/profile" className="header__account-button">
-              {/* <img src={account} alt="аккаунт" /> */}
               Аккаунт
             </Link>
             <button onClick={handleOpen} className="header__burger-button">

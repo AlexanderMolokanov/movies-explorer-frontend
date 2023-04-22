@@ -12,16 +12,6 @@ function SearchForm({ onSearchMovies, onFilter, isShortMovies }) {
     setQuery(e.target.value);
   }
 
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   if (query.trim().length === 0) {
-  //     setIsQueryError(true);
-  //   } else {
-  //     setIsQueryError(false);
-  //     onSearchMovies(query);
-  //   }
-  // }
-
   useEffect(() => {
     if (
       location.pathname === "/movies" &&
@@ -47,7 +37,6 @@ function SearchForm({ onSearchMovies, onFilter, isShortMovies }) {
             id="search-input"
             type="text"
             placeholder="Фильм"
-            // required
             onChange={handleChangeQuery}
             value={query || ""}
           ></input>

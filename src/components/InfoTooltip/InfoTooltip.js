@@ -1,6 +1,5 @@
 import React from 'react';
 import './InfoTooltip.css';
-// import unsuccessImage from '../../images/unsuccess-image.svg';
 
 function InfoTooltip({ onClose, isSuccess, isUpdate }) {
   return (
@@ -12,7 +11,6 @@ function InfoTooltip({ onClose, isSuccess, isUpdate }) {
           className="popup__cl-button"
           onClick={onClose}
         />
-        {/* <img className="popup__signup-image" src={unsuccessImage} alt="Что-то пошло не так" /> */}
         <h2 className="popup__signup-title">{`${
           isUpdate ? 'Редактирование прошло успешно!' : 'Что-то пошло не так! Попробуйте ещё раз.'
         }`}</h2>

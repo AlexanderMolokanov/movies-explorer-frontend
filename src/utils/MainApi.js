@@ -1,7 +1,7 @@
 import { checkResponse } from './utils';
 
 export const BASE_URL = "http://localhost:3000"
-// 'https://api.movies-explorer.nomorepartiesxyz.ru'
+// 'https://api.movies-explorer.nomoreparti.ru'
 ;
 
 export const register = (name, email, password) => {

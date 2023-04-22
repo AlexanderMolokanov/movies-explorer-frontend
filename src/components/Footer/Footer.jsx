@@ -30,16 +30,6 @@ export default function Footer() {
                 Github
               </a>
             </li>
-            {/* <li>
-              <a
-                href="https://vk.com/id322662327"
-                target="_blank"
-                rel="noreferrer"
-                className="footer__link"
-              >
-                ВКонтакте
-              </a>
-            </li> */}
           </ul>
         </div>
       </div>
