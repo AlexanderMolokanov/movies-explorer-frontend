@@ -25,118 +25,107 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 import * as api from "../../utils/MainApi";
 
-import * as apii from "../../utils/MoviesApi";
-
 // console.log(api)
 
 function App() {
   const history = useHistory();
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
   const [savedMovies, setSavedMovies] = useState([]);
   const [isSuccess, setIsSuccess] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
   const path = location.pathname;
-  const [isSaved, setSaved] = useState(false);
-  const profileInfo =
-    // console.log(Movies)
 
-    //Проверка токена и авторизация пользователя
+    //Aвторизация 
     useEffect(() => {
-      // const jwt = localStorage.getItem('jwt');
-      // if (jwt) {
-      //   api
-      //     .getContent(jwt)
-      //     .then((res) => {
-      //       if (res) {
-      //         localStorage.removeItem('allMovies');
-      //         setIsLoggedIn(true);
-      //       }
-      //       history.push(path);
-      //     })
-      //     .catch((err) => {
-      //       console.log(err);
-      //     });
-      // }
+      const userDatas = currentUser;
+      console.log('const userDatas = currentUser;')
+      if (userDatas) {
+        api
+        .getContent()
+        .then((res) => {
+          if (res) {
+              console.log('setIsLoggedIn(true);')
+              localStorage.removeItem('allMovies');
+              setIsLoggedIn(true);
+            }
+            history.push(path);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-  // isLoggedIn = true
   useEffect(() => {
     if (isLoggedIn) {
-      // api
-      //   .getUserInfo()
-      //   .then((profileInfo) => {
-      //     // console.log(profileInfo);
-      //     setCurrentUser(profileInfo);
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
-
-      // apii
-      //   .getCards()
-      //   .then((cardsData) => {
-      //     setSavedMovies(cardsData.reverse());
-      //     console.log(cardsData);
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
-
-      function getCardss(FILMS) {
-        setCurrentUser(PROFILE);
-        setSavedMovies(FILMS);
-        // console.log(FILMS);
-      }
-      getCardss(FILMS);
-    } else {
-      setIsLoggedIn(true);
+      api
+        .getUserInfo()
+        .then((profileInfo) => {
+          console.log(profileInfo);
+          setCurrentUser(profileInfo);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      api
+        .getCards()
+        .then((cardsData) => {
+          setSavedMovies(cardsData.reverse());
+          console.log(cardsData);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }, [isLoggedIn, history]);
 
   // console.log(savedMovies)
 
-  //регистрация пользователя
+  //регистрация 
   function handleRegister({ name, email, password }) {
-    console.log("handleRegister", name, email, password);
-    // api
-    //   .register(name, email, password)
-    //   .then(() => {
-    //     handleAuthorize({ email, password });
-    //   })
-    //   .catch((err) => {
-    //     setIsSuccess(false);
-    //     console.log(err);
-    //   });
+    console.log("handleRegister");
+    api
+      .register(name, email, password)
+      .then(() => {
+        console.log("handleRegister_done");
+        //сохранить ID
+        handleAuthorize({ email, password });
+      })
+      .catch((err) => {
+        setIsSuccess(false);
+        console.log(err);
+      });
   }
 
   //авторизация пользователя
   function handleAuthorize({ email, password }) {
-    console.log("handleAuthorize", email, password);
-    // setIsLoading(true);
-    // api
-    //   .authorize(email, password)
-    //   .then((res) => {
-    //     if (res) {
-    //       setIsLoggedIn(true);
-    //       localStorage.setItem('jwt', res.token);
-    //       history.push('./movies');
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     setIsSuccess(false);
-    //     console.log(err);
-    //   })
-    //   .finally(() => {
-    //     setIsLoading(false);
-    //   });
+    console.log("handleAuthorize");
+    setIsLoading(true);
+    api
+      .authorize(email, password)
+      .then((res) => {
+        if (res) {
+          setIsLoggedIn(true);
+          // localStorage.setItem('jwt', res.token);
+          history.push('./movies');
+          // загрузить фильмы
+        }
+      })
+      .catch((err) => {
+        setIsSuccess(false);
+        console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
   function handleUpdateUser(newUserInfo) {
+    console.log('handleUpdateUser(newUserInfo)')
     setIsLoading(true);
     api
       .setUserInfo(newUserInfo)
@@ -153,19 +142,6 @@ function App() {
         setIsLoading(false);
       });
   }
-
-  // function handleCardLike(card) {
-  //   api
-  //     .postCard(card)
-  //     .then((newMovie) => {
-  //       setSavedMovies([newMovie, ...savedMovies]);
-  //     })
-  //     .catch((err) => {
-  //       setIsSuccess(false);
-  //       console.log(err);
-  //       handleUnauthorized(err);
-  //     });
-  // }
 
   function handleCardLike(card) {
     api
@@ -203,14 +179,16 @@ function App() {
 
   // Выход
   const handleSignOut = () => {
+    console.log('setIsLoggedIn(false)');
     setIsLoggedIn(false);
-    setIsLoggedIn(true);
-    localStorage.removeItem("jwt");
+    // setIsLoggedIn(true);
+    // localStorage.removeItem("jwt");
     localStorage.removeItem("movies");
     localStorage.removeItem("movieSearch");
     localStorage.removeItem("shortMovies");
     localStorage.removeItem("allMovies");
     history.push("/");
+    console.log('handleSignOut');
   };
 
   function closeUnsuccessPopup() {
@@ -231,7 +209,7 @@ function App() {
             <Route path="/signin">
               {/* {!isLoggedIn ? ( */}
               <Login onAuthorize={handleAuthorize} isLoading={isLoading} />
-              {/* ) : (
+               {/* ) : (
                 <Redirect to="/" /> 
               )} */}
             </Route>
@@ -263,7 +241,7 @@ function App() {
               loggedIn={isLoggedIn}
               onCardDelete={handleCardDelete}
               component={SavedMovies}
-              // handleLikeClick={handleCardLike}
+              handleLikeClick={handleCardLike}
             ></Route>
             {/* </ErrorBoundary> */}
             {/* </ErrorBoundary> */}
@@ -273,7 +251,7 @@ function App() {
               signOut={handleSignOut}
               onUpdateUser={handleUpdateUser}
               loggedIn={isLoggedIn}
-              component={Profile}
+              component={Profile} 
               isLoading={isLoading}
             ></Route>
             {/* </ProtectedRoute> */}

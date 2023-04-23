@@ -12,15 +12,15 @@ function SearchForm({ onSearchMovies, onFilter, isShortMovies }) {
     setQuery(e.target.value);
   }
 
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   if (query.trim().length === 0) {
-  //     setIsQueryError(true);
-  //   } else {
-  //     setIsQueryError(false);
-  //     onSearchMovies(query);
-  //   }
-  // }
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (query.trim().length === 0) {
+      setIsQueryError(true);
+    } else {
+      setIsQueryError(false);
+      onSearchMovies(query);
+    }
+  }
 
   useEffect(() => {
     if (
@@ -39,7 +39,7 @@ function SearchForm({ onSearchMovies, onFilter, isShortMovies }) {
           <form
             className="search__form"
             id="form"
-            // onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
           >
             <label className="search__label" htmlFor="search-input"></label>
             <input
@@ -50,7 +50,7 @@ function SearchForm({ onSearchMovies, onFilter, isShortMovies }) {
               placeholder="Фильм"
               required
               onChange={handleChangeQuery}
-              // value={query || ""}
+              value={query || ""}
             ></input>
 
             <button className="search__button" type="submit"></button>

@@ -37,7 +37,7 @@ function Profile({ signOut, onUpdateUser, loggedIn, isLoading }) {
 
   return (
     <>
-      <Header loggedIn={!loggedIn} />
+      <Header loggedIn={loggedIn} />
       <section className="profile">
         <h3 className="profile__title">Привет, {currentUser.name}!</h3>
         <form id="form" className="profile__form" onSubmit={handleSubmit} noValidate>
@@ -75,7 +75,7 @@ function Profile({ signOut, onUpdateUser, loggedIn, isLoading }) {
           </label>
           <button
             type="submit"
-            disabled={!isFormValid ? true : false}
+            // disabled={!isFormValid ? true : false}
             className={
               !isFormValid || isLoading || isLastValues
                 // ? 'profile__button-save form__button-save_inactive'

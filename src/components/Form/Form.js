@@ -4,15 +4,15 @@ import "./Form.css";
 import logo from "../../images/logo.svg";
 
 function Form({
-  children,
+  isDisabled,
+  isLoading,
+  children, 
   title,
   buttonText,
   question,
   linkText,
   link,
   onSubmit,
-  isDisabled,
-  isLoading,
 }) {
   return (
     <div className="form__container">

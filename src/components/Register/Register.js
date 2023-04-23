@@ -3,29 +3,30 @@ import '../Form/Form.css';
 import Form from '../Form/Form';
 import useForm from '../hooks/useForm';
 import { EMAIL_REGEX, USER_NAME_REGEX } from '../../utils/constants';
-
+ 
 function Register({ onRegister, isLoading }) {
   const { enteredValues, errors, handleChange, isFormValid } = useForm();
 
-  function handleSubmit(e) {
+  function handleSubmit(e) { 
     e.preventDefault();
     onRegister({
       name: enteredValues.name,
       email: enteredValues.email,
       password: enteredValues.password,
-    });
+    }); 
   }
 
   return (
     <Form
+      link="/signin"
       title="Добро пожаловать!"
+      onSubmit={handleSubmit}
+      isDisabled={!isFormValid}
+      isLoading={isLoading}
       buttonText="Зарегистрироваться"
       question="Уже зарегистрированы?"
       linkText=" Войти"
-      link="/signin"
-      onSubmit={handleSubmit}
-      isDisabled={!isFormValid}
-      isLoading={isLoading}>
+      >
       <label className="form__field">
         Имя
         <input

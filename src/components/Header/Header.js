@@ -7,8 +7,7 @@ import menu from "../../images/burger-button.svg";
 
 function Header({ loggedIn }) {
   const [isClicked, setIsClicked] = useState(false);
-  // var loggedInQ = loggedIn;
-  // loggedInQ = false
+
   function handleOpen() {
     setIsClicked(true);
   }

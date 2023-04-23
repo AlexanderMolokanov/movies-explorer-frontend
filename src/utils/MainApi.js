@@ -1,18 +1,19 @@
-import { checkResponse } from './utils';
+import { checkResponse } from "./utils";
 
-export const BASE_URL = "http://localhost:3000"
-// 'https://api.movies-explorer.nomorepartiesxyz.ru'
-;
+export const BASE_URL = "http://localhost:3000";
+// 'https://api.movies-explorer.nomorepartirerer.ru'
 
 export const register = (name, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
-    method: 'POST',
-    credentials: 'include',
-    'Access-Control-Allow-Origin': `${BASE_URL}`,
+    method: "POST",
+    // mode: 'no-cors',
+    credentials: "include",
+    // "Access-Control-Allow-Origin": "*",
     headers: {
-      Origin: 'http://localhost:3000/',
+      // "Access-Control-Allow-Origin": "*",
+      // Origin: "http://localhost:3000/",
       "Content-Type": "application/json",
-        Accept: "application/json: charset=utf-8",
+      Accept: "application/json: charset=utf-8",
     },
     body: JSON.stringify({ name, email, password }),
   }).then((res) => checkResponse(res));
@@ -20,13 +21,13 @@ export const register = (name, email, password) => {
 
 export const authorize = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
-    method: 'POST',
-    credentials: 'include',
-    Origin: `${BASE_URL}`,
+    method: "POST",
+    credentials: "include",
+    // Origin: `${BASE_URL}`,
     headers: {
-      Origin: `${BASE_URL}`,
+      // Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
-        Accept: "application/json: charset=utf-8",
+      Accept: "application/json: charset=utf-8",
     },
     body: JSON.stringify({ email, password }),
   }).then((res) => checkResponse(res));
@@ -34,13 +35,13 @@ export const authorize = (email, password) => {
 
 export const getContent = () => {
   return fetch(`${BASE_URL}/users/me`, {
-    method: 'GET',
-    credentials: 'include',
-    'Access-Control-Allow-Origin': `${BASE_URL}`,
+    method: "GET",
+    credentials: "include",
+    // "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
-      Origin: `${BASE_URL}`,
+      // Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
-        Accept: "application/json: charset=utf-8",
+      Accept: "application/json: charset=utf-8",
     },
   }).then((res) => checkResponse(res));
 };
@@ -48,29 +49,29 @@ export const getContent = () => {
 // метод делает запрос серверу и получает данные профиля
 export const getUserInfo = () => {
   return fetch(`${BASE_URL}/users/me`, {
-    method: 'GET',
-    credentials: 'include',
-    'Access-Control-Allow-Origin': `${BASE_URL}`,
+    method: "GET",
+    credentials: "include",
+    "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
-      Origin: `${BASE_URL}`,
+      // Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
-        Accept: "application/json: charset=utf-8",
+      Accept: "application/json: charset=utf-8",
     },
   }).then((res) => checkResponse(res));
 };
 
-// метод изменяет данные профиля на сервере
+// изменить данные профиля на сервере
 export const setUserInfo = (data) => {
   console.log(data);
   return fetch(`${BASE_URL}/users/me`, {
-    method: 'PATCH', 
-    credentials: 'include',
-    'Access-Control-Allow-Origin': `${BASE_URL}`,
+    method: "PATCH",
+    credentials: "include",
+    "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
-      Origin: `${BASE_URL}`,
+      // Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
-        Accept: "application/json: charset=utf-8",
-    }, 
+      Accept: "application/json: charset=utf-8",
+    },
     body: JSON.stringify({
       name: data.name, //в name передаем значение name объекта, переданного в setUserInfo
       email: data.email, //в about передаем значение about объекта, переданного в setUserInfo
@@ -80,14 +81,18 @@ export const setUserInfo = (data) => {
 
 export const getCards = () => {
   return fetch(`${BASE_URL}/movies`, {
-    method: 'GET',
-    credentials: 'include',
-    'Access-Control-Allow-Origin': `${BASE_URL}`,
+    method: "GET",
+    // credentials: "include",
+    // "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
-      Origin: `${BASE_URL}`,
+      // Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
-        Accept: "application/json: charset=utf-8",
+      // Accept: "application/json: charset=utf-8",
     },
+    // body: JSON.stringify({
+    //   //тело запроса
+    //   user: data._id, //в name передаем значение name объекта, переданного в setUserInfo
+    // }),
   }).then((res) => checkResponse(res));
 };
 
@@ -95,13 +100,13 @@ export const getCards = () => {
 export const postCard = (data) => {
   console.log(data);
   return fetch(`${BASE_URL}/movies`, {
-    method: 'POST',
-    credentials: 'include',
-    'Access-Control-Allow-Origin': `${BASE_URL}`,
+    method: "POST",
+    credentials: "include",
+    // "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
-      Origin: `${BASE_URL}`,
+      // Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
-        Accept: "application/json: charset=utf-8",
+      Accept: "application/json: charset=utf-8",
     },
     body: JSON.stringify({
       country: data.country,
@@ -109,15 +114,13 @@ export const postCard = (data) => {
       duration: data.duration,
       year: data.year,
       description: data.description,
-      image: 
-      // 'https://api.nomoreparties.co'
-      'http://localhost:3000'
-       + data.image.url,
+      image:
+        // 'https://api.nomoreparties.co'
+        "http://localhost:3000" + data.image.url,
       trailerLink: data.trailerLink,
-      thumbnail: 
-      // 'https://api.nomoreparties.co'
-      'http://localhost:3000'
-      + data.image.formats.thumbnail.url,
+      thumbnail:
+        // 'https://api.nomoreparties.co'
+        "http://localhost:3000" + data.image.formats.thumbnail.url,
       movieId: data.id,
       nameRU: data.nameRU,
       nameEN: data.nameEN,
@@ -128,13 +131,13 @@ export const postCard = (data) => {
 // метод удаления карточки с сервера
 export const deleteCard = (cardId) => {
   return fetch(`${BASE_URL}/movies/${cardId}`, {
-    method: 'DELETE',
-    credentials: 'include',
-    'Access-Control-Allow-Origin': `${BASE_URL}`,
+    method: "DELETE",
+    credentials: "include",
+    // "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
-      Origin: `${BASE_URL}`,
+      // Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
-        Accept: "application/json: charset=utf-8",
+      Accept: "application/json: charset=utf-8",
     },
   }).then((res) => checkResponse(res));
 };

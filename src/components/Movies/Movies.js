@@ -1,21 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import './Movies.css';
-import Header from '../Header/Header';
-import SearchForm from '../SearchForm/SearchForm';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import Footer from '../Footer/Footer';  
-import { filterMovies, filterDuration } from '../../utils/utils';
-import { FILMS, SAVED_FILMS } from '../../utils/constants';
+import React, { useState, useContext, useEffect } from "react";
+import "./Movies.css";
+import Header from "../Header/Header";
+import SearchForm from "../SearchForm/SearchForm";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import Footer from "../Footer/Footer";
+import { filterMovies, filterDuration } from "../../utils/utils";
+import { FILMS, SAVED_FILMS } from "../../utils/constants";
 
+import * as movies from "../../utils/MoviesApi";
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
-import * as movies from '../../utils/MoviesApi';
+// useEffect(() => {
+//   if (currentUser) {
+//     console.log(currentUser);
+//   }
+// }, [currentUser]);
 
 function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
-
-
+  const currentUser = useContext(CurrentUserContext);
   // console.log(savedMovies)
   // savedMovies = FILMS
-   loggedIn = true
+  loggedIn = true;
   const [isLoading, setIsLoading] = useState(false); //прелоадер
   const [allMovies, setAllMovies] = useState([]);
   const [initialMovies, setInitialMovies] = useState([]); //отфильтрованные по запросу
@@ -30,15 +35,13 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
     const moviesList = filterMovies(movies, query, short); //фильтруем полученный массив по запросу
     setInitialMovies(moviesList); //записываем в стейт
     setFilteredMovies(short ? filterDuration(moviesList) : moviesList); //если чекбокс тру, то фильруем по длине и записываем в стейт
-    localStorage.setItem('movies', JSON.stringify(moviesList));
-    // localStorage.setItem('allMovies', JSON.stringify(movies));
-    localStorage.setItem('allMovies', FILMS);
+    localStorage.setItem("movies", JSON.stringify(moviesList));
+    localStorage.setItem("allMovies", JSON.stringify(movies));
     // setIsNotFound(moviesList.length === 0 ? true : false);
   }
   // console.log(allMovies)
   // console.log(localStorage.getItem('allMovies'))
   // console.log(FILMS)
-  
 
   function handleShortMovies() {
     setIsShortMovies(!isShortMovies);
@@ -54,64 +57,51 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
       setFilteredMovies(initialMovies);
       // setIsNotFound(initialMovies.length === 0 ? true : false);
     }
-    localStorage.setItem('shortMovies', !isShortMovies);
+    localStorage.setItem("shortMovies", !isShortMovies);
   }
 
   //submit
   function onSearchMovies(query) {
     console.log(query);
 
-    // localStorage.setItem('movieSearch', query);
-    // localStorage.setItem('shortMovies', isShortMovies);
+    localStorage.setItem("movieSearch", query);
+    localStorage.setItem("shortMovies", isShortMovies);
 
-    // if (localStorage.getItem('allMovies')) {
-    //   const movies = JSON.parse(localStorage.getItem('allMovies'));
-    //   const movies = localStorage.getItem('allMovies');
+    if (localStorage.getItem("allMovies")) {
+      const movies = JSON.parse(localStorage.getItem("allMovies"));
+      console.log("lo");
+      handleFilterMovies(movies, query, isShortMovies);
+    } else {
+      console.log("nolo");
+      // console.log(currentUser._id);
+      setIsLoading(true);
+      movies
+        .getCards()
+        .then((cardsData) => {
+          console.log(cardsData);
+          handleFilterMovies(cardsData, query, isShortMovies);
+          setIsReqErr(false);
+          setAllMovies(cardsData);
+        })
+        .catch((err) => {
+          setIsReqErr(true);
+          console.log(err);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
 
-    //   console.log(movies);
-    //   console.log('lo');
-    //   handleFilterMovies(movies, query, isShortMovies);
+    // if (allMovies.length === 0) {
+
     // } else {
-    //   console.log('nolo');
-    //   setIsLoading(true);
-    //   movies
-    //     .getCards()
-    //     .then((cardsData) => {
-    //       handleFilterMovies(cardsData, query, isShortMovies);
-    //       setIsReqErr(false);
-    //       setAllMovies(cardsData);
-    //     })
-    //     .catch((err) => {
-    //       setIsReqErr(true);
-    //       console.log(err);
-    //     })
-    //     .finally(() => {
-    //       setIsLoading(false);
-    //     });
+    //   console.log('lo');
+    //   handleFilterMovies(allMovies, query, isShortMovies);
     // }
-
-                            // if (allMovies.length === 0) {
-
-                            // } else {
-                            //   console.log('lo');
-                            //   handleFilterMovies(allMovies, query, isShortMovies);
-                            // }
   }
 
-                // function someFunktion (query) {
-                //   // const movies = JSON.parse(localStorage.getItem('allMovies'));
-                //     const movies = localStorage.getItem('allMovies');
-
-                //     // console.log(movies);
-                //     // console.log('lo');
-                //     handleFilterMovies(movies, query, isShortMovies);
-                  
-                // }
-
-                // someFunktion('www')
-
   useEffect(() => {
-    if (localStorage.getItem('shortMovies') === 'true') {
+    if (localStorage.getItem("shortMovies") === "true") {
       setIsShortMovies(true);
     } else {
       setIsShortMovies(false);
@@ -119,12 +109,10 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
   }, []);
 
   useEffect(() => {
-    if (localStorage.getItem('movies')) {
-      // const movies = JSON.parse(localStorage.getItem('movies'));
+    if (localStorage.getItem("movies")) {
       const movies = JSON.parse(localStorage.getItem('movies'));
-
       setInitialMovies(movies);
-      if (localStorage.getItem('shortMovies') === 'true') {
+      if (localStorage.getItem("shortMovies") === "true") {
         setFilteredMovies(filterDuration(movies));
       } else {
         setFilteredMovies(movies);
@@ -134,17 +122,17 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
     }
   }, []);
 
-  // useEffect(() => {
-  //   if (localStorage.getItem('movieSearch')) {
-  //     if (filteredMovies.length === 0) {
-  //       setIsNotFound(true);
-  //     } else {
-  //       setIsNotFound(false);
-  //     }
-  //   } else {
-  //     setIsNotFound(false);
-  //   }
-  // }, [  ]);
+  useEffect(() => {
+    if (localStorage.getItem("movieSearch")) {
+      if (filteredMovies.length === 0) {
+        setIsNotFound(true);
+      } else {
+        setIsNotFound(false);
+      }
+    } else {
+      setIsNotFound(false);
+    }
+  }, [filteredMovies]);
 
   return (
     <section className="movies">
@@ -155,20 +143,19 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
         isShortMovies={isShortMovies}
       />
       <MoviesCardList
-      
-        // savedMovies={savedMovies}
-        // cards={filteredMovies}
-        cards={FILMS}
-        savedMovies={SAVED_FILMS}
+        savedMovies={savedMovies}
+        cards={filteredMovies}
+        // savedMovies={SAVED_FILMS}
+        // cards={FILMS}
         isSavedFilms={false}
-        handleLikeClick={handleLikeClick}  
+        handleLikeClick={handleLikeClick}
         onCardDelete={onCardDelete}
-        // isReqErr={isReqErr}
-        // isNotFound={isNotFound}
-        // isLoading={isLoading} 
-        isLoading={false}
-        isReqErr={false}
-        isNotFound={false}
+        isReqErr={isReqErr}
+        isNotFound={isNotFound}
+        isLoading={isLoading}
+        // isLoading={false}
+        // isReqErr={false}
+        // isNotFound={false}
       />
       <Footer />
     </section>
