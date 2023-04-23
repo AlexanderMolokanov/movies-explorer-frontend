@@ -8,19 +8,13 @@ import { filterMovies, filterDuration } from "../../utils/utils";
 import { FILMS, SAVED_FILMS } from "../../utils/constants";
 
 import * as movies from "../../utils/MoviesApi";
-import CurrentUserContext from '../../contexts/CurrentUserContext';
-
-// useEffect(() => {
-//   if (currentUser) {
-//     console.log(currentUser);
-//   }
-// }, [currentUser]);
+// import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
-  const currentUser = useContext(CurrentUserContext);
+  // const currentUser = useContext(CurrentUserContext);
   // console.log(savedMovies)
   // savedMovies = FILMS
-  loggedIn = true;
+  
   const [isLoading, setIsLoading] = useState(false); //прелоадер
   const [allMovies, setAllMovies] = useState([]);
   const [initialMovies, setInitialMovies] = useState([]); //отфильтрованные по запросу
@@ -32,7 +26,8 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
 
   //основнай метод фильрации, который отдает массив с фильмами на рендеринг
   function handleFilterMovies(movies, query, short) {
-    const moviesList = filterMovies(movies, query, short); //фильтруем полученный массив по запросу
+    const moviesList = filterMovies(movies, query); //фильтруем полученный массив по запросу
+    console.log(moviesList)
     setInitialMovies(moviesList); //записываем в стейт
     setFilteredMovies(short ? filterDuration(moviesList) : moviesList); //если чекбокс тру, то фильруем по длине и записываем в стейт
     localStorage.setItem("movies", JSON.stringify(moviesList));
@@ -68,17 +63,18 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
     localStorage.setItem("shortMovies", isShortMovies);
 
     if (localStorage.getItem("allMovies")) {
+      // const movies = (localStorage.getItem("allMovies"));
       const movies = JSON.parse(localStorage.getItem("allMovies"));
       console.log("lo");
+      console.log(movies);
       handleFilterMovies(movies, query, isShortMovies);
     } else {
       console.log("nolo");
-      // console.log(currentUser._id);
       setIsLoading(true);
       movies
         .getCards()
         .then((cardsData) => {
-          console.log(cardsData);
+          console.log(JSON.parse(cardsData));
           handleFilterMovies(cardsData, query, isShortMovies);
           setIsReqErr(false);
           setAllMovies(cardsData);
@@ -112,6 +108,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
     if (localStorage.getItem("movies")) {
       const movies = JSON.parse(localStorage.getItem('movies'));
       setInitialMovies(movies);
+      console.log(movies)
       if (localStorage.getItem("shortMovies") === "true") {
         setFilteredMovies(filterDuration(movies));
       } else {

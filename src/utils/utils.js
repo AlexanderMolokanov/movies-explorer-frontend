@@ -9,8 +9,9 @@ export const checkResponse = (res) => {
 
 //фильтр по запросу
 export function filterMovies(movies, query) {
-  // const moviesByQuery = movies.filter((movie) => { 
-  const moviesByQuery = Object.values(movies).filter((movie) => { 
+  console.log('filterMovies(movies, query)', movies, query)
+  const moviesByQuery = movies.filter((movie) => { 
+  // const moviesByQuery = Object.values(movies).filter((movie) => { 
     
     const movieRu = String(movie.nameRU).toLowerCase().trim();
     const movieEn = String(movie.nameEN).toLowerCase().trim();

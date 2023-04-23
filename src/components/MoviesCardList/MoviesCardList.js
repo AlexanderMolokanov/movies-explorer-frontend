@@ -66,7 +66,7 @@ function MoviesCardList({
   }
 
   function getSavedMovieCard(savedMovies, card) {
-    // console.log(savedMovies)
+    console.log(savedMovies)
     return savedMovies.find((savedMovie) => savedMovie.movieId === card.id);
     // return savedMovies.find((savedMovie) => savedMovie._id === card.id);
   }
