@@ -74,7 +74,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
       movies
         .getCards()
         .then((cardsData) => {
-          console.log(JSON.parse(cardsData));
+          console.log( JSON.parse(cardsData));
           handleFilterMovies(cardsData, query, isShortMovies);
           setIsReqErr(false);
           setAllMovies(cardsData);
