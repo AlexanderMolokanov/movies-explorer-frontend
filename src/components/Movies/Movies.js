@@ -72,9 +72,6 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
         isSavedFilms={false}
         handleLikeClick={handleLikeClick}  
         onCardDelete={onCardDelete}
-        // isReqErr={isReqErr}
-        // isNotFound={isNotFound}
-        // isLoading={isLoading} 
         isLoading={false}
         isReqErr={false}
         isNotFound={false}
