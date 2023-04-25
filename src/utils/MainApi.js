@@ -89,10 +89,6 @@ export const getCards = () => {
       "Content-Type": "application/json",
       // Accept: "application/json: charset=utf-8",
     },
-    // body: JSON.stringify({
-    //   //тело запроса
-    //   user: data._id, //в name передаем значение name объекта, переданного в setUserInfo
-    // }),
   }).then((res) => checkResponse(res));
 };
 
@@ -114,13 +110,10 @@ export const postCard = (data) => {
       duration: data.duration,
       year: data.year,
       description: data.description,
-      image:
-        // 'https://api.nomoreparties.co'
-        "http://localhost:3000" + data.image.url,
+      image: "https://api.nomoreparties.co" + data.image.url,
       trailerLink: data.trailerLink,
       thumbnail:
-        // 'https://api.nomoreparties.co'
-        "http://localhost:3000" + data.image.formats.thumbnail.url,
+        "https://api.nomoreparties.co" + data.image.formats.thumbnail.url,
       movieId: data.id,
       nameRU: data.nameRU,
       nameEN: data.nameEN,

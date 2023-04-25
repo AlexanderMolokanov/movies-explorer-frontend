@@ -202,7 +202,7 @@ function App() {
         <div className="page__content">
           <Switch>
             <Route path="/" exact>
-              <Header loggedIn={!isLoggedIn} />
+              <Header loggedIn={isLoggedIn} />
               <Main />
               <Footer />
             </Route>
