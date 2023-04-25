@@ -7,8 +7,6 @@ import Footer from "../Footer/Footer";
 import { filterMovies, filterDuration } from "../../utils/utils";
 import { FILMS, SAVED_FILMS } from "../../utils/constants";
 
-import * as movies from "../../utils/MoviesApi";
-
 function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
   loggedIn = true;
   const [initialMovies, setInitialMovies] = useState([]);

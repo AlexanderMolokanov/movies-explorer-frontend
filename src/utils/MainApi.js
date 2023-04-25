@@ -1,7 +1,7 @@
 import { checkResponse } from './utils';
 
 export const BASE_URL = "http://localhost:3000"
-// 'https://api.movies-explorer.nomoreparti.ru'
+// 'https://api.movies-explorer.nomore.ru'
 ;
 
 export const register = (name, email, password) => {
@@ -45,7 +45,6 @@ export const getContent = () => {
   }).then((res) => checkResponse(res));
 };
 
-// метод делает запрос серверу и получает данные профиля
 export const getUserInfo = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
@@ -59,7 +58,6 @@ export const getUserInfo = () => {
   }).then((res) => checkResponse(res));
 };
 
-// метод изменяет данные профиля на сервере
 export const setUserInfo = (data) => {
   console.log(data);
   return fetch(`${BASE_URL}/users/me`, {
@@ -72,8 +70,8 @@ export const setUserInfo = (data) => {
         Accept: "application/json: charset=utf-8",
     }, 
     body: JSON.stringify({
-      name: data.name, //в name передаем значение name объекта, переданного в setUserInfo
-      email: data.email, //в about передаем значение about объекта, переданного в setUserInfo
+      name: data.name, 
+      email: data.email, 
     }),
   }).then((res) => checkResponse(res));
 };
@@ -91,7 +89,6 @@ export const getCards = () => {
   }).then((res) => checkResponse(res));
 };
 
-// метод добавления новой карточки на сервер
 export const postCard = (data) => {
   console.log(data);
   return fetch(`${BASE_URL}/movies`, {
