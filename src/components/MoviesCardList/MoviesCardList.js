@@ -9,6 +9,8 @@ import {
   SHOW_MORE_TABLET,
   SHOW_MORE_MOBILE,
 } from "../../utils/constants";
+import { FILMS, SAVED_FILMS } from "../../utils/constants";
+
 
 function MoviesCardList({
   cards,
@@ -57,37 +59,19 @@ function MoviesCardList({
     } else if (display > 1024) {
       setShownMovies(shownMovies + SHOW_MORE_TABLET);
     }
-    // else if (display > 800) {
-    //   setShownMovies(shownMovies + 2);
-    // }
+    else if (display > 800) {
+      setShownMovies(shownMovies + 2);
+    }
     else if (display < 1024) {
       setShownMovies(shownMovies + SHOW_MORE_MOBILE);
     }
   }
 
   function getSavedMovieCard(savedMovies, card) {
-    console.log(savedMovies)
+    console.log("savedMovies")
     return savedMovies.find((savedMovie) => savedMovie.movieId === card.id);
     // return savedMovies.find((savedMovie) => savedMovie._id === card.id);
   }
-
-  // isLoading = false
-  // isReqErr = false
-  // isNotFound  = false
-  // console.log(cards)
-  // cards.map((card) => {
-  // console.log(getSavedMovieCard(card, card))
-  // console.log(card._id)
-  // console.log(card.id)
-  // console.log(card)
-  //  })
-
-  // savedMovies.map((savedMovie) => {
-    // console.log(getSavedMovieCard(card, card))
-    // console.log(card._id)
-    // console.log(savedMovie);
-    // console.log(savedMovie)
-  // });
 
   return (
     <section className="cards">

@@ -83,8 +83,6 @@ function App() {
     }
   }, [isLoggedIn, history]);
 
-  // console.log(savedMovies)
-
   //регистрация 
   function handleRegister({ name, email, password }) {
     console.log("handleRegister");
@@ -181,8 +179,6 @@ function App() {
   const handleSignOut = () => {
     console.log('setIsLoggedIn(false)');
     setIsLoggedIn(false);
-    // setIsLoggedIn(true);
-    // localStorage.removeItem("jwt");
     localStorage.removeItem("movies");
     localStorage.removeItem("movieSearch");
     localStorage.removeItem("shortMovies");

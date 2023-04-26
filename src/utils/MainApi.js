@@ -37,7 +37,7 @@ export const getContent = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     credentials: "include",
-    // "Access-Control-Allow-Origin": `${BASE_URL}`,
+    "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
       // Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
@@ -83,7 +83,7 @@ export const getCards = () => {
   return fetch(`${BASE_URL}/movies`, {
     method: "GET",
     credentials: "include",
-    // "Access-Control-Allow-Origin": `${BASE_URL}`,
+    "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
       // Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
@@ -98,7 +98,7 @@ export const postCard = (data) => {
   return fetch(`${BASE_URL}/movies`, {
     method: "POST",
     credentials: "include",
-    // "Access-Control-Allow-Origin": `${BASE_URL}`,
+    "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
       // Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
@@ -126,7 +126,7 @@ export const deleteCard = (cardId) => {
   return fetch(`${BASE_URL}/movies/${cardId}`, {
     method: "DELETE",
     credentials: "include",
-    // "Access-Control-Allow-Origin": `${BASE_URL}`,
+    "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
       // Origin: `${BASE_URL}`,
       "Content-Type": "application/json",

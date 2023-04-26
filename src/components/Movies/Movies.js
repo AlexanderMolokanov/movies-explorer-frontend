@@ -77,7 +77,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
           // console.log( JSON.parse(cardsData));
           handleFilterMovies(cardsData, query, isShortMovies);
           setIsReqErr(false);
-          // setAllMovies(cardsData);
+          setAllMovies(cardsData);
         })
         .catch((err) => {
           setIsReqErr(true);
@@ -140,9 +140,9 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
         isShortMovies={isShortMovies}
       />
       <MoviesCardList
-        savedMovies={savedMovies}
+        // savedMovies={savedMovies}
         cards={filteredMovies}
-        // savedMovies={SAVED_FILMS}
+        savedMovies={SAVED_FILMS}
         // cards={FILMS}
         isSavedFilms={false}
         handleLikeClick={handleLikeClick}
