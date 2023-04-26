@@ -3,8 +3,7 @@ import {
   Route,
   Switch,
   useHistory,
-  useLocation,
-} from "react-router-dom";
+} from "react-router-dom";  
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -26,21 +25,13 @@ import * as api from "../../utils/MainApi";
 
 function App() {
   const history = useHistory();
-  const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [savedMovies, setSavedMovies] = useState([]);
   const [isSuccess, setIsSuccess] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
-  const path = location.pathname;
-  const [isSaved, setSaved] = useState(false);
-  const profileInfo =
-    // console.log(Movies)
-
-    useEffect(() => {
-    
-    }, []);
+    useEffect(() => {    }, []);
 
   // isLoggedIn = true
   useEffect(() => {
