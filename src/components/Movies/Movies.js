@@ -27,7 +27,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
   //основнай метод фильрации, который отдает массив с фильмами на рендеринг
   function handleFilterMovies(movies, query, short) {
     const moviesList = filterMovies(movies, query); //фильтруем полученный массив по запросу
-    console.log(moviesList)
+    console.log('handleFilterMovies(movies, query, short)', movies, query, short)
     setInitialMovies(moviesList); //записываем в стейт
     setFilteredMovies(short ? filterDuration(moviesList) : moviesList); //если чекбокс тру, то фильруем по длине и записываем в стейт
     localStorage.setItem("movies", JSON.stringify(moviesList));
@@ -66,7 +66,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
       // const movies = (localStorage.getItem("allMovies"));
       const movies = JSON.parse(localStorage.getItem("allMovies"));
       console.log("lo");
-      console.log(movies);
+      // console.log(movies);
       handleFilterMovies(movies, query, isShortMovies);
     } else {
       console.log("nolo");
@@ -74,10 +74,10 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
       movies
         .getCards()
         .then((cardsData) => {
-          console.log( JSON.parse(cardsData));
+          // console.log( JSON.parse(cardsData));
           handleFilterMovies(cardsData, query, isShortMovies);
           setIsReqErr(false);
-          setAllMovies(cardsData);
+          // setAllMovies(cardsData);
         })
         .catch((err) => {
           setIsReqErr(true);

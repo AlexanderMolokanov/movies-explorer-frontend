@@ -82,7 +82,7 @@ export const setUserInfo = (data) => {
 export const getCards = () => {
   return fetch(`${BASE_URL}/movies`, {
     method: "GET",
-    // credentials: "include",
+    credentials: "include",
     // "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
       // Origin: `${BASE_URL}`,
