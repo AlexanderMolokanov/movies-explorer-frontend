@@ -1,21 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import './Movies.css';
-import Header from '../Header/Header';
-import SearchForm from '../SearchForm/SearchForm';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import Footer from '../Footer/Footer';  
-import { filterMovies, filterDuration } from '../../utils/utils';
-import { FILMS, SAVED_FILMS } from '../../utils/constants';
+import React, { useState, useEffect } from "react";
+import "./Movies.css";
+import Header from "../Header/Header";
+import SearchForm from "../SearchForm/SearchForm";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import Footer from "../Footer/Footer";
+import { filterMovies, filterDuration } from "../../utils/utils";
+import { FILMS, SAVED_FILMS } from "../../utils/constants";
 
 function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
-   loggedIn = true
+  loggedIn = true;
   const [initialMovies, setInitialMovies] = useState([]); //отфильтрованные по запросу
   const [filteredMovies, setFilteredMovies] = useState([]); //отфильтрованные по запросу и чекбоксу
   const [isShortMovies, setIsShortMovies] = useState(false); //включен ли чекбокс короткометражек
-
-  function handleFilterMovies(movies, query, short) {
-    const moviesList = filterMovies(movies, query, short); //фильтруем полученный массив по запросу
-  }
 
   function handleShortMovies() {
     setIsShortMovies(!isShortMovies);
@@ -28,7 +24,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
     } else {
       setFilteredMovies(initialMovies);
     }
-    localStorage.setItem('shortMovies', !isShortMovies);
+    localStorage.setItem("shortMovies", !isShortMovies);
   }
 
   function onSearchMovies(query) {
@@ -36,7 +32,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
   }
 
   useEffect(() => {
-    if (localStorage.getItem('shortMovies') === 'true') {
+    if (localStorage.getItem("shortMovies") === "true") {
       setIsShortMovies(true);
     } else {
       setIsShortMovies(false);
@@ -44,11 +40,11 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
   }, []);
 
   useEffect(() => {
-    if (localStorage.getItem('movies')) {
-      const movies = JSON.parse(localStorage.getItem('movies'));
+    if (localStorage.getItem("movies")) {
+      const movies = JSON.parse(localStorage.getItem("movies"));
 
       setInitialMovies(movies);
-      if (localStorage.getItem('shortMovies') === 'true') {
+      if (localStorage.getItem("shortMovies") === "true") {
         setFilteredMovies(filterDuration(movies));
       } else {
         setFilteredMovies(movies);
@@ -56,7 +52,6 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
     } else {
     }
   }, []);
-
 
   return (
     <section className="movies">
@@ -70,7 +65,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
         cards={FILMS}
         savedMovies={SAVED_FILMS}
         isSavedFilms={false}
-        handleLikeClick={handleLikeClick}  
+        handleLikeClick={handleLikeClick}
         onCardDelete={onCardDelete}
         isLoading={false}
         isReqErr={false}
