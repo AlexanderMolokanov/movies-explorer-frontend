@@ -10,7 +10,7 @@ export function getCards() {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((res) => {
-    checkResponse(res);
-  });
+  }).then((res) => checkResponse(res));
 }
+
+
