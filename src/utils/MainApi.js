@@ -62,7 +62,7 @@ export const getUserInfo = () => {
 
 // изменить данные профиля на сервере
 export const setUserInfo = (data) => {
-  console.log(data);
+  // console.log(data);
   return fetch(`${BASE_URL}/users/me`, {
     method: "PATCH",
     credentials: "include",
@@ -79,7 +79,7 @@ export const setUserInfo = (data) => {
   }).then((res) => checkResponse(res));
 };
 
-export const getCards = () => {
+export const getMovies = () => {
   return fetch(`${BASE_URL}/movies`, {
     method: "GET",
     credentials: "include",
@@ -94,7 +94,7 @@ export const getCards = () => {
 
 // метод добавления новой карточки на сервер
 export const postCard = (data) => {
-  console.log(data);
+  // console.log(data);
   return fetch(`${BASE_URL}/movies`, {
     method: "POST",
     credentials: "include",

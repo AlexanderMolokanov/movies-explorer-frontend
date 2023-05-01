@@ -9,7 +9,7 @@ export const checkResponse = (res) => {
 
 //фильтр по запросу
 export function filterMovies(movies, query) {
-  console.log('filterMovies(movies, query)', movies, query)
+  // console.log('filterMovies(movies, query)', movies, query)
   const moviesByQuery = movies.filter((movie) => { 
   // const moviesByQuery = Object.values(movies).filter((movie) => { 
     

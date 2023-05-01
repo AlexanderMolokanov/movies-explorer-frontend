@@ -4,7 +4,7 @@ export const BASE_URL =
 'https://api.nomoreparties.co/beatfilm-movies'
 ;
 
-export function getCards() { 
+export function getMovies() { 
   return fetch(BASE_URL, { 
     method: 'GET',
     headers: {

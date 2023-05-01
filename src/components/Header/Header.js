@@ -18,7 +18,7 @@ function Header({ loggedIn }) {
 
   return (
     <>
-      {loggedIn ? (
+      {!loggedIn ? (
         <header className="header" id="header">
           <Link to="/" className="form__logo">
             <img src={logo} alt="логотип" />

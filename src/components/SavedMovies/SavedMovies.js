@@ -3,12 +3,12 @@ import "./SavedMovies.css";
 import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+// import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import Footer from "../Footer/Footer";
 import { filterMovies, filterDuration } from "../../utils/utils";
-import { FILMS, SAVED_FILMS } from "../../utils/constants";
 
 function SavedMovies({ loggedIn, savedMovies, onCardDelete }) {
+  console.log(savedMovies)
   const [filteredMovies, setFilteredMovies] = useState(savedMovies); //отфильтрованные по запросу и чекбоксу
   const [isShortMovies, setIsShortMovies] = useState(false); //включен ли чекбокс короткометражек
   const [isNotFound, setIsNotFound] = useState(false); //фильмы по запросу не найдены
@@ -36,25 +36,38 @@ function SavedMovies({ loggedIn, savedMovies, onCardDelete }) {
     }
   }, [filteredMovies]);
 
+  // useEffect(() => {
+  //   if (localStorage.getItem("movieSearch")) {
+  //     if (filteredMovies.length === 0) {
+  //       setIsNotFound(true);
+  //     } else {
+  //       setIsNotFound(false);
+  //     }
+  //   } else {
+  //     setIsNotFound(false);
+  //   }
+  // }, [filteredMovies]);
+
   return (
     <section className="movies">
       <Header loggedIn={loggedIn} />
       <SearchForm
         onSearchMovies={onSearchMovies}
         onFilter={handleShortMovies}
-      />
-      <ErrorBoundary>
+        // isShortMovies={isShortMovies}
+      /> 
+      {/* <ErrorBoundary> */}
         <MoviesCardList
           isNotFound={isNotFound}
           isSavedFilms={true}
           cards={filteredMovies}
           savedMovies={savedMovies}
           onCardDelete={onCardDelete}  
+          // savedMovies={SAVED_FILMS}
           // isNotFound={false}
           // cards={FILMS}
-          // savedMovies={SAVED_FILMS}
         />
-      </ErrorBoundary>
+      {/* </ErrorBoundary> */}
       <Footer />
     </section>
   );

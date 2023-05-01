@@ -9,19 +9,20 @@ import {
   SHOW_MORE_TABLET,
   SHOW_MORE_MOBILE,
 } from "../../utils/constants";
-import { FILMS, SAVED_FILMS } from "../../utils/constants";
-
+// import { FILMS, SAVED_FILMS } from "../../utils/constants";
 
 function MoviesCardList({
   cards,
-  savedMovies,
   isSavedFilms,
   isLoading,
   isReqErr,
   isNotFound,
   handleLikeClick,
+  savedMovies,
   onCardDelete,
 }) {
+
+  // console.log(cards)
   const [shownMovies, setShownMovies] = useState(0);
   const { pathname } = useLocation();
 
@@ -52,23 +53,26 @@ function MoviesCardList({
     }, 500);
   });
 
-  function showMore() {
+  function showMore() { 
     const display = window.innerWidth;
     if (display > 1180) {
       setShownMovies(shownMovies + SHOW_MORE_DECKTOP);
     } else if (display > 1024) {
       setShownMovies(shownMovies + SHOW_MORE_TABLET);
-    }
-    else if (display > 800) {
-      setShownMovies(shownMovies + 2);
-    }
+    } 
+    // else if (display > 800) {
+    //   setShownMovies(shownMovies + 2);
+    // } 
     else if (display < 1024) {
       setShownMovies(shownMovies + SHOW_MORE_MOBILE);
     }
   }
 
   function getSavedMovieCard(savedMovies, card) {
-    console.log("savedMovies")
+    // console.log("savedMovies", savedMovies, card);
+    if (savedMovies === undefined) {
+      return;
+    }
     return savedMovies.find((savedMovie) => savedMovie.movieId === card.id);
     // return savedMovies.find((savedMovie) => savedMovie._id === card.id);
   }
@@ -93,10 +97,10 @@ function MoviesCardList({
               <ul className="movies-cards__list">
                 {cards.map((card) => (
                   <MoviesCard
-                    cards={cards}
-                    card={card}
                     key={isSavedFilms ? card._id : card.id}
                     saved={getSavedMovieCard(savedMovies, card)}
+                    cards={cards}
+                    card={card}
                     isSavedFilms={isSavedFilms}
                     handleLikeClick={handleLikeClick}
                     onCardDelete={onCardDelete}
@@ -111,10 +115,10 @@ function MoviesCardList({
               <ul className="movies-cards__list">
                 {cards.slice(0, shownMovies).map((card) => (
                   <MoviesCard
-                    cards={cards}
-                    card={card}
                     key={isSavedFilms ? card._id : card.id}
                     saved={getSavedMovieCard(savedMovies, card)}
+                    cards={cards}
+                    card={card}
                     isSavedFilms={isSavedFilms}
                     handleLikeClick={handleLikeClick}
                     onCardDelete={onCardDelete}

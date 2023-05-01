@@ -50,7 +50,7 @@ function Profile({ signOut, onUpdateUser, loggedIn, isLoading }) {
               type="text"
               minLength="2"
               maxLength="40"
-              required
+              required 
               onChange={handleChange}
               value={enteredValues.name || ''}
               pattern={USER_NAME_REGEX}
@@ -75,11 +75,10 @@ function Profile({ signOut, onUpdateUser, loggedIn, isLoading }) {
           </label>
           <button
             type="submit"
-            // disabled={!isFormValid ? true : false}
+            disabled={!isFormValid ? true : false}
             className={
               !isFormValid || isLoading || isLastValues
-                // ? 'profile__button-save form__button-save_inactive'
-                ? 'profile__button-save'
+                ? 'profile__button-save form__button-save_inactive'
                 : 'profile__button-save'
             }>
             Редактировать

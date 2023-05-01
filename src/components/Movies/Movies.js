@@ -13,10 +13,10 @@ import * as movies from "../../utils/MoviesApi";
 function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
   // const currentUser = useContext(CurrentUserContext);
   // console.log(savedMovies)
-  // savedMovies = FILMS
+  // savedMovies = FILMS 
   
   const [isLoading, setIsLoading] = useState(false); //прелоадер
-  const [allMovies, setAllMovies] = useState([]);
+  // const [allMovies, setAllMovies] = useState([]);
   const [initialMovies, setInitialMovies] = useState([]); //отфильтрованные по запросу
   const [filteredMovies, setFilteredMovies] = useState([]); //отфильтрованные по запросу и чекбоксу
   const [isShortMovies, setIsShortMovies] = useState(false); //включен ли чекбокс короткометражек
@@ -27,7 +27,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
   //основнай метод фильрации, который отдает массив с фильмами на рендеринг
   function handleFilterMovies(movies, query, short) {
     const moviesList = filterMovies(movies, query); //фильтруем полученный массив по запросу
-    console.log('handleFilterMovies(movies, query, short)', movies, query, short)
+    // console.log('handleFilterMovies(movies, query, short)', movies, query, short, moviesList)
     setInitialMovies(moviesList); //записываем в стейт
     setFilteredMovies(short ? filterDuration(moviesList) : moviesList); //если чекбокс тру, то фильруем по длине и записываем в стейт
     localStorage.setItem("movies", JSON.stringify(moviesList));
@@ -35,10 +35,10 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
     // setIsNotFound(moviesList.length === 0 ? true : false);
   }
   // console.log(allMovies)
-  // console.log(localStorage.getItem('allMovies'))
+  // console.log(localStorage.getItem('')) 
   // console.log(FILMS)
 
-  function handleShortMovies() {
+  function handleShortMovies() {   
     setIsShortMovies(!isShortMovies);
     if (!isShortMovies) {
       if (filterDuration(initialMovies).length === 0) {
@@ -57,7 +57,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
 
   //submit
   function onSearchMovies(query) {
-    console.log(query);
+    // console.log(query);
 
     localStorage.setItem("movieSearch", query);
     localStorage.setItem("shortMovies", isShortMovies);
@@ -72,12 +72,12 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
       console.log("nolo");
       setIsLoading(true);
       movies
-        .getCards()
+        .getMovies()
         .then((cardsData) => {
           // console.log( JSON.parse(cardsData));
           handleFilterMovies(cardsData, query, isShortMovies);
           setIsReqErr(false);
-          setAllMovies(cardsData);
+          // setAllMovies(cardsData);
         })
         .catch((err) => {
           setIsReqErr(true);
@@ -108,7 +108,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
     if (localStorage.getItem("movies")) {
       const movies = JSON.parse(localStorage.getItem('movies'));
       setInitialMovies(movies);
-      console.log(movies)
+      // console.log(movies)
       if (localStorage.getItem("shortMovies") === "true") {
         setFilteredMovies(filterDuration(movies));
       } else {
@@ -140,9 +140,9 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
         isShortMovies={isShortMovies}
       />
       <MoviesCardList
-        // savedMovies={savedMovies}
+        savedMovies={savedMovies}
+        // savedMovies={SAVED_FILMS}
         cards={filteredMovies}
-        savedMovies={SAVED_FILMS}
         // cards={FILMS}
         isSavedFilms={false}
         handleLikeClick={handleLikeClick}
@@ -150,9 +150,6 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
         isReqErr={isReqErr}
         isNotFound={isNotFound}
         isLoading={isLoading}
-        // isLoading={false}
-        // isReqErr={false}
-        // isNotFound={false}
       />
       <Footer />
     </section>

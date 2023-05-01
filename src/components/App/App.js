@@ -6,7 +6,7 @@ import {
   useLocation,
   Redirect,
 } from "react-router-dom";
-// import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -38,44 +38,44 @@ function App() {
   const [isUpdate, setIsUpdate] = useState(false);
   const path = location.pathname;
 
-    //Aвторизация 
-    useEffect(() => {
-      const userDatas = currentUser;
-      console.log('const userDatas = currentUser;')
-      if (userDatas) {
-        api
+  //Aвторизация
+  useEffect(() => {
+    const userDatas = currentUser;
+    // console.log("const userDatas = currentUser;");
+    if (userDatas) {
+      api
         .getContent()
         .then((res) => {
           if (res) {
-              console.log('setIsLoggedIn(true);')
-              localStorage.removeItem('allMovies');
-              setIsLoggedIn(true);
-            }
-            history.push(path);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-   //Aвторизация
+            // console.log("setIsLoggedIn(true);");
+            localStorage.removeItem("allMovies");
+            setIsLoggedIn(true);
+          }
+          history.push(path);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  //Aвторизация
   useEffect(() => {
     if (isLoggedIn) {
       api
         .getUserInfo()
         .then((profileInfo) => {
-          console.log(profileInfo);
+          // console.log(profileInfo);
           setCurrentUser(profileInfo);
         })
         .catch((err) => {
           console.log(err);
         });
       api
-        .getCards()
+        .getMovies()
         .then((cardsData) => {
           setSavedMovies(cardsData.reverse());
-          console.log(cardsData);
+          // console.log(cardsData);
         })
         .catch((err) => {
           console.log(err);
@@ -83,13 +83,13 @@ function App() {
     }
   }, [isLoggedIn, history]);
 
-  //регистрация 
+  //регистрация
   function handleRegister({ name, email, password }) {
-    console.log("handleRegister");
+    // console.log("handleRegister");
     api
       .register(name, email, password)
       .then(() => {
-        console.log("handleRegister_done");
+        // console.log("handleRegister_done");
         //сохранить ID
         handleAuthorize({ email, password });
       })
@@ -101,7 +101,7 @@ function App() {
 
   //авторизация пользователя
   function handleAuthorize({ email, password }) {
-    console.log("handleAuthorize");
+    // console.log("handleAuthorize");
     setIsLoading(true);
     api
       .authorize(email, password)
@@ -109,7 +109,7 @@ function App() {
         if (res) {
           setIsLoggedIn(true);
           // localStorage.setItem('jwt', res.token);
-          history.push('./movies');
+          history.push("./movies");
           // загрузить фильмы
         }
       })
@@ -123,7 +123,7 @@ function App() {
   }
 
   function handleUpdateUser(newUserInfo) {
-    console.log('handleUpdateUser(newUserInfo)')
+    // console.log("handleUpdateUser(newUserInfo)");
     setIsLoading(true);
     api
       .setUserInfo(newUserInfo)
@@ -177,14 +177,14 @@ function App() {
 
   // Выход
   const handleSignOut = () => {
-    console.log('setIsLoggedIn(false)');
+    // console.log("setIsLoggedIn(false)");
     setIsLoggedIn(false);
     localStorage.removeItem("movies");
     localStorage.removeItem("movieSearch");
     localStorage.removeItem("shortMovies");
     localStorage.removeItem("allMovies");
     history.push("/");
-    console.log('handleSignOut');
+    // console.log("handleSignOut");
   };
 
   function closeUnsuccessPopup() {
@@ -205,7 +205,7 @@ function App() {
             <Route path="/signin">
               {/* {!isLoggedIn ? ( */}
               <Login onAuthorize={handleAuthorize} isLoading={isLoading} />
-               {/* ) : (
+              {/* ) : (
                 <Redirect to="/" /> 
               )} */}
             </Route>
@@ -216,41 +216,29 @@ function App() {
                 <Redirect to="/" />
               )} */}
             </Route>
-            {/* <ProtectedRoute */}
-            {/* <ErrorBoundary> */}
-            <Route
+            <ProtectedRoute
               path="/movies"
               savedMovies={savedMovies}
               loggedIn={isLoggedIn}
               onCardDelete={handleCardDelete}
               component={Movies}
               handleLikeClick={handleCardLike}
-            ></Route>
-            {/* </ErrorBoundary> */}
-            {/* </ProtectedRoute> */}
-            {/* <ProtectedRoute */}
-            {/* <ErrorBoundary> */}
-            {/* <ErrorBoundary> */}
-            <Route
+            ></ProtectedRoute>
+            <ProtectedRoute
               path="/saved-movies"
               savedMovies={savedMovies}
               loggedIn={isLoggedIn}
               onCardDelete={handleCardDelete}
               component={SavedMovies}
-              handleLikeClick={handleCardLike}
-            ></Route>
-            {/* </ErrorBoundary> */}
-            {/* </ErrorBoundary> */}
-            {/* <ProtectedRoute */}
-            <Route
+            ></ProtectedRoute>
+             <ProtectedRoute
               path="/profile"
               signOut={handleSignOut}
               onUpdateUser={handleUpdateUser}
               loggedIn={isLoggedIn}
-              component={Profile} 
+              component={Profile}
               isLoading={isLoading}
-            ></Route>
-            {/* </ProtectedRoute> */}
+              ></ProtectedRoute>
             <Route path="/*">
               <NotFound />
             </Route>
