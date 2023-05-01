@@ -26,3 +26,7 @@ Movies Explorer - фронтенд проекта и сервис, в котор
 * `npm run build` - собрать проект
 * `npm run lint` - запустить линтер
 * `npm run deploy` - собрать проект и отправить на удаленный сервер
+
+## Ссылка на пул реквест
+
+https://github.com/AlexanderMolokanov/movies-explorer-frontend/pull/3
