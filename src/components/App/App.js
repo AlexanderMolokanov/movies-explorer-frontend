@@ -4,7 +4,6 @@ import {
   Switch,
   useHistory,
   useLocation,
-  Redirect,
 } from "react-router-dom";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import "./App.css";
@@ -18,14 +17,8 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 import NotFound from "../NotFound/NotFound";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
-import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
-import { FILMS, PROFILE } from "../../utils/constants";
-
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-
 import * as api from "../../utils/MainApi";
-
-// console.log(api)
 
 function App() {
   const history = useHistory();
@@ -41,13 +34,11 @@ function App() {
   //Aвторизация
   useEffect(() => {
     const userDatas = currentUser;
-    // console.log("const userDatas = currentUser;");
     if (userDatas) {
       api
         .getContent()
         .then((res) => {
           if (res) {
-            // console.log("setIsLoggedIn(true);");
             localStorage.removeItem("allMovies");
             setIsLoggedIn(true);
           }
@@ -57,7 +48,6 @@ function App() {
           console.log(err);
         });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   //Aвторизация
   useEffect(() => {
@@ -65,7 +55,6 @@ function App() {
       api
         .getUserInfo()
         .then((profileInfo) => {
-          // console.log(profileInfo);
           setCurrentUser(profileInfo);
         })
         .catch((err) => {
@@ -75,7 +64,6 @@ function App() {
         .getMovies()
         .then((cardsData) => {
           setSavedMovies(cardsData.reverse());
-          // console.log(cardsData);
         })
         .catch((err) => {
           console.log(err);
@@ -85,12 +73,9 @@ function App() {
 
   //регистрация
   function handleRegister({ name, email, password }) {
-    // console.log("handleRegister");
     api
       .register(name, email, password)
       .then(() => {
-        // console.log("handleRegister_done");
-        //сохранить ID
         handleAuthorize({ email, password });
       })
       .catch((err) => {
@@ -101,16 +86,13 @@ function App() {
 
   //авторизация пользователя
   function handleAuthorize({ email, password }) {
-    // console.log("handleAuthorize");
     setIsLoading(true);
     api
       .authorize(email, password)
       .then((res) => {
         if (res) {
           setIsLoggedIn(true);
-          // localStorage.setItem('jwt', res.token);
           history.push("./movies");
-          // загрузить фильмы
         }
       })
       .catch((err) => {
@@ -123,7 +105,6 @@ function App() {
   }
 
   function handleUpdateUser(newUserInfo) {
-    // console.log("handleUpdateUser(newUserInfo)");
     setIsLoading(true);
     api
       .setUserInfo(newUserInfo)
@@ -177,14 +158,12 @@ function App() {
 
   // Выход
   const handleSignOut = () => {
-    // console.log("setIsLoggedIn(false)");
     setIsLoggedIn(false);
     localStorage.removeItem("movies");
     localStorage.removeItem("movieSearch");
     localStorage.removeItem("shortMovies");
     localStorage.removeItem("allMovies");
     history.push("/");
-    // console.log("handleSignOut");
   };
 
   function closeUnsuccessPopup() {

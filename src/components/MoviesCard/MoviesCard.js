@@ -14,11 +14,9 @@ function MoviesCard({
     if (saved) {
       onCardDelete(savedMovies.filter((m) => m.movieId === card.id)[0]);
     } else {
-      // console.log(card);
       handleLikeClick(card);
     }
   }
-
   function onDelete() {
     onCardDelete(card);
   }
@@ -59,8 +57,7 @@ function MoviesCard({
           src={
             isSavedFilms
               ? card.image
-              : // src={isSavedFilms ? `https://api.nomoreparties.co${card.image.url}` :
-                `https://api.nomoreparties.co${card.image.url}`
+              : `https://api.nomoreparties.co${card.image.url}`
           }
         />
       </a>

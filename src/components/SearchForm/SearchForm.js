@@ -36,11 +36,7 @@ function SearchForm({ onSearchMovies, onFilter, isShortMovies }) {
     <section className="search">
       <div className="search__forms-container">
         <div className="search__form-container">
-          <form
-            className="search__form"
-            id="form"
-            onSubmit={handleSubmit}
-          >
+          <form className="search__form" id="form" onSubmit={handleSubmit}>
             <label className="search__label" htmlFor="search-input"></label>
             <input
               name="query"

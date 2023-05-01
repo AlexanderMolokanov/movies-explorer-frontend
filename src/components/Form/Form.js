@@ -6,7 +6,7 @@ import logo from "../../images/logo.svg";
 function Form({
   isDisabled,
   isLoading,
-  children, 
+  children,
   title,
   buttonText,
   question,
@@ -27,8 +27,7 @@ function Form({
           disabled={isDisabled ? true : false}
           className={
             isDisabled || isLoading
-              ? // ? 'form__button-save form__button-save_inactive'
-                "form__button-save "
+              ? "form__button-save form__button-save_inactive"
               : "form__button-save"
           }
         >

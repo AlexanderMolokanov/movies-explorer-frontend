@@ -1,19 +1,19 @@
-import React from 'react';
-import '../Form/Form.css';
-import Form from '../Form/Form';
-import useForm from '../hooks/useForm';
-import { EMAIL_REGEX, USER_NAME_REGEX } from '../../utils/constants';
- 
+import React from "react";
+import "../Form/Form.css";
+import Form from "../Form/Form";
+import useForm from "../hooks/useForm";
+import { EMAIL_REGEX, USER_NAME_REGEX } from "../../utils/constants";
+
 function Register({ onRegister, isLoading }) {
   const { enteredValues, errors, handleChange, isFormValid } = useForm();
 
-  function handleSubmit(e) { 
+  function handleSubmit(e) {
     e.preventDefault();
     onRegister({
       name: enteredValues.name,
       email: enteredValues.email,
       password: enteredValues.password,
-    }); 
+    });
   }
 
   return (
@@ -26,7 +26,7 @@ function Register({ onRegister, isLoading }) {
       buttonText="Зарегистрироваться"
       question="Уже зарегистрированы?"
       linkText=" Войти"
-      >
+    >
       <label className="form__field">
         Имя
         <input
@@ -38,7 +38,7 @@ function Register({ onRegister, isLoading }) {
           maxLength="40"
           required
           onChange={handleChange}
-          value={enteredValues.name || ''}
+          value={enteredValues.name || ""}
           pattern={USER_NAME_REGEX}
         />
         <span className="form__input-error">{errors.name}</span>
@@ -53,7 +53,7 @@ function Register({ onRegister, isLoading }) {
           required
           onChange={handleChange}
           pattern={EMAIL_REGEX}
-          value={enteredValues.email || ''}
+          value={enteredValues.email || ""}
         />
         <span className="form__input-error">{errors.email}</span>
       </label>
@@ -66,7 +66,7 @@ function Register({ onRegister, isLoading }) {
           type="password"
           required
           onChange={handleChange}
-          value={enteredValues.password || ''} 
+          value={enteredValues.password || ""}
         />
         <span className="form__input-error">{errors.password}</span>
       </label>

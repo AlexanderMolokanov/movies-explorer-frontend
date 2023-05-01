@@ -9,7 +9,6 @@ import {
   SHOW_MORE_TABLET,
   SHOW_MORE_MOBILE,
 } from "../../utils/constants";
-// import { FILMS, SAVED_FILMS } from "../../utils/constants";
 
 function MoviesCardList({
   cards,
@@ -21,25 +20,17 @@ function MoviesCardList({
   savedMovies,
   onCardDelete,
 }) {
-
-  // console.log(cards)
   const [shownMovies, setShownMovies] = useState(0);
   const { pathname } = useLocation();
 
   function shownCount() {
     const display = window.innerWidth;
-    if (display > 1180) {
-      setShownMovies(16);
-      setShownMovies(6);
-    } else if (display > 1024) {
+    if (display > 1280) {
       setShownMovies(12);
-      setShownMovies(6);
-    } else if (display > 800) {
+    } else if (display > 768) {
       setShownMovies(8);
-      setShownMovies(6);
-    } else if (display < 800) {
+    } else if (display > 480) {
       setShownMovies(5);
-      setShownMovies(6);
     }
   }
 
@@ -53,28 +44,22 @@ function MoviesCardList({
     }, 500);
   });
 
-  function showMore() { 
+  function showMore() {
     const display = window.innerWidth;
-    if (display > 1180) {
+    if (display > 1280) {
       setShownMovies(shownMovies + SHOW_MORE_DECKTOP);
-    } else if (display > 1024) {
+    } else if (display > 768) {
       setShownMovies(shownMovies + SHOW_MORE_TABLET);
-    } 
-    // else if (display > 800) {
-    //   setShownMovies(shownMovies + 2);
-    // } 
-    else if (display < 1024) {
+    } else if (display < 480) {
       setShownMovies(shownMovies + SHOW_MORE_MOBILE);
     }
   }
 
   function getSavedMovieCard(savedMovies, card) {
-    // console.log("savedMovies", savedMovies, card);
     if (savedMovies === undefined) {
       return;
     }
     return savedMovies.find((savedMovie) => savedMovie.movieId === card.id);
-    // return savedMovies.find((savedMovie) => savedMovie._id === card.id);
   }
 
   return (

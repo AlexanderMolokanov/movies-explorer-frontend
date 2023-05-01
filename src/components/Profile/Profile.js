@@ -31,7 +31,6 @@ function Profile({ signOut, onUpdateUser, loggedIn, isLoading }) {
     } else {
       setIsLastValues(false);
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [enteredValues]);
 
