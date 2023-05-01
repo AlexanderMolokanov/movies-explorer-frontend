@@ -6,8 +6,12 @@ Movies Explorer - фронтенд проекта и сервис, в котор
 <br />
 Публичный IP-адрес сервера: 
 
-## Функционал 
+## Макет 
 Макет фигмы находится в контевом файле репозитория Diploma.fig
+
+## Ссылка на пул реквест
+https://github.com/AlexanderMolokanov/movies-explorer-frontend/pull/3
+
 ## Функционал 
 * Поиск и фильтрация фильмов; 
 * Добавление и удаление фильмов из избранного
@@ -26,7 +30,3 @@ Movies Explorer - фронтенд проекта и сервис, в котор
 * `npm run build` - собрать проект
 * `npm run lint` - запустить линтер
 * `npm run deploy` - собрать проект и отправить на удаленный сервер
-
-## Ссылка на пул реквест
-
-https://github.com/AlexanderMolokanov/movies-explorer-frontend/pull/3
