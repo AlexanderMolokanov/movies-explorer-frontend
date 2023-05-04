@@ -1,7 +1,8 @@
 import { checkResponse } from "./utils";
 
-export const BASE_URL = "http://localhost:3000";
-// 'https://api.movies-explorer.nomorepartirerer.ru'
+export const BASE_URL =
+  // "http://localhost:3000";
+  "gmkvid.nomoredomains.work";
 
 export const register = (name, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
