@@ -2,12 +2,12 @@ import { checkResponse } from "./utils";
 
 export const BASE_URL =
   // "http://localhost:3000";
-  "gmkvid.nomoredomains.work";
+  "http://gmkvid.nomoredomains.work";
 
 export const register = (name, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
-    // mode: 'no-cors',
+    // mode: 'no-cors', 
     credentials: "include",
     // "Access-Control-Allow-Origin": "*",
     headers: {
