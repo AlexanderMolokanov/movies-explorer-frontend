@@ -2,7 +2,7 @@ import { checkResponse } from "./utils";
 
 export const BASE_URL =
   // "http://localhost:3000";
-  "http://gmkvid.nomoredomains.work";
+  "https://gmkvid.nomoredomains.work";
 
 export const register = (name, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
