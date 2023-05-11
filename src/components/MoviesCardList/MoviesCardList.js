@@ -13,7 +13,7 @@ import {
 function MoviesCardList({
   cards,
   isSavedFilms,
-  isLoading,
+  isSpiner,
   isReqErr,
   isNotFound,
   handleLikeClick,
@@ -64,18 +64,18 @@ function MoviesCardList({
 
   return (
     <section className="cards">
-      {isLoading && <Preloader />}
-      {isNotFound && !isLoading && (
+      {isSpiner && <Preloader />}
+      {isNotFound && !isSpiner && (
         <SearchError errorText={"Ничего не найдено"} />
       )}
-      {isReqErr && !isLoading && (
+      {isReqErr && !isSpiner && (
         <SearchError
           errorText={
             "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
           }
         />
       )}
-      {!isLoading && !isReqErr && !isNotFound && (
+      {!isSpiner && !isReqErr && !isNotFound && (
         <>
           {pathname === "/saved-movies" ? (
             <>

@@ -5,7 +5,7 @@ import Header from '../Header/Header';
 import useForm from '../hooks/useForm';
 import { EMAIL_REGEX, USER_NAME_REGEX } from '../../utils/constants';
 
-function Profile({ signOut, onUpdateUser, loggedIn, isLoading }) {
+function Profile({ signOut, onUpdateUser, loggedIn, isSpiner }) {
   const currentUser = useContext(CurrentUserContext);
 
   const { enteredValues, errors, handleChange, isFormValid, resetForm } = useForm();
@@ -76,7 +76,7 @@ function Profile({ signOut, onUpdateUser, loggedIn, isLoading }) {
             type="submit"
             disabled={!isFormValid ? true : false}
             className={
-              !isFormValid || isLoading || isLastValues
+              !isFormValid || isSpiner || isLastValues
                 ? 'profile__button-save form__button-save_inactive'
                 : 'profile__button-save'
             }>

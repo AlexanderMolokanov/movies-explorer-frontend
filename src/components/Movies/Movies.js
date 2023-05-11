@@ -8,7 +8,7 @@ import { filterMovies, filterDuration } from "../../utils/utils";
 import * as movies from "../../utils/MoviesApi";
 
 function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
-  const [isLoading, setIsLoading] = useState(false); //прелоадер
+  const [isSpiner, setIsSpiner] = useState(false); //прелоадер
   const [initialMovies, setInitialMovies] = useState([]); //отфильтрованные по запросу
   const [filteredMovies, setFilteredMovies] = useState([]); //отфильтрованные по запросу и чекбоксу
   const [isShortMovies, setIsShortMovies] = useState(false); //включен ли чекбокс короткометражек
@@ -47,9 +47,9 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
       const movies = JSON.parse(localStorage.getItem("allMovies"));
       handleFilterMovies(movies, query, isShortMovies);
     } else {
-      setIsLoading(true);
+      setIsSpiner(true);
       movies
-        .getMovies()
+        .getAllMovies()
         .then((cardsData) => {
           handleFilterMovies(cardsData, query, isShortMovies);
           setIsReqErr(false);
@@ -59,7 +59,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
           console.log(err);
         })
         .finally(() => {
-          setIsLoading(false);
+          setIsSpiner(false);
         });
     }
   }
@@ -113,7 +113,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
         onCardDelete={onCardDelete}
         isReqErr={isReqErr}
         isNotFound={isNotFound}
-        isLoading={isLoading}
+        isSpiner={isSpiner}
       />
       <Footer />
     </section>

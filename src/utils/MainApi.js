@@ -1,107 +1,82 @@
-import { checkResponse } from "./utils";
+import { resHandler } from "./utils";
 
-export const BASE_URL =
-  // "http://localhost:3000";
-  "https://gmkvid.nomoredomains.work";
+export const BASE_URL = "http://localhost:3000";
+// "https://gmkvid.nomoredomains.work";
 
-export const register = (name, email, password) => {
+// регистрация
+export const signup = (name, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
-    // mode: 'no-cors', 
     credentials: "include",
-    // "Access-Control-Allow-Origin": "*",
     headers: {
-      // "Access-Control-Allow-Origin": "*",
-      // Origin: "http://localhost:3000/",
       "Content-Type": "application/json",
       Accept: "application/json: charset=utf-8",
     },
     body: JSON.stringify({ name, email, password }),
-  }).then((res) => checkResponse(res));
+  }).then((res) => resHandler(res));
 };
 
-export const authorize = (email, password) => {
+// авторизация
+export const signin = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     credentials: "include",
-    // Origin: `${BASE_URL}`,
     headers: {
-      // Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
       Accept: "application/json: charset=utf-8",
     },
     body: JSON.stringify({ email, password }),
-  }).then((res) => checkResponse(res));
+  }).then((res) => resHandler(res));
 };
 
-export const getContent = () => {
+// получить данные пользователя
+export const getUser = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     credentials: "include",
-    "Access-Control-Allow-Origin": `${BASE_URL}`,
+    // "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
-      // Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
       Accept: "application/json: charset=utf-8",
     },
-  }).then((res) => checkResponse(res));
+  }).then((res) => resHandler(res));
 };
 
-// метод делает запрос серверу и получает данные профиля
-export const getUserInfo = () => {
-  return fetch(`${BASE_URL}/users/me`, {
-    method: "GET",
-    credentials: "include",
-    "Access-Control-Allow-Origin": `${BASE_URL}`,
-    headers: {
-      // Origin: `${BASE_URL}`,
-      "Content-Type": "application/json",
-      Accept: "application/json: charset=utf-8",
-    },
-  }).then((res) => checkResponse(res));
-};
-
-// изменить данные профиля на сервере
-export const setUserInfo = (data) => {
-  // console.log(data);
+// изменить данные профиля
+export const setUser = (data) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "PATCH",
     credentials: "include",
-    "Access-Control-Allow-Origin": `${BASE_URL}`,
+    // "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
-      // Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
       Accept: "application/json: charset=utf-8",
     },
     body: JSON.stringify({
-      name: data.name, //в name передаем значение name объекта, переданного в setUserInfo
-      email: data.email, //в about передаем значение about объекта, переданного в setUserInfo
+      name: data.name,
+      email: data.email,
     }),
-  }).then((res) => checkResponse(res));
+  }).then((res) => resHandler(res));
 };
 
-export const getMovies = () => {
+// получить сохраненные фильмы
+export const getSavedCards = () => {
   return fetch(`${BASE_URL}/movies`, {
     method: "GET",
     credentials: "include",
-    "Access-Control-Allow-Origin": `${BASE_URL}`,
+    // "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
-      // Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
-      // Accept: "application/json: charset=utf-8",
     },
-  }).then((res) => checkResponse(res));
+  }).then((res) => resHandler(res));
 };
 
-// метод добавления новой карточки на сервер
-export const postCard = (data) => {
-  // console.log(data);
+// добавить карточку на сервер
+export const saveCard = (data) => {
   return fetch(`${BASE_URL}/movies`, {
     method: "POST",
     credentials: "include",
-    "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
-      // Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
       Accept: "application/json: charset=utf-8",
     },
@@ -119,19 +94,18 @@ export const postCard = (data) => {
       nameRU: data.nameRU,
       nameEN: data.nameEN,
     }),
-  }).then((res) => checkResponse(res));
+  }).then((res) => resHandler(res));
 };
 
-// метод удаления карточки с сервера
-export const deleteCard = (cardId) => {
-  return fetch(`${BASE_URL}/movies/${cardId}`, {
+// удалить карточку с сервера
+export const deleteSavedCard = (moviId) => {
+  return fetch(`${BASE_URL}/movies/${moviId}`, {
     method: "DELETE",
     credentials: "include",
-    "Access-Control-Allow-Origin": `${BASE_URL}`,
+    // "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
-      // Origin: `${BASE_URL}`,
       "Content-Type": "application/json",
       Accept: "application/json: charset=utf-8",
     },
-  }).then((res) => checkResponse(res));
+  }).then((res) => resHandler(res));
 };

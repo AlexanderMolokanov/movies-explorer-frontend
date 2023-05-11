@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Route,
-  Switch,
-  useHistory,
-  useLocation,
-} from "react-router-dom";
+import { Route, Switch, useHistory, useLocation } from "react-router-dom";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import "./App.css";
 import Header from "../Header/Header";
@@ -26,17 +21,50 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [savedMovies, setSavedMovies] = useState([]);
-  const [isSuccess, setIsSuccess] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isUpdate, setIsUpdate] = useState(false);
+  const [isSuccess, setIsResult] = useState(true);
+  const [isSpiner, setIsSpiner] = useState(false);
+  const [isUserUpdate, setIsUserUpdate] = useState(false);
   const path = location.pathname;
 
-  //Aвторизация
+  //регистрация
+  function handleRegistration({ name, email, password }) {
+    api
+      .signup(name, email, password)
+      .then(() => {
+        handleAuthorization({ email, password });
+      })
+      .catch((err) => {
+        setIsResult(false);
+        console.log(err);
+      });
+  }
+
+  //авторизация
+  function handleAuthorization({ email, password }) {
+    setIsSpiner(true);
+    api
+      .signin(email, password)
+      .then((res) => {
+        if (res) {
+          setIsLoggedIn(true);
+          history.push("./movies");
+        }
+      })
+      .catch((err) => {
+        setIsResult(false);
+        console.log(err);
+      })
+      .finally(() => {
+        setIsSpiner(false);
+      });
+  }
+
+  // аутентификация
   useEffect(() => {
     const userDatas = currentUser;
     if (userDatas) {
       api
-        .getContent()
+        .getUser()
         .then((res) => {
           if (res) {
             localStorage.removeItem("allMovies");
@@ -49,11 +77,11 @@ function App() {
         });
     }
   }, []);
-  //Aвторизация
+
   useEffect(() => {
     if (isLoggedIn) {
       api
-        .getUserInfo()
+        .getUser()
         .then((profileInfo) => {
           setCurrentUser(profileInfo);
         })
@@ -61,7 +89,7 @@ function App() {
           console.log(err);
         });
       api
-        .getMovies()
+        .getSavedCards()
         .then((cardsData) => {
           setSavedMovies(cardsData.reverse());
         })
@@ -71,65 +99,32 @@ function App() {
     }
   }, [isLoggedIn, history]);
 
-  //регистрация
-  function handleRegister({ name, email, password }) {
-    api
-      .register(name, email, password)
-      .then(() => {
-        handleAuthorize({ email, password });
-      })
-      .catch((err) => {
-        setIsSuccess(false);
-        console.log(err);
-      });
-  }
-
-  //авторизация пользователя
-  function handleAuthorize({ email, password }) {
-    setIsLoading(true);
-    api
-      .authorize(email, password)
-      .then((res) => {
-        if (res) {
-          setIsLoggedIn(true);
-          history.push("./movies");
-        }
-      })
-      .catch((err) => {
-        setIsSuccess(false);
-        console.log(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }
-
   function handleUpdateUser(newUserInfo) {
-    setIsLoading(true);
+    setIsSpiner(true);
     api
-      .setUserInfo(newUserInfo)
+      .setUser(newUserInfo)
       .then((data) => {
-        setIsUpdate(true);
+        setIsUserUpdate(true);
         setCurrentUser(data);
       })
       .catch((err) => {
-        setIsSuccess(false);
+        setIsResult(false);
         console.log(err);
         handleUnauthorized(err);
       })
       .finally(() => {
-        setIsLoading(false);
+        setIsSpiner(false);
       });
   }
 
   function handleCardLike(card) {
     api
-      .postCard(card)
+      .saveCard(card)
       .then((newMovie) => {
         setSavedMovies([newMovie, ...savedMovies]);
       })
       .catch((err) => {
-        setIsSuccess(false);
+        setIsResult(false);
         console.log(err);
         handleUnauthorized(err);
       });
@@ -137,14 +132,14 @@ function App() {
 
   function handleCardDelete(card) {
     api
-      .deleteCard(card._id)
+      .deleteSavedCard(card._id)
       .then(() => {
         setSavedMovies((state) =>
           state.filter((item) => item._id !== card._id)
         );
       })
       .catch((err) => {
-        setIsSuccess(false);
+        setIsResult(false);
         console.log(err);
         handleUnauthorized(err);
       });
@@ -167,8 +162,8 @@ function App() {
   };
 
   function closeUnsuccessPopup() {
-    setIsSuccess(true);
-    setIsUpdate(false);
+    setIsResult(true);
+    setIsUserUpdate(false);
   }
 
   return (
@@ -183,14 +178,14 @@ function App() {
             </Route>
             <Route path="/signin">
               {/* {!isLoggedIn ? ( */}
-              <Login onAuthorize={handleAuthorize} isLoading={isLoading} />
+              <Login onAuthorize={handleAuthorization} isSpiner={isSpiner} />
               {/* ) : (
                 <Redirect to="/" /> 
               )} */}
             </Route>
             <Route path="/signup">
               {/* {!isLoggedIn ? ( */}
-              <Register onRegister={handleRegister} isLoading={isLoading} />
+              <Register onRegister={handleRegistration} isSpiner={isSpiner} />
               {/* ) : (
                 <Redirect to="/" />
               )} */}
@@ -210,23 +205,23 @@ function App() {
               onCardDelete={handleCardDelete}
               component={SavedMovies}
             ></ProtectedRoute>
-             <ProtectedRoute
+            <ProtectedRoute
               path="/profile"
               signOut={handleSignOut}
               onUpdateUser={handleUpdateUser}
               loggedIn={isLoggedIn}
               component={Profile}
-              isLoading={isLoading}
-              ></ProtectedRoute>
+              isSpiner={isSpiner}
+            ></ProtectedRoute>
             <Route path="/*">
               <NotFound />
             </Route>
           </Switch>
-          <InfoTooltip isSuccess={isSuccess} onClose={closeUnsuccessPopup} />
-          <InfoTooltip
-            isSuccess={!isUpdate}
-            isUpdate={isUpdate}
-            onClose={closeUnsuccessPopup}
+          <InfoTooltip 
+            isSuccess={isSuccess} 
+            isSuccess={!isUserUpdate}
+            onClose={closeUnsuccessPopup} 
+            isUserUpdate={isUserUpdate}
           />
         </div>
       </div>

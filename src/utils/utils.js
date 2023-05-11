@@ -1,6 +1,6 @@
 import { SHORTS } from './constants'; 
 
-export const checkResponse = (res) => {
+export const resHandler = (res) => {
   if (res.ok) {
     return res.json(); //если да, то возвращает полученные данные
   }

@@ -4,7 +4,7 @@ import Form from "../Form/Form";
 import useForm from "../hooks/useForm";
 import { EMAIL_REGEX, USER_NAME_REGEX } from "../../utils/constants";
 
-function Register({ onRegister, isLoading }) {
+function Register({ onRegister, isSpiner }) {
   const { enteredValues, errors, handleChange, isFormValid } = useForm();
 
   function handleSubmit(e) {
@@ -22,7 +22,7 @@ function Register({ onRegister, isLoading }) {
       title="Добро пожаловать!"
       onSubmit={handleSubmit}
       isDisabled={!isFormValid}
-      isLoading={isLoading}
+      isSpiner={isSpiner}
       buttonText="Зарегистрироваться"
       question="Уже зарегистрированы?"
       linkText=" Войти"
