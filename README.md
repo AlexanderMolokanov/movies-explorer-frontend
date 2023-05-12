@@ -2,9 +2,20 @@
 
 Movies Explorer - фронтенд проекта и сервис, в котором можно найти фильмы из коллекции BeatFilm и сохранить в избранном. 
 
-Готовый собранный сайт располагается по [ссылке](https://nomoredomains.ru)
-<br />
-Публичный IP-адрес сервера: 
+## Макет 
+Макет фигмы находится в контевом файле репозитория Diploma.fig
+
+## Ссылка на сайт
+https://frt.gmkvid.nomoredomains.work/
+
+## Ссылка на пул реквест
+https://github.com/AlexanderMolokanov/movies-explorer-frontend/pull/3
+
+## Ссылка на фронтенд 
+https://github.com/AlexanderMolokanov/movies-explorer-api
+
+## Ссылка на бэкенд
+https://github.com/AlexanderMolokanov/movies-explorer-api
 
 ## Функционал 
 * Поиск и фильтрация фильмов; 
