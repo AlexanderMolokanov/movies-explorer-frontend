@@ -21,9 +21,9 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [savedMovies, setSavedMovies] = useState([]);
-  const [isSuccess, setIsResult] = useState(true);
+  const [isTooltip, setIsTooltip] = useState(true);
+  const [isSuccessful, setIsSuccessful] = useState(false);
   const [isSpiner, setIsSpiner] = useState(false);
-  const [isUserUpdate, setIsUserUpdate] = useState(false);
   const path = location.pathname;
 
   //регистрация
@@ -34,7 +34,7 @@ function App() {
         handleAuthorization({ email, password });
       })
       .catch((err) => {
-        setIsResult(false);
+        setIsTooltip(false);
         console.log(err);
       });
   }
@@ -51,7 +51,7 @@ function App() {
         }
       })
       .catch((err) => {
-        setIsResult(false);
+        setIsTooltip(false);
         console.log(err);
       })
       .finally(() => {
@@ -104,11 +104,11 @@ function App() {
     api
       .setUser(newUserInfo)
       .then((data) => {
-        setIsUserUpdate(true);
         setCurrentUser(data);
+        setIsSuccessful(true);
       })
       .catch((err) => {
-        setIsResult(false);
+        setIsTooltip(false);
         console.log(err);
         handleUnauthorized(err);
       })
@@ -124,7 +124,7 @@ function App() {
         setSavedMovies([newMovie, ...savedMovies]);
       })
       .catch((err) => {
-        setIsResult(false);
+        setIsTooltip(false);
         console.log(err);
         handleUnauthorized(err);
       });
@@ -139,7 +139,7 @@ function App() {
         );
       })
       .catch((err) => {
-        setIsResult(false);
+        setIsTooltip(false);
         console.log(err);
         handleUnauthorized(err);
       });
@@ -162,8 +162,8 @@ function App() {
   };
 
   function closeUnsuccessPopup() {
-    setIsResult(true);
-    setIsUserUpdate(false);
+    setIsTooltip(true);
+    setIsSuccessful(false);
   }
 
   return (
@@ -218,10 +218,10 @@ function App() {
             </Route>
           </Switch>
           <InfoTooltip 
-            isSuccess={isSuccess} 
-            isSuccess={!isUserUpdate}
+            isTooltip={isTooltip} 
+            // isTooltip={isSuccessful}
             onClose={closeUnsuccessPopup} 
-            isUserUpdate={isUserUpdate}
+            isSuccessful={isSuccessful}
           />
         </div>
       </div>

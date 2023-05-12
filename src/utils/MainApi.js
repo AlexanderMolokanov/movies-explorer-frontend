@@ -34,7 +34,7 @@ export const getUser = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     credentials: "include",
-    // "Access-Control-Allow-Origin": `${BASE_URL}`,
+    "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json: charset=utf-8",
@@ -47,7 +47,7 @@ export const setUser = (data) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "PATCH",
     credentials: "include",
-    // "Access-Control-Allow-Origin": `${BASE_URL}`,
+    "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json: charset=utf-8",
@@ -64,7 +64,7 @@ export const getSavedCards = () => {
   return fetch(`${BASE_URL}/movies`, {
     method: "GET",
     credentials: "include",
-    // "Access-Control-Allow-Origin": `${BASE_URL}`,
+    "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
       "Content-Type": "application/json",
     },
@@ -102,7 +102,7 @@ export const deleteSavedCard = (moviId) => {
   return fetch(`${BASE_URL}/movies/${moviId}`, {
     method: "DELETE",
     credentials: "include",
-    // "Access-Control-Allow-Origin": `${BASE_URL}`,
+    "Access-Control-Allow-Origin": `${BASE_URL}`,
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json: charset=utf-8",
