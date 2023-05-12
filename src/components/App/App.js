@@ -21,7 +21,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [savedMovies, setSavedMovies] = useState([]);
-  const [isTooltip, setIsTooltip] = useState(true);
+  const [isTooltip, setIsTooltip] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isSpiner, setIsSpiner] = useState(false);
   const path = location.pathname;
@@ -106,6 +106,7 @@ function App() {
       .then((data) => {
         setCurrentUser(data);
         setIsSuccessful(true);
+        setIsTooltip(true);
       })
       .catch((err) => {
         setIsTooltip(false);
@@ -162,7 +163,7 @@ function App() {
   };
 
   function closeUnsuccessPopup() {
-    setIsTooltip(true);
+    setIsTooltip(false);
     setIsSuccessful(false);
   }
 

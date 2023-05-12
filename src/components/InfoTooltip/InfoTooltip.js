@@ -3,7 +3,7 @@ import './InfoTooltip.css';
 
 function InfoTooltip({ onClose, isTooltip, isSuccessful }) {
   return (
-    <div className={`popup ${!isTooltip ? 'popup_opened' : ''}`}>
+    <div className={`popup ${isTooltip ? 'popup_opened' : ''}`}>
       <div className="popup__container">
         <button
           id="success-cl-button"
