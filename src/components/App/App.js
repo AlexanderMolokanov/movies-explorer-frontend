@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch, useHistory, useLocation } from "react-router-dom";
+import {
+  Redirect,
+  Route,
+  Switch,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import "./App.css";
 import Header from "../Header/Header";
@@ -18,8 +24,8 @@ import * as api from "../../utils/MainApi";
 function App() {
   const history = useHistory();
   const location = useLocation();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setUser] = useState({}); 
+  const [isLogged, setIsLogged] = useState(false);
+  const [user, setUser] = useState({});
   const [likedMovies, setLikedMovies] = useState([]);
   const [isTooltip, setIsTooltip] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);
@@ -46,7 +52,7 @@ function App() {
       .signin(email, password)
       .then((res) => {
         if (res) {
-          setIsLoggedIn(true);
+          setIsLogged(true);
           history.push("./movies");
         }
       })
@@ -61,14 +67,14 @@ function App() {
 
   // аутентификация
   useEffect(() => {
-    const userDatas = currentUser;
+    const userDatas = user;
     if (userDatas) {
       api
         .getUser()
         .then((res) => {
           if (res) {
             localStorage.removeItem("allMovies");
-            setIsLoggedIn(true);
+            setIsLogged(true);
           }
           history.push(path);
         })
@@ -79,7 +85,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (isLogged) {
       api
         .getUser()
         .then((profileInfo) => {
@@ -97,7 +103,7 @@ function App() {
           console.log(err);
         });
     }
-  }, [isLoggedIn, history]);
+  }, [isLogged, history]);
 
   function handleUpdateUser(newUserInfo) {
     setIsSpiner(true);
@@ -154,7 +160,7 @@ function App() {
 
   // Выход
   const handleSignOut = () => {
-    setIsLoggedIn(false);
+    setIsLogged(false);
     localStorage.removeItem("movies");
     localStorage.removeItem("movieSearch");
     localStorage.removeItem("shortMovies");
@@ -168,33 +174,33 @@ function App() {
   }
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={user}>
       <div className="page">
         <div className="page__content">
           <Switch>
             <Route path="/" exact>
-              <Header loggedIn={isLoggedIn} />
+              <Header loggedIn={isLogged} />
               <Main />
               <Footer />
             </Route>
             <Route path="/signin">
-              {/* {!isLoggedIn ? ( */}
-              <Login onAuthorize={handleAuthorization} isSpiner={isSpiner} />
-              {/* ) : (
-                <Redirect to="/" /> 
-              )} */}
+              {!isLogged ? (
+                <Login onAuthorize={handleAuthorization} isSpiner={isSpiner} />
+              ) : (
+                <Redirect to="/" />
+              )}
             </Route>
             <Route path="/signup">
-              {/* {!isLoggedIn ? ( */}
-              <Register onRegister={handleRegistration} isSpiner={isSpiner} />
-              {/* ) : (
+              {!isLogged ? (
+                <Register onRegister={handleRegistration} isSpiner={isSpiner} />
+              ) : (
                 <Redirect to="/" />
-              )} */}
+              )}
             </Route>
             <ProtectedRoute
               path="/movies"
               likedMovies={likedMovies}
-              loggedIn={isLoggedIn}
+              loggedIn={isLogged}
               onCardDelete={handleCardDelete}
               component={Movies}
               handleLikeClick={handleCardLike}
@@ -202,7 +208,7 @@ function App() {
             <ProtectedRoute
               path="/saved-movies"
               likedMovies={likedMovies}
-              loggedIn={isLoggedIn}
+              loggedIn={isLogged}
               onCardDelete={handleCardDelete}
               component={SavedMovies}
             ></ProtectedRoute>
@@ -210,7 +216,7 @@ function App() {
               path="/profile"
               signOut={handleSignOut}
               onUpdateUser={handleUpdateUser}
-              loggedIn={isLoggedIn}
+              loggedIn={isLogged}
               component={Profile}
               isSpiner={isSpiner}
             ></ProtectedRoute>
@@ -218,10 +224,10 @@ function App() {
               <NotFound />
             </Route>
           </Switch>
-          <InfoTooltip 
-            isTooltip={isTooltip} 
+          <InfoTooltip
+            isTooltip={isTooltip}
             // isTooltip={isSuccessful}
-            onClose={closeUnsuccessPopup} 
+            onClose={closeUnsuccessPopup}
             isSuccessful={isSuccessful}
           />
         </div>

@@ -6,16 +6,16 @@ import useForm from '../hooks/useForm';
 import { EMAIL_REGEX, USER_NAME_REGEX } from '../../utils/constants';
 
 function Profile({ signOut, onUpdateUser, loggedIn, isSpiner }) {
-  const currentUser = useContext(CurrentUserContext);
+  const user = useContext(CurrentUserContext);
 
   const { enteredValues, errors, handleChange, isFormValid, resetForm } = useForm();
   const [isLastValues, setIsLastValues] = useState(false);
 
   useEffect(() => {
-    if (currentUser) {
-      resetForm(currentUser);
+    if (user) {
+      resetForm(user);
     }
-  }, [currentUser, resetForm]);
+  }, [user, resetForm]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -26,7 +26,7 @@ function Profile({ signOut, onUpdateUser, loggedIn, isSpiner }) {
   }
 
   useEffect(() => {
-    if (currentUser.name === enteredValues.name && currentUser.email === enteredValues.email) {
+    if (user.name === enteredValues.name && user.email === enteredValues.email) {
       setIsLastValues(true);
     } else {
       setIsLastValues(false);
@@ -38,7 +38,7 @@ function Profile({ signOut, onUpdateUser, loggedIn, isSpiner }) {
     <>
       <Header loggedIn={loggedIn} />
       <section className="profile">
-        <h3 className="profile__title">Привет, {currentUser.name}!</h3>
+        <h3 className="profile__title">Привет, {user.name}!</h3>
         <form id="form" className="profile__form" onSubmit={handleSubmit} noValidate>
           <label className="profile__field">
             Имя

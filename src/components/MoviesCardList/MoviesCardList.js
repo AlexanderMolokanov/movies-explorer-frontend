@@ -55,11 +55,11 @@ function MoviesCardList({
     }
   }
 
-  function getSavedMovieCard(likedMovies, card) {
+  function getLikedMovieCard(likedMovies, card) {
     if (likedMovies === undefined) {
       return;
     }
-    return likedMovies.find((savedMovie) => savedMovie.movieId === card.id);
+    return likedMovies.find((likedMovie) => likedMovie.movieId === card.id);
   }
 
   return (
@@ -83,7 +83,7 @@ function MoviesCardList({
                 {cards.map((card) => (
                   <MoviesCard
                     key={isSavedFilms ? card._id : card.id}
-                    saved={getSavedMovieCard(likedMovies, card)}
+                    saved={getLikedMovieCard(likedMovies, card)}
                     cards={cards}
                     card={card}
                     isSavedFilms={isSavedFilms}
@@ -101,7 +101,7 @@ function MoviesCardList({
                 {cards.slice(0, shownMovies).map((card) => (
                   <MoviesCard
                     key={isSavedFilms ? card._id : card.id}
-                    saved={getSavedMovieCard(likedMovies, card)}
+                    saved={getLikedMovieCard(likedMovies, card)}
                     cards={cards}
                     card={card}
                     isSavedFilms={isSavedFilms}
