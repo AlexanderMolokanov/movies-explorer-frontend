@@ -19,8 +19,8 @@ function App() {
   const history = useHistory();
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
-  const [savedMovies, setSavedMovies] = useState([]);
+  const [currentUser, setUser] = useState({}); 
+  const [likedMovies, setLikedMovies] = useState([]);
   const [isTooltip, setIsTooltip] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isSpiner, setIsSpiner] = useState(false);
@@ -83,7 +83,7 @@ function App() {
       api
         .getUser()
         .then((profileInfo) => {
-          setCurrentUser(profileInfo);
+          setUser(profileInfo);
         })
         .catch((err) => {
           console.log(err);
@@ -91,7 +91,7 @@ function App() {
       api
         .getSavedCards()
         .then((cardsData) => {
-          setSavedMovies(cardsData.reverse());
+          setLikedMovies(cardsData);
         })
         .catch((err) => {
           console.log(err);
@@ -104,7 +104,7 @@ function App() {
     api
       .setUser(newUserInfo)
       .then((data) => {
-        setCurrentUser(data);
+        setUser(data);
         setIsSuccessful(true);
         setIsTooltip(true);
       })
@@ -122,7 +122,7 @@ function App() {
     api
       .saveCard(card)
       .then((newMovie) => {
-        setSavedMovies([newMovie, ...savedMovies]);
+        setLikedMovies([newMovie, ...likedMovies]);
       })
       .catch((err) => {
         setIsTooltip(false);
@@ -135,7 +135,7 @@ function App() {
     api
       .deleteSavedCard(card._id)
       .then(() => {
-        setSavedMovies((state) =>
+        setLikedMovies((state) =>
           state.filter((item) => item._id !== card._id)
         );
       })
@@ -193,7 +193,7 @@ function App() {
             </Route>
             <ProtectedRoute
               path="/movies"
-              savedMovies={savedMovies}
+              likedMovies={likedMovies}
               loggedIn={isLoggedIn}
               onCardDelete={handleCardDelete}
               component={Movies}
@@ -201,7 +201,7 @@ function App() {
             ></ProtectedRoute>
             <ProtectedRoute
               path="/saved-movies"
-              savedMovies={savedMovies}
+              likedMovies={likedMovies}
               loggedIn={isLoggedIn}
               onCardDelete={handleCardDelete}
               component={SavedMovies}

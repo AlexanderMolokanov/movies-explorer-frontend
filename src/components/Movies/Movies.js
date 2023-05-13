@@ -7,7 +7,7 @@ import Footer from "../Footer/Footer";
 import { filterMovies, filterDuration } from "../../utils/utils";
 import * as movies from "../../utils/MoviesApi";
 
-function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
+function Movies({ loggedIn, handleLikeClick, likedMovies, onCardDelete }) {
   const [isSpiner, setIsSpiner] = useState(false); //прелоадер
   const [initialMovies, setInitialMovies] = useState([]); //отфильтрованные по запросу
   const [filteredMovies, setFilteredMovies] = useState([]); //отфильтрованные по запросу и чекбоксу
@@ -106,7 +106,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
         isShortMovies={isShortMovies}
       />
       <MoviesCardList
-        savedMovies={savedMovies}
+        likedMovies={likedMovies}
         cards={filteredMovies}
         isSavedFilms={false}
         handleLikeClick={handleLikeClick}

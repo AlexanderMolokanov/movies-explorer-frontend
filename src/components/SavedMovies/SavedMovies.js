@@ -6,9 +6,9 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import { filterMovies, filterDuration } from "../../utils/utils";
 
-function SavedMovies({ loggedIn, savedMovies, onCardDelete }) {
-  console.log(savedMovies);
-  const [filteredMovies, setFilteredMovies] = useState(savedMovies); //отфильтрованные по запросу и чекбоксу
+function SavedMovies({ loggedIn, likedMovies, onCardDelete }) {
+  console.log(likedMovies);
+  const [filteredMovies, setFilteredMovies] = useState(likedMovies); //отфильтрованные по запросу и чекбоксу
   const [isShortMovies, setIsShortMovies] = useState(false); //включен ли чекбокс короткометражек
   const [isNotFound, setIsNotFound] = useState(false); //фильмы по запросу не найдены
   const [searchQuery, setSearchQuery] = useState("");
@@ -23,9 +23,9 @@ function SavedMovies({ loggedIn, savedMovies, onCardDelete }) {
   }
 
   useEffect(() => {
-    const moviesList = filterMovies(savedMovies, searchQuery);
+    const moviesList = filterMovies(likedMovies, searchQuery);
     setFilteredMovies(isShortMovies ? filterDuration(moviesList) : moviesList);
-  }, [savedMovies, isShortMovies, searchQuery]);
+  }, [likedMovies, isShortMovies, searchQuery]);
 
   useEffect(() => {
     if (filteredMovies.length === 0) {
@@ -46,7 +46,7 @@ function SavedMovies({ loggedIn, savedMovies, onCardDelete }) {
         isNotFound={isNotFound}
         isSavedFilms={true}
         cards={filteredMovies}
-        savedMovies={savedMovies}
+        likedMovies={likedMovies}
         onCardDelete={onCardDelete}
       />
       <Footer />

@@ -17,7 +17,7 @@ function MoviesCardList({
   isReqErr,
   isNotFound,
   handleLikeClick,
-  savedMovies,
+  likedMovies,
   onCardDelete,
 }) {
   const [shownMovies, setShownMovies] = useState(0);
@@ -55,11 +55,11 @@ function MoviesCardList({
     }
   }
 
-  function getSavedMovieCard(savedMovies, card) {
-    if (savedMovies === undefined) {
+  function getSavedMovieCard(likedMovies, card) {
+    if (likedMovies === undefined) {
       return;
     }
-    return savedMovies.find((savedMovie) => savedMovie.movieId === card.id);
+    return likedMovies.find((savedMovie) => savedMovie.movieId === card.id);
   }
 
   return (
@@ -83,13 +83,13 @@ function MoviesCardList({
                 {cards.map((card) => (
                   <MoviesCard
                     key={isSavedFilms ? card._id : card.id}
-                    saved={getSavedMovieCard(savedMovies, card)}
+                    saved={getSavedMovieCard(likedMovies, card)}
                     cards={cards}
                     card={card}
                     isSavedFilms={isSavedFilms}
                     handleLikeClick={handleLikeClick}
                     onCardDelete={onCardDelete}
-                    savedMovies={savedMovies}
+                    likedMovies={likedMovies}
                   />
                 ))}
               </ul>
@@ -101,13 +101,13 @@ function MoviesCardList({
                 {cards.slice(0, shownMovies).map((card) => (
                   <MoviesCard
                     key={isSavedFilms ? card._id : card.id}
-                    saved={getSavedMovieCard(savedMovies, card)}
+                    saved={getSavedMovieCard(likedMovies, card)}
                     cards={cards}
                     card={card}
                     isSavedFilms={isSavedFilms}
                     handleLikeClick={handleLikeClick}
                     onCardDelete={onCardDelete}
-                    savedMovies={savedMovies}
+                    likedMovies={likedMovies}
                   />
                 ))}
               </ul>
