@@ -1,6 +1,6 @@
-import './NotFound.css';
+import './PageNotFound.css';
 
-export default function NotFound({ goBack }) {
+export default function PageNotFound({ goBack }) {
   return (
     <main className="wrong-address">
       <p className="wrong-address__text-container">

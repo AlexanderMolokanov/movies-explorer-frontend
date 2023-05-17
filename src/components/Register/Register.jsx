@@ -1,10 +1,10 @@
 import React from "react";
-import Form from "../Form/Form";
-import useForm from "../hooks/useForm";
+import RegForm from "../RegForm/RegForm";
+import useFormWithValidation from "../../hooks/useFormWithValidation";
 import { EMAIL_CHECK, USERNAME_CHECK } from "../../utils/config";
 
 function Register({ onRegister, isSpiner }) {
-  const { inputValues, error, handleChange, isValid } = useForm();
+  const { inputValues, error, handleChange, isValid } = useFormWithValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -16,7 +16,7 @@ function Register({ onRegister, isSpiner }) {
   }
 
   return (
-    <Form
+    <RegForm
       link="/signin"
       title="Добро пожаловать!"
       onSubmit={handleSubmit}
@@ -69,7 +69,7 @@ function Register({ onRegister, isSpiner }) {
         />
         <span className="form__input-error">{error.password}</span>
       </label>
-    </Form>
+    </RegForm>
   );
 }
 

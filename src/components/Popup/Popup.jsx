@@ -1,6 +1,6 @@
 import React from 'react';
 
-function InfoTooltip({ onClose, isTooltip, isSuccessful }) {
+function Popup({ onClose, isTooltip, isSuccessful }) {
   return (
     <div className={`popup ${isTooltip ? 'popup_opened' : ''}`}>
       <div className="popup__container">
@@ -18,4 +18,4 @@ function InfoTooltip({ onClose, isTooltip, isSuccessful }) {
   );
 }
 
-export default InfoTooltip;
+export default Popup;

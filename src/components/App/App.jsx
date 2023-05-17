@@ -15,8 +15,8 @@ import Login from "../Login/Login";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
-import NotFound from "../NotFound/NotFound";
-import InfoTooltip from "../InfoTooltip/InfoTooltip";
+import PageNotFound from "../PageNotFound/PageNotFound";
+import Popup from "../Popup/Popup";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import {
   signup as apiSignup,
@@ -220,10 +220,10 @@ function App() {
               isSpiner={isSpiner}
             ></ProtectedRoute>
             <Route path="/*">
-              <NotFound />
+              <PageNotFound />
             </Route>
           </Switch>
-          <InfoTooltip
+          <Popup
             isTooltip={isTooltip}
             // isTooltip={isSuccessful}
             onClose={closeUnsuccessPopup}

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import { useLocation } from "react-router-dom";
 
 function SearchForm({ onSearchFilms, onFilter, isShortFilms }) {
@@ -51,7 +50,15 @@ function SearchForm({ onSearchFilms, onFilter, isShortFilms }) {
             <button className="search__button" type="submit"></button>
           </form>
         </div>
-        <FilterCheckbox onFilter={onFilter} isShortFilms={isShortFilms} />
+        <form className="filter">
+          <input
+            className="filter__checkbox"
+            type="checkbox"
+            onChange={onFilter}
+            checked={isShortFilms}
+          ></input>
+          <span className="filter__text">Короткометражки</span>
+        </form>
         {isRrequesError && (
           <span className="search__form-error">
             Нужно ввести ключевое слово

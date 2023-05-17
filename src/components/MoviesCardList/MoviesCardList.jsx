@@ -2,15 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import Preloader from "../Preloader/Preloader";
-import SearchError from "../SearchError/SearchError";
-import {
-  OPEN_DESKTOP,
-  OPEN_TABLET,
-  OPEN_MOBILE,
-} from "../../utils/config";
+import { OPEN_DESKTOP, OPEN_TABLET, OPEN_MOBILE } from "../../utils/config";
 
 function MoviesCardList({
-  cards,  
+  cards,
   isSavedFilms,
   isSpiner,
   isErr,
@@ -46,7 +41,7 @@ function MoviesCardList({
   function showMore() {
     const display = window.innerWidth;
     if (display > 1280) {
-      setShownMovies(  + OPEN_DESKTOP);
+      setShownMovies(+OPEN_DESKTOP);
     } else if (display > 768) {
       setShownMovies(shownMovies + OPEN_TABLET);
     } else if (display < 480) {
@@ -65,14 +60,14 @@ function MoviesCardList({
     <section className="cards">
       {isSpiner && <Preloader />}
       {iSnotFound && !isSpiner && (
-        <SearchError errorText={"Ничего не найдено"} />
+        <p className="search__error">{"Ничего не найдено"}</p>
       )}
       {isErr && !isSpiner && (
-        <SearchError
-          errorText={
+        <p className="search__error">
+          {
             "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
           }
-        />
+        </p>
       )}
       {!isSpiner && !isErr && !iSnotFound && (
         <>

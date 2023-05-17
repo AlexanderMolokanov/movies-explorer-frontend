@@ -1,9 +1,9 @@
-import React from 'react';
-import Form from '../Form/Form';
-import useForm from '../hooks/useForm';
+import React from "react";
+import RegForm from "../RegForm/RegForm";
+import useFormWithValidation from "../../hooks/useFormWithValidation";
 
 function Login({ onAuthorize, isSpiner }) {
-  const { inputValues, error, handleChange, isValid } = useForm();
+  const { inputValues, error, handleChange, isValid } = useFormWithValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -14,15 +14,16 @@ function Login({ onAuthorize, isSpiner }) {
   }
 
   return (
-    <Form
-      title="Рады видеть!"
+    <RegForm
+      title="Рады Вас видеть!"
       buttonText="  Войти"
       question="Еще не зарегистрированы?"
       linkText=" Регистрация"
       link="/signup"
       onSubmit={handleSubmit}
       isDisabled={!isValid}
-      isSpiner={isSpiner}>
+      isSpiner={isSpiner}
+    >
       <label className="form__field">
         E-mail
         <input
@@ -32,7 +33,7 @@ function Login({ onAuthorize, isSpiner }) {
           type="email"
           required
           onChange={handleChange}
-          value={inputValues.email || ''}
+          value={inputValues.email || ""}
         />
         <span className="form__input-error">{error.email}</span>
       </label>
@@ -45,11 +46,11 @@ function Login({ onAuthorize, isSpiner }) {
           type="password"
           required
           onChange={handleChange}
-          value={inputValues.password || ''}
+          value={inputValues.password || ""}
         />
         <span className="form__input-error">{error.password}</span>
       </label>
-    </Form>
+    </RegForm>
   );
 }
 

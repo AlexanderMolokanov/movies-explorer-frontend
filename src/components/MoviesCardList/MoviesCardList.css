@@ -54,6 +54,15 @@
   border: 1px solid #2be080;
 }
 
+.search__error {
+  font-style: normal;
+  margin: 0 auto;
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 500;
+  color: #a0a0a0;
+}
+
 /* @media screen and (max-width: 1180px) {
   .films-cards__list {
     grid-template-columns: repeat(3, 270px);

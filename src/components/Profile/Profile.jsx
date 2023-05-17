@@ -1,13 +1,13 @@
 import React, { useEffect, useContext, useState } from 'react';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
-import useForm from '../hooks/useForm';
+import useFormWithValidation from '../../hooks/useFormWithValidation';
 import { USERNAME_CHECK } from '../../utils/config';
 
 function Profile({ signOut, onUpdateUser, loggedIn, isSpiner }) {
   const user = useContext(CurrentUserContext);
 
-  const { inputValues, error, handleChange, isValid, resetForm } = useForm();
+  const { inputValues, error, handleChange, isValid, resetForm } = useFormWithValidation();
   const [isLastValues, setIsLastValues] = useState(false);
 
   useEffect(() => {
