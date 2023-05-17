@@ -35,23 +35,23 @@ function MoviesCard({
 
   const cardSaveButtonClassName = `${
     saved
-      ? "movies-card__save-button movies-card__save-button_active"
-      : "movies-card__save-button"
+      ? "films-card__save-button films-card__save-button_active"
+      : "films-card__save-button"
   }`;
 
   return (
     <li className="card">
-      <div className="movies-card__container">
-        <div className="movies-card__info-container">
-          <h2 className="movies-card__text">{card.nameRU}</h2>
-          <span className="movies-card__time">
+      <div className="films-card__container">
+        <div className="films-card__info-container">
+          <h2 className="films-card__text">{card.nameRU}</h2>
+          <span className="films-card__time">
             {changeTimeTormat(card.duration)}
           </span>
         </div>
         {isSavedFilms ? (
           <button
             type="button"
-            className="movies-card__del-button"
+            className="films-card__del-button"
             onClick={onDelete}
           ></button>
         ) : (
@@ -64,7 +64,7 @@ function MoviesCard({
       </div>
       <a href={card.trailerLink} target="_blank" rel="noreferrer">
         <img
-          className="movies-card__image"
+          className="films-card__image"
           alt={card.nameRU}
           src={
             isSavedFilms

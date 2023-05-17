@@ -1,16 +1,16 @@
 import { SHORT_FILM_DURATION } from "./config";
 
 //отфильтровать видео по запросу
-function filtFilms(films, query) {
-  const moviesByQuery = films.filter((film) => {
-    const movieRu = String(film.nameRU).toLowerCase().trim();
-    const movieEn = String(film.nameEN).toLowerCase().trim();
-    const userQuery = query.toLowerCase().trim();
+function filtFilms(films, request) {
+  const filmsByRequest = films.filter((film) => {
+    const filmRu = String(film.nameRU).toLowerCase().trim();
+    const filmEn = String(film.nameEN).toLowerCase().trim();
+    const userRequest = request.toLowerCase().trim();
     return (
-      movieRu.indexOf(userQuery) !== -1 || movieEn.indexOf(userQuery) !== -1
+      filmRu.indexOf(userRequest) !== -1 || filmEn.indexOf(userRequest) !== -1
     );
   });
-  return moviesByQuery;
+  return filmsByRequest;
 }
 
 //отфильтровать видео по времени

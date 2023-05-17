@@ -5,7 +5,7 @@
   /* justify-content: center; */
 }
 
-.movies-cards__list {
+.films-cards__list {
   display: grid;
   grid-template-columns: repeat(3, 367px);
   /* grid-row-gap: 300px; */
@@ -19,7 +19,7 @@
   border-top: solid 1px #e8e8e8;
 }
 
-.movies-cards__button-container {
+.films-cards__button-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,12 +27,12 @@
   min-height: 140px;
 }
 
-.movies-cards__button-container_pudding {
+.films-cards__button-container_pudding {
   padding: 0px;
   min-height: 120px;
 }
 
-.movies-cards__button {
+.films-cards__button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,27 +48,27 @@
   border: 1px solid #e8e8e8;
 }
 
-.movies-cards__button:hover {
+.films-cards__button:hover {
   cursor: pointer;
   opacity: 0.6;
   border: 1px solid #2be080;
 }
 
 /* @media screen and (max-width: 1180px) {
-  .movies-cards__list {
+  .films-cards__list {
     grid-template-columns: repeat(3, 270px);
   }
 } */
 
 @media screen and (max-width: 1281px) {
-  .movies-cards__list {
+  .films-cards__list {
     grid-template-columns: repeat(2, 339px);
     margin: -10px auto;
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .movies-cards__list {
+  .films-cards__list {
     grid-template-columns: repeat(2, 339px);
     gap: 30px 30px;
     padding: 80px 0 30px;
@@ -78,7 +78,7 @@
     margin: -10px auto;
   }
 
-  .movies-cards__button-container {
+  .films-cards__button-container {
     padding-top: 29px;
     /* padding-bottom: ; */
     min-height: 36px;
@@ -86,7 +86,7 @@
 }
 
 @media screen and (max-width: 700px) {
-  .movies-cards__list {
+  .films-cards__list {
     grid-template-columns: repeat(1, 339px);
     /* display: flex; */
     justify-items: center;
@@ -94,18 +94,18 @@
 }
 
 @media screen and (max-width: 577px) {
-  .movies-cards__list {
+  .films-cards__list {
     padding: 40px 10px 30px;
     grid-template-columns: repeat(1, 300px);
     gap: 16px;
     justify-content: center;
   }
 
-  .movies-cards__button {
+  .films-cards__button {
     width: 240px;
   }
 
-  .movies-cards__list {
+  .films-cards__list {
     margin-top: 0;
     padding-top: 0;
     margin-left: 10px;
@@ -117,12 +117,12 @@
     padding-bottom: 8px;
   }
 
-  .movies-card__container {
+  .films-card__container {
     margin-left: 0;
    
   }
 
-  .movies-cards__button-container {
+  .films-cards__button-container {
     padding-bottom: 100px;
   }
   

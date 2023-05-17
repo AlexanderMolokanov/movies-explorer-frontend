@@ -3,32 +3,32 @@ import "./SearchForm.css";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import { useLocation } from "react-router-dom";
 
-function SearchForm({ onSearchMovies, onFilter, isShortMovies }) {
-  const [isQueryError, setIsQueryError] = useState(false);
-  const [query, setQuery] = useState("");
+function SearchForm({ onSearchFilms, onFilter, isShortFilms }) {
+  const [isRrequesError, setIsRrequestError] = useState(false);
+  const [request, setRrequest] = useState("");
   const location = useLocation();
 
   function handleChangeQuery(e) {
-    setQuery(e.target.value);
+    setRrequest(e.target.value);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (query.trim().length === 0) {
-      setIsQueryError(true);
+    if (request.trim().length === 0) {
+      setIsRrequestError(true);
     } else {
-      setIsQueryError(false);
-      onSearchMovies(query);
+      setIsRrequestError(false);
+      onSearchFilms(request);
     }
   }
 
   useEffect(() => {
     if (
       location.pathname === "/movies" &&
-      localStorage.getItem("movieSearch")
+      localStorage.getItem("filmsSearch")
     ) {
-      const localQuery = localStorage.getItem("movieSearch");
-      setQuery(localQuery);
+      const localQuery = localStorage.getItem("filmsSearch");
+      setRrequest(localQuery);
     }
   }, [location]);
 
@@ -39,21 +39,21 @@ function SearchForm({ onSearchMovies, onFilter, isShortMovies }) {
           <form className="search__form" id="form" onSubmit={handleSubmit}>
             <label className="search__label" htmlFor="search-input"></label>
             <input
-              name="query"
+              name="request"
               className="search__input"
               id="search-input"
               type="text"
               placeholder="Фильм"
               required
               onChange={handleChangeQuery}
-              value={query || ""}
+              value={request || ""}
             ></input>
 
             <button className="search__button" type="submit"></button>
           </form>
         </div>
-        <FilterCheckbox onFilter={onFilter} isShortMovies={isShortMovies} />
-        {isQueryError && (
+        <FilterCheckbox onFilter={onFilter} isShortFilms={isShortFilms} />
+        {isRrequesError && (
           <span className="search__form-error">
             Нужно ввести ключевое слово
           </span>

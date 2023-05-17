@@ -8,44 +8,44 @@ import { filtFilms, filtDuration } from "../../utils/utils";
 
 function SavedMovies({ loggedIn, likedMovies, onCardDelete }) {
   console.log(likedMovies);
-  const [filteredMovies, setFilteredMovies] = useState(likedMovies); //отфильтрованные по запросу и чекбоксу
-  const [isShortMovies, setIsShortMovies] = useState(false); //включен ли чекбокс короткометражек
-  const [isNotFound, setIsNotFound] = useState(false); //фильмы по запросу не найдены
+  const [filteredFilms, setFilteredFilms] = useState(likedMovies); //отфильтрованные по запросу и чекбоксу
+  const [isShortFilms, setIsShortFilms] = useState(false); //включен ли чекбокс короткометражек
+  const [iSnotFound, setNotFound] = useState(false); //фильмы по запросу не найдены
   const [searchQuery, setSearchQuery] = useState("");
 
   //submit
-  function onSearchMovies(query) {
-    setSearchQuery(query);
+  function onSearchFilms(request) {
+    setSearchQuery(request);
   }
 
   function handleShortMovies() {
-    setIsShortMovies(!isShortMovies);
+    setIsShortFilms(!isShortFilms);
   }
 
   useEffect(() => {
     const moviesList = filtFilms(likedMovies, searchQuery);
-    setFilteredMovies(isShortMovies ? filtDuration(moviesList) : moviesList);
-  }, [likedMovies, isShortMovies, searchQuery]);
+    setFilteredFilms(isShortFilms ? filtDuration(moviesList) : moviesList);
+  }, [likedMovies, isShortFilms, searchQuery]);
 
   useEffect(() => {
-    if (filteredMovies.length === 0) {
-      setIsNotFound(true);
+    if (filteredFilms.length === 0) {
+      setNotFound(true);
     } else {
-      setIsNotFound(false);
+      setNotFound(false);
     }
-  }, [filteredMovies]);
+  }, [filteredFilms]);
 
   return (
-    <section className="movies">
+    <section className="films">
       <Header loggedIn={loggedIn} />
       <SearchForm
-        onSearchMovies={onSearchMovies}
+        onSearchFilms={onSearchFilms}
         onFilter={handleShortMovies}
       />
       <MoviesCardList
-        isNotFound={isNotFound}
+        iSnotFound={iSnotFound}
         isSavedFilms={true}
-        cards={filteredMovies}
+        cards={filteredFilms}
         likedMovies={likedMovies}
         onCardDelete={onCardDelete}
       />

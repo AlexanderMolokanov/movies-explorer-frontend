@@ -8,33 +8,33 @@ import { getAllMovies as apiGetAllMovies } from "../../utils/apii";
 import { SHORT_FILM_DURATION } from "../../utils/config";
 
 function Movies({ loggedIn, handleLikeClick, likedMovies, onCardDelete }) {
+  const [films, setFilms] = useState([]); //начальные фильмы
+  const [filteredFilms, setFilteredFilms] = useState([]); //отфильтровать по запросу 
+  const [isErr, setIsErr] = useState(false); 
+  const [iSnotFound, setNotFound] = useState(false); //фильмы не найдены
   const [isSpiner, setIsSpiner] = useState(false);  
-  const [initialMovies, setInitialMovies] = useState([]); //отфильтрованные по запросу
-  const [filteredMovies, setFilteredMovies] = useState([]); //отфильтрованные по запросу и чекбоксу
-  const [isShortMovies, setIsShortMovies] = useState(false); //включен ли чекбокс короткометражек
-  const [isReqErr, setIsReqErr] = useState(false); //ошибка запроса к серверу
-  const [isNotFound, setIsNotFound] = useState(false); //фильмы по запросу не найдены
+  const [isShortFilms, setIsShortFilms] = useState(false); //чекбокс короткометражек
 
-  //основнай метод фильрации, который отдает массив с фильмами на рендеринг
-  function handleFilterMovies(movies, query, short) {
-    const moviesList = filtFilms(movies, query); //фильтруем полученный массив по запросу
-    setInitialMovies(moviesList); //записываем в стейт
-    setFilteredMovies(short ? filtDuration(moviesList) : moviesList); //если чекбокс тру, то фильруем по длине и записываем в стейт
-    localStorage.setItem("movies", JSON.stringify(moviesList));
-    localStorage.setItem("allMovies", JSON.stringify(movies));
+  //метод фильрации, отдающий массив с фильмами на рендеринг
+  function handleFilterMovies(films, request, isShort) {
+    const moviesList = filtFilms(films, request);  
+    setFilms(moviesList); //юзстейт
+    setFilteredFilms(isShort ? filtDuration(moviesList) : moviesList); // проверяем чекбокс и записываем в стейт
+    localStorage.setItem("films", JSON.stringify(moviesList)); // сохраняем в локал сторэдж
+    localStorage.setItem("allFilms", JSON.stringify(films)); // сохраняем в локал сторэдж
   }
 
   //отфильтровать видео по запросу
-  function filtFilms(films, query) {
-    const moviesByQuery = films.filter((film) => {
-      const movieRu = String(film.nameRU).toLowerCase().trim();
-      const movieEn = String(film.nameEN).toLowerCase().trim();
-      const userQuery = query.toLowerCase().trim();
+  function filtFilms(films, request) {
+    const filmsByRequest = films.filter((film) => {
+      const filmRu = String(film.nameRU).toLowerCase().trim();
+      const filmEn = String(film.nameEN).toLowerCase().trim();
+      const userRequest = request.toLowerCase().trim();
       return (
-        movieRu.indexOf(userQuery) !== -1 || movieEn.indexOf(userQuery) !== -1
+        filmRu.indexOf(userRequest) !== -1 || filmEn.indexOf(userRequest) !== -1
       );
     });
-    return moviesByQuery;
+    return filmsByRequest;
   }
 
   //отфильтровать видео по времени
@@ -42,38 +42,38 @@ function Movies({ loggedIn, handleLikeClick, likedMovies, onCardDelete }) {
     return films.filter((film) => film.duration < SHORT_FILM_DURATION);
   }
 
-  //фильтруем короткие видео по запросу
+  //отфильтровать короткие видео по запросу
   function handleShortMovies() {
-    setIsShortMovies(!isShortMovies);
-    if (!isShortMovies) {
-      if (filtDuration(initialMovies).length === 0) {
-        setFilteredMovies(filtDuration(initialMovies));
+    setIsShortFilms(!isShortFilms);
+    if (!isShortFilms) {
+      if (filtDuration(films).length === 0) {
+        setFilteredFilms(filtDuration(films));
       } else {
-        setFilteredMovies(filtDuration(initialMovies));
+        setFilteredFilms(filtDuration(films));
       }
     } else {
-      setFilteredMovies(initialMovies);
+      setFilteredFilms(films);
     }
-    localStorage.setItem("shortMovies", !isShortMovies);
+    localStorage.setItem("shortFilms", !isShortFilms);
   }
 
-  //submit
-  function onSearchMovies(query) {
-    localStorage.setItem("movieSearch", query);
-    localStorage.setItem("shortMovies", isShortMovies);
+  //сабмит
+  function onSearchFilms(request) {
+    localStorage.setItem("filmsSearch", request);
+    localStorage.setItem("shortFilms", isShortFilms);
 
-    if (localStorage.getItem("allMovies")) {
-      const movies = JSON.parse(localStorage.getItem("allMovies"));
-      handleFilterMovies(movies, query, isShortMovies);
+    if (localStorage.getItem("allFilms")) {
+      const films = JSON.parse(localStorage.getItem("allFilms"));
+      handleFilterMovies(films, request, isShortFilms);
     } else {
       setIsSpiner(true);
       apiGetAllMovies()
         .then((cardsData) => {
-          handleFilterMovies(cardsData, query, isShortMovies);
-          setIsReqErr(false);
+          handleFilterMovies(cardsData, request, isShortFilms);
+          setIsErr(false);
         })
         .catch((err) => {
-          setIsReqErr(true);
+          setIsErr(true);
           console.log(err);
         })
         .finally(() => {
@@ -83,54 +83,54 @@ function Movies({ loggedIn, handleLikeClick, likedMovies, onCardDelete }) {
   }
 
   useEffect(() => {
-    if (localStorage.getItem("shortMovies") === "true") {
-      setIsShortMovies(true);
+    if (localStorage.getItem("shortFilms") === "true") {
+      setIsShortFilms(true);
     } else {
-      setIsShortMovies(false);
+      setIsShortFilms(false);
     }
   }, []);
 
   useEffect(() => {
-    if (localStorage.getItem("movies")) {
-      const movies = JSON.parse(localStorage.getItem("movies"));
-      setInitialMovies(movies);
-      if (localStorage.getItem("shortMovies") === "true") {
-        setFilteredMovies(filtDuration(movies));
+    if (localStorage.getItem("films")) {
+      const films = JSON.parse(localStorage.getItem("films"));
+      setFilms(films);
+      if (localStorage.getItem("shortFilms") === "true") {
+        setFilteredFilms(filtDuration(films));
       } else {
-        setFilteredMovies(movies);
+        setFilteredFilms(films);
       }
     } else {
     }
   }, []);
 
   useEffect(() => {
-    if (localStorage.getItem("movieSearch")) {
-      if (filteredMovies.length === 0) {
-        setIsNotFound(true);
+    if (localStorage.getItem("filmsSearch")) {
+      if (filteredFilms.length === 0) {
+        setNotFound(true);
       } else {
-        setIsNotFound(false);
+        setNotFound(false);
       }
     } else {
-      setIsNotFound(false);
+      setNotFound(false);
     }
-  }, [filteredMovies]);
+  }, [filteredFilms]);
 
   return (
-    <section className="movies">
+    <section className="films">
       <Header loggedIn={loggedIn} />
       <SearchForm
-        onSearchMovies={onSearchMovies}
+        onSearchFilms={onSearchFilms}
         onFilter={handleShortMovies}
-        isShortMovies={isShortMovies}
+        isShortFilms={isShortFilms}
       />
       <MoviesCardList
         likedMovies={likedMovies}
-        cards={filteredMovies}
+        cards={filteredFilms}
         isSavedFilms={false}
         handleLikeClick={handleLikeClick}
         onCardDelete={onCardDelete}
-        isReqErr={isReqErr}
-        isNotFound={isNotFound}
+        isErr={isErr}
+        iSnotFound={iSnotFound}
         isSpiner={isSpiner}
       />
       <Footer />

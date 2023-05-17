@@ -5,14 +5,14 @@ import useForm from "../hooks/useForm";
 import { EMAIL_CHECK, USERNAME_CHECK } from "../../utils/config";
 
 function Register({ onRegister, isSpiner }) {
-  const { enteredValues, errors, handleChange, isFormValid } = useForm();
+  const { inputValues, errors, handleChange, isFormValid } = useForm();
 
   function handleSubmit(e) {
     e.preventDefault();
     onRegister({
-      name: enteredValues.name,
-      email: enteredValues.email,
-      password: enteredValues.password,
+      name: inputValues.name,
+      email: inputValues.email,
+      password: inputValues.password,
     });
   }
 
@@ -38,7 +38,7 @@ function Register({ onRegister, isSpiner }) {
           maxLength="40"
           required
           onChange={handleChange}
-          value={enteredValues.name || ""}
+          value={inputValues.name || ""}
           pattern={USERNAME_CHECK}
         />
         <span className="form__input-error">{errors.name}</span>
@@ -53,7 +53,7 @@ function Register({ onRegister, isSpiner }) {
           required
           onChange={handleChange}
           pattern={EMAIL_CHECK}
-          value={enteredValues.email || ""}
+          value={inputValues.email || ""}
         />
         <span className="form__input-error">{errors.email}</span>
       </label>
@@ -66,7 +66,7 @@ function Register({ onRegister, isSpiner }) {
           type="password"
           required
           onChange={handleChange}
-          value={enteredValues.password || ""}
+          value={inputValues.password || ""}
         />
         <span className="form__input-error">{errors.password}</span>
       </label>

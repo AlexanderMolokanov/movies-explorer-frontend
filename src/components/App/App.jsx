@@ -7,7 +7,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import "./App.css";
+// import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -78,7 +78,7 @@ function App() {
       apiGetUser()
         .then((res) => {
           if (res) {
-            localStorage.removeItem("allMovies");
+            localStorage.removeItem("allFilms");
             setIsLogged(true);
           }
           history.push(path);
@@ -161,10 +161,10 @@ function App() {
   // Выход
   const handleSignOut = () => {
     setIsLogged(false);
-    localStorage.removeItem("movies");
-    localStorage.removeItem("movieSearch");
-    localStorage.removeItem("shortMovies");
-    localStorage.removeItem("allMovies");
+    localStorage.removeItem("films");
+    localStorage.removeItem("filmsSearch");
+    localStorage.removeItem("shortFilms");
+    localStorage.removeItem("allFilms");
     history.push("/");
   };
 

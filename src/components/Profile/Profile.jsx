@@ -8,7 +8,7 @@ import { USERNAME_CHECK } from '../../utils/config';
 function Profile({ signOut, onUpdateUser, loggedIn, isSpiner }) {
   const user = useContext(CurrentUserContext);
 
-  const { enteredValues, errors, handleChange, isFormValid, resetForm } = useForm();
+  const { inputValues, errors, handleChange, isFormValid, resetForm } = useForm();
   const [isLastValues, setIsLastValues] = useState(false);
 
   useEffect(() => {
@@ -20,19 +20,19 @@ function Profile({ signOut, onUpdateUser, loggedIn, isSpiner }) {
   function handleSubmit(e) {
     e.preventDefault();
     onUpdateUser({
-      name: enteredValues.name,
-      email: enteredValues.email,
+      name: inputValues.name,
+      email: inputValues.email,
     });
   }
 
   useEffect(() => {
-    if (user.name === enteredValues.name && user.email === enteredValues.email) {
+    if (user.name === inputValues.name && user.email === inputValues.email) {
       setIsLastValues(true);
     } else {
       setIsLastValues(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [enteredValues]);
+  }, [inputValues]);
 
   return (
     <>
@@ -51,7 +51,7 @@ function Profile({ signOut, onUpdateUser, loggedIn, isSpiner }) {
               maxLength="40"
               required 
               onChange={handleChange}
-              value={enteredValues.name || ''}
+              value={inputValues.name || ''}
               pattern={USERNAME_CHECK}
             />
             <span className="profile__input-error">{errors.name}</span>
@@ -67,7 +67,7 @@ function Profile({ signOut, onUpdateUser, loggedIn, isSpiner }) {
               type="email"
               required
               onChange={handleChange}
-              value={enteredValues.email || ''}
+              value={inputValues.email || ''}
             />
             <span className="profile__input-error">{errors.email}</span>
           </label>
