@@ -7,8 +7,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-// import "./App.css";
-import Header from "../Header/Header";
+import Header from "../Header/Header"; 
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import Register from "../Register/Register";

@@ -1,10 +1,9 @@
 import React from 'react';
-import '../Form/Form.css';
 import Form from '../Form/Form';
 import useForm from '../hooks/useForm';
 
 function Login({ onAuthorize, isSpiner }) {
-  const { inputValues, errors, handleChange, isFormValid } = useForm();
+  const { inputValues, error, handleChange, isValid } = useForm();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -22,7 +21,7 @@ function Login({ onAuthorize, isSpiner }) {
       linkText=" Регистрация"
       link="/signup"
       onSubmit={handleSubmit}
-      isDisabled={!isFormValid}
+      isDisabled={!isValid}
       isSpiner={isSpiner}>
       <label className="form__field">
         E-mail
@@ -35,7 +34,7 @@ function Login({ onAuthorize, isSpiner }) {
           onChange={handleChange}
           value={inputValues.email || ''}
         />
-        <span className="form__input-error">{errors.email}</span>
+        <span className="form__input-error">{error.email}</span>
       </label>
       <label className="form__field">
         Пароль
@@ -48,7 +47,7 @@ function Login({ onAuthorize, isSpiner }) {
           onChange={handleChange}
           value={inputValues.password || ''}
         />
-        <span className="form__input-error">{errors.password}</span>
+        <span className="form__input-error">{error.password}</span>
       </label>
     </Form>
   );

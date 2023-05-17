@@ -1,5 +1,4 @@
 import React from 'react';
-import './InfoTooltip.css'; 
 
 function InfoTooltip({ onClose, isTooltip, isSuccessful }) {
   return (

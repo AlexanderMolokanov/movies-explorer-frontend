@@ -1,6 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
-import './Profile.css';
 import Header from '../Header/Header';
 import useForm from '../hooks/useForm';
 import { USERNAME_CHECK } from '../../utils/config';
@@ -8,7 +7,7 @@ import { USERNAME_CHECK } from '../../utils/config';
 function Profile({ signOut, onUpdateUser, loggedIn, isSpiner }) {
   const user = useContext(CurrentUserContext);
 
-  const { inputValues, errors, handleChange, isFormValid, resetForm } = useForm();
+  const { inputValues, error, handleChange, isValid, resetForm } = useForm();
   const [isLastValues, setIsLastValues] = useState(false);
 
   useEffect(() => {
@@ -54,7 +53,7 @@ function Profile({ signOut, onUpdateUser, loggedIn, isSpiner }) {
               value={inputValues.name || ''}
               pattern={USERNAME_CHECK}
             />
-            <span className="profile__input-error">{errors.name}</span>
+            <span className="profile__input-error">{error.name}</span>
           </label>
 
           <div className="profile__border"></div>
@@ -69,13 +68,13 @@ function Profile({ signOut, onUpdateUser, loggedIn, isSpiner }) {
               onChange={handleChange}
               value={inputValues.email || ''}
             />
-            <span className="profile__input-error">{errors.email}</span>
+            <span className="profile__input-error">{error.email}</span>
           </label>
           <button
             type="submit"
-            disabled={!isFormValid ? true : false}
+            disabled={!isValid ? true : false}
             className={
-              !isFormValid || isSpiner || isLastValues
+              !isValid || isSpiner || isLastValues
                 ? 'profile__button-save form__button-save_inactive'
                 : 'profile__button-save'
             }>

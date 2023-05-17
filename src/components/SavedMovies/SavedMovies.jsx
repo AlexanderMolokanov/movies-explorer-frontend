@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./SavedMovies.css";
 import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
@@ -13,7 +12,6 @@ function SavedMovies({ loggedIn, likedMovies, onCardDelete }) {
   const [iSnotFound, setNotFound] = useState(false); //фильмы по запросу не найдены
   const [searchQuery, setSearchQuery] = useState("");
 
-  //submit
   function onSearchFilms(request) {
     setSearchQuery(request);
   }
@@ -38,10 +36,7 @@ function SavedMovies({ loggedIn, likedMovies, onCardDelete }) {
   return (
     <section className="films">
       <Header loggedIn={loggedIn} />
-      <SearchForm
-        onSearchFilms={onSearchFilms}
-        onFilter={handleShortMovies}
-      />
+      <SearchForm onSearchFilms={onSearchFilms} onFilter={handleShortMovies} />
       <MoviesCardList
         iSnotFound={iSnotFound}
         isSavedFilms={true}

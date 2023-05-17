@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import './Navigation.css';
 
 function Navigation({ handleClose }) {
   return (

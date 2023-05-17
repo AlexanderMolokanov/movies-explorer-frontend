@@ -1,6 +1,4 @@
 import React from "react";
-// import { changeTimeTormat } from "../../utils/utils";
-import "./MoviesCard.css";
 
 function MoviesCard({
   card,

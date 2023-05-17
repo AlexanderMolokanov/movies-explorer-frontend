@@ -2,8 +2,8 @@ import { useState, useCallback } from "react";
 
 const useForm = () => {
   const [inputValues, setInputValues] = useState({});
-  const [errors, setErr] = useState({});
-  const [isFormValid, setIsFormValid] = useState(false);
+  const [error, setErr] = useState({});
+  const [isValid, setIsFormValiid] = useState(false);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -15,27 +15,27 @@ const useForm = () => {
     });
 
     setErr({
-      ...errors,
+      ...error,
       [name]: event.target.validationMessage,
     });
 
-    setIsFormValid(event.target.closest("#form").checkValidity());
+    setIsFormValiid(event.target.closest("#form").checkValidity());
   };
 
   const resetForm = useCallback(
-    (newValues = {}, newErrors = {}, newIsFormValid = false) => {
-      setInputValues(newValues);
-      setErr(newErrors);
-      setIsFormValid(newIsFormValid);
+    (newValue = {}, newErro = {}, newIsFormValiid = false) => {
+      setInputValues(newValue);
+      setErr(newErro);
+      setIsFormValiid(newIsFormValiid);
     },
-    [setInputValues, setErr, setIsFormValid]
+    [setInputValues, setErr, setIsFormValiid]
   );
 
   return {
-    errors,
+    error,
     inputValues,
     handleChange,
-    isFormValid,
+    isValid,
     resetForm,
   };
 };

@@ -1,11 +1,10 @@
 import React from "react";
-import "../Form/Form.css";
 import Form from "../Form/Form";
 import useForm from "../hooks/useForm";
 import { EMAIL_CHECK, USERNAME_CHECK } from "../../utils/config";
 
 function Register({ onRegister, isSpiner }) {
-  const { inputValues, errors, handleChange, isFormValid } = useForm();
+  const { inputValues, error, handleChange, isValid } = useForm();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,7 +20,7 @@ function Register({ onRegister, isSpiner }) {
       link="/signin"
       title="Добро пожаловать!"
       onSubmit={handleSubmit}
-      isDisabled={!isFormValid}
+      isDisabled={!isValid}
       isSpiner={isSpiner}
       buttonText="Зарегистрироваться"
       question="Уже зарегистрированы?"
@@ -41,7 +40,7 @@ function Register({ onRegister, isSpiner }) {
           value={inputValues.name || ""}
           pattern={USERNAME_CHECK}
         />
-        <span className="form__input-error">{errors.name}</span>
+        <span className="form__input-error">{error.name}</span>
       </label>
       <label className="form__field">
         E-mail
@@ -55,7 +54,7 @@ function Register({ onRegister, isSpiner }) {
           pattern={EMAIL_CHECK}
           value={inputValues.email || ""}
         />
-        <span className="form__input-error">{errors.email}</span>
+        <span className="form__input-error">{error.email}</span>
       </label>
       <label className="form__field">
         Пароль
@@ -68,7 +67,7 @@ function Register({ onRegister, isSpiner }) {
           onChange={handleChange}
           value={inputValues.password || ""}
         />
-        <span className="form__input-error">{errors.password}</span>
+        <span className="form__input-error">{error.password}</span>
       </label>
     </Form>
   );

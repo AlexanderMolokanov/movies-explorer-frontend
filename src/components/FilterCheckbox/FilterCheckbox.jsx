@@ -1,5 +1,4 @@
 import React from "react";
-// import "./FilterCheckbox.css";
 
 function FilterCheckbox({ onFilter, isShortFilms }) {
   return (
