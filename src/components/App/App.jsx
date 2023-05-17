@@ -86,7 +86,7 @@ function App() {
           console.log(err);
         });
     }
-  }, []);
+  }, [user, history, path]);
 
   useEffect(() => {
     if (isLogged) {
