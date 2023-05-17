@@ -6,18 +6,6 @@ import {
   useHistory,
   useLocation,
 } from "react-router-dom";
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import Header from "../Header/Header"; 
-import Main from "../Main/Main";
-import Footer from "../Footer/Footer";
-import Register from "../Register/Register";
-import Login from "../Login/Login";
-import Movies from "../Movies/Movies";
-import SavedMovies from "../SavedMovies/SavedMovies";
-import Profile from "../Profile/Profile";
-import PageNotFound from "../PageNotFound/PageNotFound";
-import Popup from "../Popup/Popup";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
 import {
   signup as apiSignup,
   signin as apiSignin,
@@ -27,17 +15,29 @@ import {
   saveCard as apiSaveCard,
   deleteSavedCard as apiDeleteSavedCard,
 } from "../../utils/apii";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
+import PageNotFound from "../PageNotFound/PageNotFound";
+import Profile from "../Profile/Profile";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import Popup from "../Popup/Popup";
+import Register from "../Register/Register";
+import Login from "../Login/Login";
+import Main from "../Main/Main";
+import Movies from "../Movies/Movies";
+import SavedMovies from "../SavedMovies/SavedMovies";
 
 function App() {
   const history = useHistory();
   const location = useLocation();
-  const [isLogged, setIsLogged] = useState(false);
-  const [user, setUser] = useState({});
-  const [likedMovies, setLikedMovies] = useState([]);
-  const [isTooltip, setIsTooltip] = useState(false);
+  const path = location.pathname;
+  const [isPopup, setIsPopup] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isSpiner, setIsSpiner] = useState(false);
-  const path = location.pathname;
+  const [isLogged, setIsLogged] = useState(false);
+  const [likedMovies, setLikedMovies] = useState([]);
+  const [user, setUser] = useState({});
 
   //регистрация
   function handleRegistration({ name, email, password }) {
@@ -46,7 +46,7 @@ function App() {
         handleAuthorization({ email, password });
       })
       .catch((err) => {
-        setIsTooltip(false);
+        setIsPopup(true);
         console.log(err);
       });
   }
@@ -62,7 +62,7 @@ function App() {
         }
       })
       .catch((err) => {
-        setIsTooltip(false);
+        setIsPopup(true);
         console.log(err);
       })
       .finally(() => {
@@ -73,6 +73,7 @@ function App() {
   // аутентификация
   useEffect(() => {
     const userDatas = user;
+    console.log(userDatas)
     if (userDatas) {
       apiGetUser()
         .then((res) => {
@@ -113,10 +114,10 @@ function App() {
       .then((data) => {
         setUser(data);
         setIsSuccessful(true);
-        setIsTooltip(true);
+        setIsPopup(true);
       })
       .catch((err) => {
-        setIsTooltip(false);
+        setIsPopup(true);
         console.log(err);
         handleUnauthorized(err);
       })
@@ -131,21 +132,7 @@ function App() {
         setLikedMovies([newMovie, ...likedMovies]);
       })
       .catch((err) => {
-        setIsTooltip(false);
-        console.log(err);
-        handleUnauthorized(err);
-      });
-  }
-
-  function handleCardDelete(card) {
-    apiDeleteSavedCard(card._id)
-      .then(() => {
-        setLikedMovies((state) =>
-          state.filter((item) => item._id !== card._id)
-        );
-      })
-      .catch((err) => {
-        setIsTooltip(false);
+        setIsPopup(true);
         console.log(err);
         handleUnauthorized(err);
       });
@@ -157,6 +144,20 @@ function App() {
     }
   }
 
+  function handleCardDelete(card) {
+    apiDeleteSavedCard(card._id)
+      .then(() => {
+        setLikedMovies((state) =>
+          state.filter((item) => item._id !== card._id)
+        );
+      })
+      .catch((err) => {
+        setIsPopup(true);
+        console.log(err);
+        handleUnauthorized(err);
+      });
+  }
+
   // Выход
   const handleSignOut = () => {
     setIsLogged(false);
@@ -164,11 +165,13 @@ function App() {
     localStorage.removeItem("filmsSearch");
     localStorage.removeItem("shortFilms");
     localStorage.removeItem("allFilms");
+    // setUser("")
     history.push("/");
   };
 
-  function closeUnsuccessPopup() {
-    setIsTooltip(false);
+    // Закрыть попар
+  function closePopup() {
+    setIsPopup(false);
     setIsSuccessful(false);
   }
 
@@ -224,9 +227,8 @@ function App() {
             </Route>
           </Switch>
           <Popup
-            isTooltip={isTooltip}
-            // isTooltip={isSuccessful}
-            onClose={closeUnsuccessPopup}
+            isPopup={isPopup}
+            onClose={closePopup}
             isSuccessful={isSuccessful}
           />
         </div>

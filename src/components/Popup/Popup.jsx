@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Popup({ onClose, isTooltip, isSuccessful }) {
+function Popup({ onClose, isPopup, isSuccessful }) {
   return (
-    <div className={`popup ${isTooltip ? 'popup_opened' : ''}`}>
+    <div className={`popup ${isPopup ? 'popup_opened' : ''}`}>
       <div className="popup__container">
         <button
           id="success-cl-button"
