@@ -1,5 +1,5 @@
 import React from "react";
-import { durationConverter } from "../../utils/utils";
+// import { changeTimeTormat } from "../../utils/utils";
 import "./MoviesCard.css";
 
 function MoviesCard({
@@ -17,6 +17,18 @@ function MoviesCard({
       handleLikeClick(card);
     }
   }
+
+  //изменить формат времени фильмов
+  function changeTimeTormat(time) {
+    const hours = Math.floor(time / 60);
+    const minutes = time % 60;
+    if (hours > 0) {
+      return `${hours}ч${minutes}м`;
+    } else {
+      return `${minutes}м`;
+    }
+  }
+
   function onDelete() {
     onCardDelete(card);
   }
@@ -33,7 +45,7 @@ function MoviesCard({
         <div className="movies-card__info-container">
           <h2 className="movies-card__text">{card.nameRU}</h2>
           <span className="movies-card__time">
-            {durationConverter(card.duration)}
+            {changeTimeTormat(card.duration)}
           </span>
         </div>
         {isSavedFilms ? (

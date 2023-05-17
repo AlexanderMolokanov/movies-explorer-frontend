@@ -1,14 +1,16 @@
-import { resHandler } from "./utils";
+// import { resHandler } from "./utils";
+import { CONFIG } from "./config";
 
-const BASE_URL = 
-"http://localhost:3000";
-// "https://gmkvid.nomoredomains.work";
-
-const BASE_ALL_FILMS_URL = "https://api.nomoreparties.co/beatfilm-movies";
+const resHandler = (res) => {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Error: ${res.status}`);
+};
 
 // добавить карточку на сервер
 const saveCard = (data) => {
-  return fetch(`${BASE_URL}/movies`, {
+  return fetch(`${CONFIG.BASE_URL}/movies`, {
     method: "POST",
     credentials: "include",
     headers: {
@@ -21,10 +23,9 @@ const saveCard = (data) => {
       duration: data.duration,
       year: data.year,
       description: data.description,
-      image: "https://api.nomoreparties.co" + data.image.url,
+      image: CONFIG.IMG_URL + data.image.url,
       trailerLink: data.trailerLink,
-      thumbnail:
-        "https://api.nomoreparties.co" + data.image.formats.thumbnail.url,
+      thumbnail: CONFIG.IMG_URL + data.image.formats.thumbnail.url,
       movieId: data.id,
       nameRU: data.nameRU,
       nameEN: data.nameEN,
@@ -34,10 +35,10 @@ const saveCard = (data) => {
 
 // изменить данные профиля
 const setUser = (data) => {
-  return fetch(`${BASE_URL}/users/me`, {
+  return fetch(`${CONFIG.BASE_URL}/users/me`, {
     method: "PATCH",
     credentials: "include",
-    "Access-Control-Allow-Origin": `${BASE_URL}`,
+    "Access-Control-Allow-Origin": `${CONFIG.BASE_URL}`,
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json: charset=utf-8",
@@ -51,7 +52,7 @@ const setUser = (data) => {
 
 // регистрация
 const signup = (name, email, password) => {
-  return fetch(`${BASE_URL}/signup`, {
+  return fetch(`${CONFIG.BASE_URL}/signup`, {
     method: "POST",
     credentials: "include",
     headers: {
@@ -64,7 +65,7 @@ const signup = (name, email, password) => {
 
 // авторизация
 const signin = (email, password) => {
-  return fetch(`${BASE_URL}/signin`, {
+  return fetch(`${CONFIG.BASE_URL}/signin`, {
     method: "POST",
     credentials: "include",
     headers: {
@@ -77,10 +78,10 @@ const signin = (email, password) => {
 
 // удалить карточку с сервера
 const deleteSavedCard = (moviId) => {
-  return fetch(`${BASE_URL}/movies/${moviId}`, {
+  return fetch(`${CONFIG.BASE_URL}/movies/${moviId}`, {
     method: "DELETE",
     credentials: "include",
-    "Access-Control-Allow-Origin": `${BASE_URL}`,
+    "Access-Control-Allow-Origin": `${CONFIG.BASE_URL}`,
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json: charset=utf-8",
@@ -90,7 +91,7 @@ const deleteSavedCard = (moviId) => {
 
 // получить все фильмы
 function getAllMovies() {
-  return fetch(BASE_ALL_FILMS_URL, {
+  return fetch(CONFIG.ALL_FILMS_URL, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -100,10 +101,10 @@ function getAllMovies() {
 
 // получить сохраненные фильмы
 const getSavedCards = () => {
-  return fetch(`${BASE_URL}/movies`, {
+  return fetch(`${CONFIG.BASE_URL}/movies`, {
     method: "GET",
     credentials: "include",
-    "Access-Control-Allow-Origin": `${BASE_URL}`,
+    "Access-Control-Allow-Origin": `${CONFIG.BASE_URL}`,
     headers: {
       "Content-Type": "application/json",
     },
@@ -112,10 +113,10 @@ const getSavedCards = () => {
 
 // получить данные пользователя
 const getUser = () => {
-  return fetch(`${BASE_URL}/users/me`, {
+  return fetch(`${CONFIG.BASE_URL}/users/me`, {
     method: "GET",
     credentials: "include",
-    "Access-Control-Allow-Origin": `${BASE_URL}`,
+    "Access-Control-Allow-Origin": `${CONFIG.BASE_URL}`,
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json: charset=utf-8",

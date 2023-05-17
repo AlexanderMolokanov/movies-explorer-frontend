@@ -3,7 +3,7 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import './Profile.css';
 import Header from '../Header/Header';
 import useForm from '../hooks/useForm';
-import { USERNAME_CHECK } from '../../utils/constants';
+import { USERNAME_CHECK } from '../../utils/config';
 
 function Profile({ signOut, onUpdateUser, loggedIn, isSpiner }) {
   const user = useContext(CurrentUserContext);

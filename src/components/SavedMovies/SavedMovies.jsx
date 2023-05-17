@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
-import { filterMovies, filterDuration } from "../../utils/utils";
+import { filtFilms, filtDuration } from "../../utils/utils";
 
 function SavedMovies({ loggedIn, likedMovies, onCardDelete }) {
   console.log(likedMovies);
@@ -23,8 +23,8 @@ function SavedMovies({ loggedIn, likedMovies, onCardDelete }) {
   }
 
   useEffect(() => {
-    const moviesList = filterMovies(likedMovies, searchQuery);
-    setFilteredMovies(isShortMovies ? filterDuration(moviesList) : moviesList);
+    const moviesList = filtFilms(likedMovies, searchQuery);
+    setFilteredMovies(isShortMovies ? filtDuration(moviesList) : moviesList);
   }, [likedMovies, isShortMovies, searchQuery]);
 
   useEffect(() => {

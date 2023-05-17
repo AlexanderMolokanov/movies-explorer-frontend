@@ -2,7 +2,7 @@ import React from "react";
 import "../Form/Form.css";
 import Form from "../Form/Form";
 import useForm from "../hooks/useForm";
-import { EMAIL_CHECK, USERNAME_CHECK } from "../../utils/constants";
+import { EMAIL_CHECK, USERNAME_CHECK } from "../../utils/config";
 
 function Register({ onRegister, isSpiner }) {
   const { enteredValues, errors, handleChange, isFormValid } = useForm();

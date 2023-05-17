@@ -8,10 +8,10 @@ import {
   OPEN_DESKTOP,
   OPEN_TABLET,
   OPEN_MOBILE,
-} from "../../utils/constants";
+} from "../../utils/config";
 
 function MoviesCardList({
-  cards,
+  cards,  
   isSavedFilms,
   isSpiner,
   isReqErr,
