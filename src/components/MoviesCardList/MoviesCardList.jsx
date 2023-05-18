@@ -14,17 +14,17 @@ function MoviesCardList({
   likedFilms,
   onCardDelete,
 }) {
-  const [shownMovies, setShownMovies] = useState(0);
+  const [shownCards, setShownCards] = useState(0);
   const { pathname } = useLocation();
 
   function shownCount() {
     const display = window.innerWidth;
     if (display > 1280) {
-      setShownMovies(12);
+      setShownCards(12);
     } else if (display > 768) {
-      setShownMovies(8);
+      setShownCards(8);
     } else if (display > 480) {
-      setShownMovies(5);
+      setShownCards(5);
     }
   }
 
@@ -41,11 +41,11 @@ function MoviesCardList({
   function showMore() {
     const display = window.innerWidth;
     if (display > 1280) {
-      setShownMovies(+OPEN_DESKTOP);
+      setShownCards(shownCards + OPEN_DESKTOP);
     } else if (display > 768) {
-      setShownMovies(shownMovies + OPEN_TABLET);
+      setShownCards(shownCards + OPEN_TABLET);
     } else if (display < 480) {
-      setShownMovies(shownMovies + OPEN_MOBILE);
+      setShownCards(shownCards + OPEN_MOBILE);
     }
   }
 
@@ -92,7 +92,7 @@ function MoviesCardList({
           ) : (
             <>
               <ul className="films-cards__list">
-                {cards.slice(0, shownMovies).map((card) => (
+                {cards.slice(0, shownCards).map((card) => (
                   <MoviesCard
                     key={isSavedFilms ? card._id : card.id}
                     saved={getLikedMovieCard(likedFilms, card)}
@@ -106,7 +106,7 @@ function MoviesCardList({
                 ))}
               </ul>
               <div className="films-cards__button-container">
-                {cards.length > shownMovies ? (
+                {cards.length > shownCards ? (
                   <button className="films-cards__button" onClick={showMore}>
                     Ещё
                   </button>

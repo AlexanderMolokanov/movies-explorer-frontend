@@ -32,8 +32,9 @@ function App() {
   const history = useHistory();
   const location = useLocation();
   const path = location.pathname;
-  // const [isLogged, setIsLogged] = useState(false);
-  const [isLogged, setIsLogged] = useState(localStorage.getItem("logged") === "true");
+  const [isLogged, setIsLogged] = useState(
+    localStorage.getItem("logged") === "true"
+  );
   const [user, setUser] = useState({});
   const [likedFilms, setLikedMovies] = useState([]);
   const [isSuccesRegistr, setIsSuccesRegistr] = useState(false);
@@ -47,9 +48,9 @@ function App() {
     setIsSpiner(true);
     console.log("handleAuthorization-apiSignin-");
     apiSignin(email, password)
-    .then((res) => {
-      if (res) {
-        console.log(res);
+      .then((res) => {
+        if (res) {
+          console.log(res);
           setIsLogged(true);
           localStorage.setItem("login", true);
           localStorage.setItem("logged", true);
@@ -57,10 +58,6 @@ function App() {
           setIsSuccessful(true);
           setIsPopup(true);
           history.push("./movies");
-
-          // console.log("localStorage.setItem")
-          // console.log((localStorage.getItem("login") === "true"))
-          // (localStorage.getItem("shortFilms") === "true")
         }
       })
       .catch((err) => {
@@ -72,24 +69,6 @@ function App() {
         setIsSpiner(false);
       });
   }
-
-  // const [isInfoTooltip, setIsInfoTooltip] = useState({
-  //   isOpen: false,
-  //   successful: true,
-  //   text: '',
-  // });
-
-  // setIsInfoTooltip({
-  //   isOpen: true,
-  //   successful: false,
-  //   text: err,
-  // })
-
-  // setIsInfoTooltip({
-  //   isOpen: true,
-  //   successful: true,
-  //   text: 'Добро пожаловать!',
-  // });
 
   // аутентификация
   useEffect(() => {
@@ -112,69 +91,8 @@ function App() {
         .catch((err) => {
           console.log(err);
         });
-        
-    }
-    else 
-    {
-      // setIsLogged(false);
     }
   }, [isLogged]);
-
-  // apiGetUser()
-  //   .then((profileInfo) => {
-  //     // console.log("profileInfo");
-  //     // console.log(profileInfo);
-  //     console.log("localStorage.getItem");
-  //     const sdfs = localStorage.getItem("login") === "true";
-  //     console.log(sdfs);
-  //     // const qwqwqwqwqwq = profileInfo === Object;
-  //     // console.log(qwqwqwqwqwq)
-  //     if (
-  //       // profileInfo &&
-  //       sdfs
-  //     ) {
-  //       setIsLogged(true);
-
-  //       // setUser(profileInfo);
-  //     }
-  //     // history.push(path);
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //     // if (err) {
-  //     //   setIsLogged(false);
-  //     // }
-  //   });
-  //   },
-  //   [
-  //     // path, history
-  //     // sdfs
-  //   ]
-  // );
-
-  // useEffect(() => {
-  //   console.log("isLogged: ");
-  //   console.log(isLogged);
-  //   if (isLogged) {
-  //     apiGetUser()
-  //       .then((profileInfo) => {
-  //         setUser(profileInfo);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //     apiGetSavedCards()
-  //       .then((cardsData) => {
-  //         setLikedMovies(cardsData);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   } else {
-  //   }
-  // },
-  // [isLogged]);
-  //
 
   //регистрация
   function handleRegistration({ name, email, password }) {
@@ -267,18 +185,14 @@ function App() {
   // Выход
   const toDoSignOut = () => {
     setIsLogged(false);
-    // setUser("");
     setUser({});
-    // setUser((prev) => {
-    //   return { ...prev, out: true };
-    // });
     localStorage.removeItem("films");
     localStorage.removeItem("filmsSearch");
     localStorage.removeItem("shortFilms");
     localStorage.removeItem("allFilms");
     localStorage.removeItem("login");
     localStorage.removeItem("logged");
-    setSdfs((localStorage.getItem("login") === "true"));
+    setSdfs(localStorage.getItem("login") === "true");
     setIsSuccesRegistr(false);
     history.push("/");
   };

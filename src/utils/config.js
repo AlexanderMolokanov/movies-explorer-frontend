@@ -6,7 +6,7 @@ const CONFIG = {
 };
 const OPEN_DESKTOP = 3;
 const OPEN_TABLET = 2;
-const OPEN_MOBILE = 1;
+const OPEN_MOBILE = 2;
 const SHORT_FILM_DURATION = 40;
 
 export {

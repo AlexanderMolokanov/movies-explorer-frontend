@@ -1,7 +1,7 @@
 import React from 'react';
 import NavTab from '../NavTab/NavTab';
 
-function Promo() {
+export default function Promo() {
   return (
     <section className="promo" id="promo">
       <div className="promo__container">
@@ -11,5 +11,3 @@ function Promo() {
     </section>
   );
 }
-
-export default Promo;

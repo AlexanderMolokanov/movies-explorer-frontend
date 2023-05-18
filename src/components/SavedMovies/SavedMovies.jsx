@@ -6,7 +6,6 @@ import Footer from "../Footer/Footer";
 import { filtFilms, filtDuration } from "../../utils/utils";
 
 function SavedMovies({ isLogged, likedFilms, onCardDelete }) {
-  // console.log(likedFilms);
   const [filteredFilms, setFilteredFilms] = useState(likedFilms); //отфильтрованные по запросу и чекбоксу
   const [isShortFilms, setIsShortFilms] = useState(false); //включен ли чекбокс короткометражек
   const [iSnotFound, setNotFound] = useState(false); //фильмы по запросу не найдены

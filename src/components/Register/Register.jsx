@@ -1,7 +1,6 @@
 import React from "react";
 import RegForm from "../RegForm/RegForm";
 import useFormWithValidation from "../../hooks/useFormWithValidation";
-// import { USERNAME_CHECK } from "../../utils/config";
 
 function Register({ onRegister, isSpiner }) {
   const { inputValues, error, handleChange, isValid } = useFormWithValidation();
@@ -38,7 +37,6 @@ function Register({ onRegister, isSpiner }) {
           required
           onChange={handleChange}
           value={inputValues.name || ""}
-          // pattern={USERNAME_CHECK}
         />
         <span className="form__input-error">{error.name}</span>
       </label>

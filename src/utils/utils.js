@@ -19,6 +19,4 @@ function filtDuration(films) {
 }
 
 //изменить формат времени фильмов
-
-
 export { filtDuration, filtFilms };

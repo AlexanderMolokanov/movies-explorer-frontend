@@ -2,13 +2,12 @@ import React, { useEffect, useContext, useState } from 'react';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
-// import { USERNAME_CHECK } from '../../utils/config';
 
-function Profile({ signOut, onUpdateUser, isLogged, isSpiner }) {
+export default function Profile({ signOut, onUpdateUser, isLogged, isSpiner }) {
   const user = useContext(CurrentUserContext);
 
   const { inputValues, error, handleChange, isValid, resetForm } = useFormWithValidation();
-  const [isLastValues, setIsLastValues] = useState(false);
+  const [isLastValues, setItLastValues] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -26,11 +25,10 @@ function Profile({ signOut, onUpdateUser, isLogged, isSpiner }) {
 
   useEffect(() => {
     if (user.name === inputValues.name && user.email === inputValues.email) {
-      setIsLastValues(true);
+      setItLastValues(true);
     } else {
-      setIsLastValues(false);
+      setItLastValues(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputValues]);
 
   return (
@@ -51,7 +49,6 @@ function Profile({ signOut, onUpdateUser, isLogged, isSpiner }) {
               required 
               onChange={handleChange}
               value={inputValues.name || ''}
-              // pattern={USERNAME_CHECK}
             />
             <span className="profile__input-error">{error.name}</span>
           </label>
@@ -88,5 +85,3 @@ function Profile({ signOut, onUpdateUser, isLogged, isSpiner }) {
     </>
   );
 }
-
-export default Profile;
