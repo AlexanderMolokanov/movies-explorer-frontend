@@ -6,11 +6,11 @@ function MoviesCard({
   handleLikeClick,
   onCardDelete,
   saved,
-  likedMovies,
+  likedFilms,
 }) {
   function onCardClick() {
     if (saved) {
-      onCardDelete(likedMovies.filter((m) => m.movieId === card.id)[0]);
+      onCardDelete(likedFilms.filter((m) => m.movieId === card.id)[0]);
     } else {
       handleLikeClick(card);
     }

@@ -32,14 +32,13 @@ function App() {
   const history = useHistory();
   const location = useLocation();
   const path = location.pathname;
+  const [isLogged, setIsLogged] = useState(false);
+  const [user, setUser] = useState({});
+  const [likedFilms, setLikedMovies] = useState([]);
+  const [isSuccesRegistr, setIsSuccesRegistr] = useState(false);
   const [isPopup, setIsPopup] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);
-  const [isSuccesRegistr, setIsSuccesRegistr] = useState(false);
   const [isSpiner, setIsSpiner] = useState(false);
-  const [isLogged, setIsLogged] = useState(false);
-  const [likedMovies, setLikedMovies] = useState([]);
-  const [user, setUser] = useState({});
-
 
   // const [isInfoTooltip, setIsInfoTooltip] = useState({
   //   isOpen: false,
@@ -59,13 +58,71 @@ function App() {
   //   text: 'Добро пожаловать!',
   // });
 
+  // аутентификация
+  useEffect(
+    () => {
+      apiGetUser()
+        .then((profileInfo) => {
+          console.log("profileInfo");
+          console.log(profileInfo);
+          console.log("localStorage.getItem");
+          const sdfs = localStorage.getItem("login") === "true";
+          console.log(sdfs);
+          if (profileInfo && sdfs) {
+            // localStorage.removeItem("allFilms");
+            // setUser(profileInfo);
+            setIsLogged(true);
+          }
+          history.push(path);
+        })
+        .catch((err) => {
+          console.log(err);
+          // if (err) {
+          //   setIsLogged(false);
+          // }
+        });
+    },
+    [
+      path, history
+    ]
+  );
+
+  useEffect(() => {
+    console.log("isLogged: ");
+    console.log(isLogged);
+    if (isLogged) {
+      apiGetUser()
+        .then((profileInfo) => {
+          setUser(profileInfo);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      apiGetSavedCards()
+        .then((cardsData) => {
+          setLikedMovies(cardsData);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+    }
+  }, [isLogged, history]);
+
   //регистрация
   function handleRegistration({ name, email, password }) {
     apiSignup(name, email, password)
       .then((res) => {
         if (res) {
-          // setUser(data);
           handleAuthorization({ email, password });
+
+          apiGetUser()
+            .then((profileInfo) => {
+              setUser(profileInfo);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
       })
       .catch((err) => {
@@ -80,11 +137,11 @@ function App() {
     apiSignin(email, password)
       .then((res) => {
         if (res) {
+          setIsLogged(true);
+          localStorage.setItem("login", true);
           setIsSuccesRegistr(true);
           setIsSuccessful(true);
           setIsPopup(true);
-          localStorage.setItem("login", true);
-          setIsLogged(true);
           // console.log("localStorage.setItem")
           // console.log((localStorage.getItem("login") === "true"))
           // (localStorage.getItem("shortFilms") === "true")
@@ -100,27 +157,6 @@ function App() {
         setIsSpiner(false);
       });
   }
-
-  // аутентификация
-  useEffect(() => {
-    apiGetUser()
-      .then((profileInfo) => {
-        // console.log("profileInfo")
-        // console.log(profileInfo)
-        console.log("localStorage.getItem")
-        const sdfs = (localStorage.getItem("login") === "true")
-        console.log(sdfs)
-        if (profileInfo && sdfs) {
-          // localStorage.removeItem("allFilms");
-          // setUser(profileInfo);
-          setIsLogged(true);
-        }
-        history.push(path);
-      })
-      .catch((err) => {
-        setIsLogged(false);
-      });
-  }, [path, history]);
 
   // useEffect(() => {
   //   const userDatas = user;
@@ -144,61 +180,40 @@ function App() {
   // }, [user]
   // );
 
-  useEffect(() => {
-    console.log("isLogged: ");
-    console.log(isLogged);
-    if (isLogged) {
-      apiGetUser()
-        .then((profileInfo) => {
-          setUser(profileInfo);
-        })  
-        .catch((err) => {
-          console.log(err);
-        });
-      apiGetSavedCards()
-        .then((cardsData) => {
-          setLikedMovies(cardsData);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [isLogged]);
-
-  function handleUpdateUser(newUserInfo) {
+  function handleUserUpdate(newData) {
     setIsSpiner(true);
-    apiSetUser(newUserInfo)
-      .then((data) => {
-        setUser(data);
+    apiSetUser(newData)
+      .then((userData) => {
         setIsSuccesRegistr(false);
         setIsSuccessful(true);
         setIsPopup(true);
+        setUser(userData);
       })
       .catch((err) => {
         setIsPopup(true);
         console.log(err);
-        handleUnauthorized(err);
+        todoUnauthorized(err);
       })
       .finally(() => {
         setIsSpiner(false);
       });
   }
 
-  function handleCardLike(card) {
-    apiSaveCard(card)
-      .then((newMovie) => {
-        setLikedMovies([newMovie, ...likedMovies]);
+  function handleSave(film) {
+    apiSaveCard(film)
+      .then((newfilm) => {
+        setLikedMovies([newfilm, ...likedFilms]);
       })
       .catch((err) => {
         setIsPopup(true);
         console.log(err);
-        handleUnauthorized(err);
+        todoUnauthorized(err);
       });
   }
 
-  function handleUnauthorized(err) {
+  function todoUnauthorized(err) {
     if (err === "Error: 401") {
-      handleSignOut();
+      toDoSignOut();
     }
   }
 
@@ -212,7 +227,7 @@ function App() {
       .catch((err) => {
         setIsPopup(true);
         console.log(err);
-        handleUnauthorized(err);
+        todoUnauthorized(err);
       });
   }
 
@@ -240,7 +255,7 @@ function App() {
   };
 
   // Выход
-  const handleSignOut = () => {
+  const toDoSignOut = () => {
     setIsLogged(false);
     // setUser("");
     setUser({});
@@ -288,23 +303,23 @@ function App() {
             </Route>
             <ProtectedRoute
               path="/movies"
-              likedMovies={likedMovies}
+              likedFilms={likedFilms}
               loggedIn={isLogged}
               onCardDelete={handleCardDelete}
               component={Movies}
-              handleLikeClick={handleCardLike}
+              handleLikeClick={handleSave}
             ></ProtectedRoute>
             <ProtectedRoute
               path="/saved-movies"
-              likedMovies={likedMovies}
+              likedFilms={likedFilms}
               loggedIn={isLogged}
               onCardDelete={handleCardDelete}
               component={SavedMovies}
             ></ProtectedRoute>
             <ProtectedRoute
               path="/profile"
-              signOut={handleSignOut}
-              onUpdateUser={handleUpdateUser}
+              signOut={toDoSignOut}
+              onUpdateUser={handleUserUpdate}
               loggedIn={isLogged}
               component={Profile}
               isSpiner={isSpiner}
