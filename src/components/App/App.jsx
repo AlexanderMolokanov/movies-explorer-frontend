@@ -32,7 +32,8 @@ function App() {
   const history = useHistory();
   const location = useLocation();
   const path = location.pathname;
-  const [isLogged, setIsLogged] = useState(false);
+  // const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(localStorage.getItem("logged") === "true");
   const [user, setUser] = useState({});
   const [likedFilms, setLikedMovies] = useState([]);
   const [isSuccesRegistr, setIsSuccesRegistr] = useState(false);
@@ -51,9 +52,10 @@ function App() {
         console.log(res);
           setIsLogged(true);
           localStorage.setItem("login", true);
-          // setIsSuccesRegistr(true);
-          // setIsSuccessful(true);
-          // setIsPopup(true);
+          localStorage.setItem("logged", true);
+          setIsSuccesRegistr(true);
+          setIsSuccessful(true);
+          setIsPopup(true);
           history.push("./movies");
 
           // console.log("localStorage.setItem")
@@ -91,16 +93,32 @@ function App() {
 
   // аутентификация
   useEffect(() => {
-    if (sdfs) {
+    if (isLogged) {
       setIsLogged(true);
       console.log("setIsLogged-true -аутентификация");
       console.log(isLogged);
+
+      apiGetUser()
+        .then((profileInfo) => {
+          setUser(profileInfo);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      apiGetSavedCards()
+        .then((cardsData) => {
+          setLikedMovies(cardsData);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+        
     }
     else 
     {
       // setIsLogged(false);
     }
-  }, [sdfs]);
+  }, [isLogged]);
 
   // apiGetUser()
   //   .then((profileInfo) => {
@@ -140,14 +158,14 @@ function App() {
   //   if (isLogged) {
   //     apiGetUser()
   //       .then((profileInfo) => {
-  //         // setUser(profileInfo);
+  //         setUser(profileInfo);
   //       })
   //       .catch((err) => {
   //         console.log(err);
   //       });
   //     apiGetSavedCards()
   //       .then((cardsData) => {
-  //         // setLikedMovies(cardsData);
+  //         setLikedMovies(cardsData);
   //       })
   //       .catch((err) => {
   //         console.log(err);
@@ -155,8 +173,8 @@ function App() {
   //   } else {
   //   }
   // },
-  // []);
-  // //
+  // [isLogged]);
+  //
 
   //регистрация
   function handleRegistration({ name, email, password }) {
@@ -164,14 +182,6 @@ function App() {
       .then((res) => {
         if (res) {
           handleAuthorization({ email, password });
-
-          // apiGetUser()
-          //   .then((profileInfo) => {
-          //     setUser(profileInfo);
-          //   })
-          //   .catch((err) => {
-          //     console.log(err);
-          //   });
         }
       })
       .catch((err) => {
@@ -179,28 +189,6 @@ function App() {
         console.log(err);
       });
   }
-
-  // useEffect(() => {
-  //   const userDatas = user;
-  //   console.log("userDatas")
-  //   console.log(userDatas)
-  //   console.log(userDatas.out === false)
-  //   if (userDatas.out === false) {
-  //         apiGetUser()
-  //           .then((profileInfo  ) => {
-  //             if (profileInfo) {
-  //               // localStorage.removeItem("allFilms");
-  //               // setUser(profileInfo);
-  //               // setIsLogged(true);
-  //             }
-  //             // history.push(path);
-  //           })
-  //           .catch((err) => {
-  //             console.log(err);
-  //           });
-  //   }
-  // }, [user]
-  // );
 
   function handleUserUpdate(newData) {
     setIsSpiner(true);
@@ -289,6 +277,7 @@ function App() {
     localStorage.removeItem("shortFilms");
     localStorage.removeItem("allFilms");
     localStorage.removeItem("login");
+    localStorage.removeItem("logged");
     setSdfs((localStorage.getItem("login") === "true"));
     setIsSuccesRegistr(false);
     history.push("/");
