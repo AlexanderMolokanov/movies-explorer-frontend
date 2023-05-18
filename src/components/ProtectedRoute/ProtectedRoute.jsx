@@ -2,11 +2,11 @@
 import { Route, Redirect } from "react-router-dom";
 
 export default function ProtectedRoute({ component: Component, ...props }) {
-  console.log("props.isLogged");
-  console.log(props.loggedIn);
+  console.log("props.isLogged - ИН ПРОТЕКТЕД РОУТ");
+  console.log(props.isLogged);
   return (
     <Route>
-      {() => (props.loggedIn ? <Component {...props} /> : <Redirect to="/" />)}
+      {() => (props.isLogged ? <Component {...props} /> : <Redirect to="/" />)}
     </Route>
   );
 }
@@ -25,8 +25,8 @@ export default function ProtectedRoute({ component: Component, ...props }) {
 
 // import { Navigate } from 'react-router-dom';
 
-// function ProtectedRoute({children, loggedIn}) {
-//     if (loggedIn) {
+// function ProtectedRoute({children, isLogged}) {
+//     if (isLogged) {
 //         return (
 //             children
 //         )
@@ -43,8 +43,8 @@ export default function ProtectedRoute({ component: Component, ...props }) {
 // import React from 'react';
 // import { Navigate } from 'react-router-dom';
 
-// const ProtectedRoute = ({loggedIn, children}) => {
-//   return loggedIn ? children : <Navigate to="/"/>;
+// const ProtectedRoute = ({isLogged, children}) => {
+//   return isLogged ? children : <Navigate to="/"/>;
 // };
 
 // export default ProtectedRoute;
