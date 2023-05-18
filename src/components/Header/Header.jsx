@@ -4,7 +4,7 @@ import Navigation from "../Navigation/Navigation";
 import logo from "../../images/logo.svg";
 import menu from "../../images/burger-button.svg";
 
-function Header({ loggedIn }) {
+function Header({ isLogged }) {
   const [isClicked, setIsClicked] = useState(false);
 
   function handleOpen() {
@@ -17,7 +17,7 @@ function Header({ loggedIn }) {
 
   return (
     <>
-      {!loggedIn ? (
+      {!isLogged ? (
         <header className="header" id="header">
           <Link to="/" className="form__logo">
             <img src={logo} alt="логотип" />

@@ -34,7 +34,7 @@ const saveCard = (data) => {
 };
 
 // изменить данные профиля
-const setUser = (data) => {
+const apSetUser = (data) => {
   return fetch(`${CONFIG.BASE_URL}/users/me`, {
     method: "PATCH",
     credentials: "include",
@@ -126,7 +126,7 @@ const getUser = () => {
 
 export {
   saveCard,
-  setUser,
+  apSetUser,
   signup,
   signin,
   deleteSavedCard,

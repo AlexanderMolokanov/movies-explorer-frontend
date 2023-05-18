@@ -5,7 +5,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import { filtFilms, filtDuration } from "../../utils/utils";
 
-function SavedMovies({ loggedIn, likedMovies, onCardDelete }) {
+function SavedMovies({ isLogged, likedMovies, onCardDelete }) {
   console.log(likedMovies);
   const [filteredFilms, setFilteredFilms] = useState(likedMovies); //отфильтрованные по запросу и чекбоксу
   const [isShortFilms, setIsShortFilms] = useState(false); //включен ли чекбокс короткометражек
@@ -35,7 +35,7 @@ function SavedMovies({ loggedIn, likedMovies, onCardDelete }) {
 
   return (
     <section className="films">
-      <Header loggedIn={loggedIn} />
+      <Header isLogged={isLogged} />
       <SearchForm onSearchFilms={onSearchFilms} onFilter={handleShortMovies} />
       <MoviesCardList
         iSnotFound={iSnotFound}

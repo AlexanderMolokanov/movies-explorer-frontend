@@ -6,7 +6,7 @@ import Footer from "../Footer/Footer";
 import { getAllMovies as apiGetAllMovies } from "../../utils/apii";
 import { SHORT_FILM_DURATION } from "../../utils/config";
 
-function Movies({ loggedIn, handleLikeClick, likedMovies, onCardDelete }) {
+function Movies({ isLogged, handleLikeClick, likedMovies, onCardDelete }) {
   const [films, setFilms] = useState([]); //начальные фильмы
   const [filteredFilms, setFilteredFilms] = useState([]); //отфильтровать по запросу 
   const [isErr, setIsErr] = useState(false); 
@@ -116,7 +116,7 @@ function Movies({ loggedIn, handleLikeClick, likedMovies, onCardDelete }) {
 
   return (
     <section className="films">
-      <Header loggedIn={loggedIn} />
+      <Header isLogged={isLogged} />
       <SearchForm
         onSearchFilms={onSearchFilms}
         onFilter={handleShortMovies}

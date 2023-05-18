@@ -1,10 +1,10 @@
 import React, { useEffect, useContext, useState } from 'react';
-import CurrentUserContext from '../../contexts/CurrentUserContext';
+import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
-import { USERNAME_CHECK } from '../../utils/config';
+// import { USERNAME_CHECK } from '../../utils/config';
 
-function Profile({ signOut, onUpdateUser, loggedIn, isSpiner }) {
+function Profile({ signOut, onUpdateUser, isLogged, isSpiner }) {
   const user = useContext(CurrentUserContext);
 
   const { inputValues, error, handleChange, isValid, resetForm } = useFormWithValidation();
@@ -35,7 +35,7 @@ function Profile({ signOut, onUpdateUser, loggedIn, isSpiner }) {
 
   return (
     <>
-      <Header loggedIn={loggedIn} />
+      <Header isLogged={isLogged} />
       <section className="profile">
         <h3 className="profile__title">Привет, {user.name}!</h3>
         <form id="form" className="profile__form" onSubmit={handleSubmit} noValidate>
@@ -51,7 +51,7 @@ function Profile({ signOut, onUpdateUser, loggedIn, isSpiner }) {
               required 
               onChange={handleChange}
               value={inputValues.name || ''}
-              pattern={USERNAME_CHECK}
+              // pattern={USERNAME_CHECK}
             />
             <span className="profile__input-error">{error.name}</span>
           </label>
