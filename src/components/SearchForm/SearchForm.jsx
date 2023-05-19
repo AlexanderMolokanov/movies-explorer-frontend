@@ -10,7 +10,7 @@ function SearchForm({ onSearchFilms, onFilter, isShortFilms }) {
     setRrequest(e.target.value);
   }
 
-  function handleSubmit(e) {
+  function todoSubmit(e) {
     e.preventDefault();
     if (request.trim().length === 0) {
       setIsRrequestError(true);
@@ -34,7 +34,7 @@ function SearchForm({ onSearchFilms, onFilter, isShortFilms }) {
     <section className="search">
       <div className="search__forms-container">
         <div className="search__form-container">
-          <form className="search__form" id="form" onSubmit={handleSubmit}>
+          <form className="search__form" id="form" onSubmit={todoSubmit}>
             <label className="search__label" htmlFor="search-input"></label>
             <input
               name="request"

@@ -3,9 +3,9 @@ import RegForm from "../RegForm/RegForm";
 import useFormWithValidation from "../../hooks/useFormWithValidation";
 
 function Register({ onRegister, isSpiner }) {
-  const { inputValues, error, handleChange, isValid } = useFormWithValidation();
+  const { inputValues, error, todoChange, isValid } = useFormWithValidation();
 
-  function handleSubmit(e) {
+  function todoSubmit(e) {
     e.preventDefault();
     onRegister({
       name: inputValues.name,
@@ -18,7 +18,7 @@ function Register({ onRegister, isSpiner }) {
     <RegForm
       link="/signin"
       title="Добро пожаловать!"
-      onSubmit={handleSubmit}
+      onSubmit={todoSubmit}
       isDisabled={!isValid}
       isSpiner={isSpiner}
       buttonText="Зарегистрироваться"
@@ -35,7 +35,7 @@ function Register({ onRegister, isSpiner }) {
           minLength="2"
           maxLength="40"
           required
-          onChange={handleChange}
+          onChange={todoChange}
           value={inputValues.name || ""}
         />
         <span className="form__input-error">{error.name}</span>
@@ -48,7 +48,7 @@ function Register({ onRegister, isSpiner }) {
           id="email-input"
           type="email"
           required
-          onChange={handleChange}
+          onChange={todoChange}
           value={inputValues.email || ""}
         />
         <span className="form__input-error">{error.email}</span>
@@ -61,7 +61,7 @@ function Register({ onRegister, isSpiner }) {
           id="password-input"
           type="password"
           required
-          onChange={handleChange}
+          onChange={todoChange}
           value={inputValues.password || ""}
         />
         <span className="form__input-error">{error.password}</span>

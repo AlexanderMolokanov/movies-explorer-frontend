@@ -4,7 +4,6 @@ import {
   Route,
   Switch,
   useHistory,
-  useLocation,
 } from "react-router-dom";
 import {
   signup as apiSignup,
@@ -30,8 +29,6 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 
 function App() {
   const history = useHistory();
-  const location = useLocation();
-  const path = location.pathname;
   const [isLogged, setIsLogged] = useState(
     localStorage.getItem("logged") === "true"
   );
@@ -41,18 +38,16 @@ function App() {
   const [isPopup, setIsPopup] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isSpiner, setIsSpiner] = useState(false);
-  const [sdfs, setSdfs] = useState(localStorage.getItem("login") === "true");
 
   //авторизация
   function handleAuthorization({ email, password }) {
     setIsSpiner(true);
-    console.log("handleAuthorization-apiSignin-");
+    // console.log("handleAuthorization-apiSignin-");
     apiSignin(email, password)
       .then((res) => {
         if (res) {
           console.log(res);
           setIsLogged(true);
-          localStorage.setItem("login", true);
           localStorage.setItem("logged", true);
           setIsSuccesRegistr(true);
           setIsSuccessful(true);
@@ -95,7 +90,7 @@ function App() {
   }, [isLogged]);
 
   //регистрация
-  function handleRegistration({ name, email, password }) {
+  function todoRegistration({ name, email, password }) {
     apiSignup(name, email, password)
       .then((res) => {
         if (res) {
@@ -108,7 +103,7 @@ function App() {
       });
   }
 
-  function handleUserUpdate(newData) {
+  function todoUserUpdate(newData) {
     setIsSpiner(true);
     apiSetUser(newData)
       .then((userData) => {
@@ -127,7 +122,7 @@ function App() {
       });
   }
 
-  function handleSave(film) {
+  function todoLikeClick(film) {
     apiSaveCard(film)
       .then((newfilm) => {
         setLikedMovies([newfilm, ...likedFilms]);
@@ -145,7 +140,7 @@ function App() {
     }
   }
 
-  function handleCardDelete(card) {
+  function todoCardDelete(card) {
     apiDeleteSavedCard(card._id)
       .then(() => {
         setLikedMovies((state) =>
@@ -172,7 +167,7 @@ function App() {
     }
   }, [isPopup]);
 
-  const handlePopupClose = (e) => {
+  const todoPopupClose = (e) => {
     if (
       e.type === "keydown" ||
       e.target.classList.contains("popup_opened") ||
@@ -190,9 +185,7 @@ function App() {
     localStorage.removeItem("filmsSearch");
     localStorage.removeItem("shortFilms");
     localStorage.removeItem("allFilms");
-    localStorage.removeItem("login");
     localStorage.removeItem("logged");
-    setSdfs(localStorage.getItem("login") === "true");
     setIsSuccesRegistr(false);
     history.push("/");
   };
@@ -222,7 +215,7 @@ function App() {
             </Route>
             <Route path="/signup">
               {!isLogged ? (
-                <Register onRegister={handleRegistration} isSpiner={isSpiner} />
+                <Register onRegister={todoRegistration} isSpiner={isSpiner} />
               ) : (
                 <Redirect to="/" />
               )}
@@ -231,21 +224,21 @@ function App() {
               path="/movies"
               likedFilms={likedFilms}
               isLogged={isLogged}
-              onCardDelete={handleCardDelete}
+              onCardDelete={todoCardDelete}
               component={Movies}
-              handleLikeClick={handleSave}
+              todoLikeClick={todoLikeClick}
             ></ProtectedRoute>
             <ProtectedRoute
               path="/saved-movies"
               likedFilms={likedFilms}
               isLogged={isLogged}
-              onCardDelete={handleCardDelete}
+              onCardDelete={todoCardDelete}
               component={SavedMovies}
             ></ProtectedRoute>
             <ProtectedRoute
               path="/profile"
               signOut={toDoSignOut}
-              onUpdateUser={handleUserUpdate}
+              onUpdateUser={todoUserUpdate}
               isLogged={isLogged}
               component={Profile}
               isSpiner={isSpiner}
@@ -256,7 +249,7 @@ function App() {
           </Switch>
           <Popup
             isPopup={isPopup}
-            onClose={handlePopupClose}
+            onClose={todoPopupClose}
             isSuccessful={isSuccessful}
             isSuccesRegistr={isSuccesRegistr}
           />

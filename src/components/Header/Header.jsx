@@ -8,11 +8,11 @@ function Header({ isLogged }) {
   const [isClicked, setIsClicked] = useState(false);
   console.log("isLogged-in-Header")
   console.log(isLogged)
-  function handleOpen() {
+  function todoOpen() {
     setIsClicked(true);
   }
 
-  function handleClose() {
+  function todoClose() {
     setIsClicked(false);
   }
 
@@ -57,7 +57,7 @@ function Header({ isLogged }) {
             <Link to="/profile" className="header__account-button">
               Аккаунт
             </Link>
-            <button onClick={handleOpen} className="header__burger-button">
+            <button onClick={todoOpen} className="header__burger-button">
               <img
                 className="header__burger-button-img"
                 src={menu}
@@ -65,7 +65,7 @@ function Header({ isLogged }) {
               />
             </button>
           </div>
-          {isClicked ? <Navigation handleClose={handleClose} /> : ""}
+          {isClicked ? <Navigation todoClose={todoClose} /> : ""}
         </header>
       )}
     </>

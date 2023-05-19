@@ -6,7 +6,7 @@ import useFormWithValidation from '../../hooks/useFormWithValidation';
 export default function Profile({ signOut, onUpdateUser, isLogged, isSpiner }) {
   const user = useContext(CurrentUserContext);
 
-  const { inputValues, error, handleChange, isValid, resetForm } = useFormWithValidation();
+  const { inputValues, error, todoChange, isValid, resetForm } = useFormWithValidation();
   const [isLastValues, setItLastValues] = useState(false);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function Profile({ signOut, onUpdateUser, isLogged, isSpiner }) {
     }
   }, [user, resetForm]);
 
-  function handleSubmit(e) {
+  function todoSubmit(e) {
     e.preventDefault();
     onUpdateUser({
       name: inputValues.name,
@@ -29,6 +29,7 @@ export default function Profile({ signOut, onUpdateUser, isLogged, isSpiner }) {
     } else {
       setItLastValues(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputValues]);
 
   return (
@@ -36,7 +37,7 @@ export default function Profile({ signOut, onUpdateUser, isLogged, isSpiner }) {
       <Header isLogged={isLogged} />
       <section className="profile">
         <h3 className="profile__title">Привет, {user.name}!</h3>
-        <form id="form" className="profile__form" onSubmit={handleSubmit} noValidate>
+        <form id="form" className="profile__form" onSubmit={todoSubmit} noValidate>
           <label className="profile__field">
             Имя
             <input
@@ -47,7 +48,7 @@ export default function Profile({ signOut, onUpdateUser, isLogged, isSpiner }) {
               minLength="2"
               maxLength="40"
               required 
-              onChange={handleChange}
+              onChange={todoChange}
               value={inputValues.name || ''}
             />
             <span className="profile__input-error">{error.name}</span>
@@ -62,7 +63,7 @@ export default function Profile({ signOut, onUpdateUser, isLogged, isSpiner }) {
               id="email-input"
               type="email"
               required
-              onChange={handleChange}
+              onChange={todoChange}
               value={inputValues.email || ''}
             />
             <span className="profile__input-error">{error.email}</span>

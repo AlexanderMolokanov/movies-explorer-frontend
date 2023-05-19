@@ -4,10 +4,9 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import { getAllFilms as apiGetAllFilms } from "../../utils/apii";
-// import { SHORT_FILM_DURATION } from "../../utils/config";
-import { filtFilms, filtDuration } from "../../utils/utils";
+import { filtFilms, filtDuration } from "../../utils/someFunctionality";
 
-function Movies({ isLogged, handleLikeClick, likedFilms, onCardDelete }) {
+function Movies({ isLogged, todoLikeClick, likedFilms, onCardDelete }) {
   const [films, setFilms] = useState([]); //начальные фильмы
   const [filteredFilms, setFilteredFilms] = useState([]); //отфильтровать по запросу
   const [isErr, setIsErr] = useState(false); // вывести ошибку
@@ -16,7 +15,7 @@ function Movies({ isLogged, handleLikeClick, likedFilms, onCardDelete }) {
   const [isShortFilms, setIsShortFilms] = useState(false); //чекбокс короткометражек
 
   //фильтруем фильмы и кладем в локал сторэдж 
-  function handleFilterFilms(films, request, isShort) {
+  function filterFilms(films, request, isShort) {
     const filmsList = filtFilms(films, request); // получаем фильмы по запросу
     setFilms(filmsList); //юзстейт
     setFilteredFilms(isShort ? filtDuration(filmsList) : filmsList); // проверяем чекбокс и записываем их в стейт
@@ -24,26 +23,8 @@ function Movies({ isLogged, handleLikeClick, likedFilms, onCardDelete }) {
     localStorage.setItem("allFilms", JSON.stringify(films)); // сохраняем в локал сторэдж
   }
 
-  // //отфильтровать видео по запросу
-  // function filtFilms(films, request) {
-  //   const filmsByRequest = films.filter((film) => {
-  //     const filmRu = String(film.nameRU).toLowerCase().trim();
-  //     const filmEn = String(film.nameEN).toLowerCase().trim();
-  //     const userRequest = request.toLowerCase().trim();
-  //     return (
-  //       filmRu.indexOf(userRequest) !== -1 || filmEn.indexOf(userRequest) !== -1
-  //     );
-  //   });
-  //   return filmsByRequest;
-  // }
-
-  // //отфильтровать видео по времени
-  // function filtDuration(films) {
-  //   return films.filter((film) => film.duration < SHORT_FILM_DURATION);
-  // }
-
   //отфильтровать короткие видео по запросу
-  function handleShortFilms() {
+  function findShortFilms() {
     setIsShortFilms(!isShortFilms);
     if (!isShortFilms) {
       if (filtDuration(films).length === 0) {
@@ -64,12 +45,12 @@ function Movies({ isLogged, handleLikeClick, likedFilms, onCardDelete }) {
 
     if (localStorage.getItem("allFilms")) {
       const films = JSON.parse(localStorage.getItem("allFilms"));
-      handleFilterFilms(films, request, isShortFilms);
+      filterFilms(films, request, isShortFilms);
     } else {
       setIsSpiner(true);
       apiGetAllFilms()
         .then((cardsData) => {
-          handleFilterFilms(cardsData, request, isShortFilms);
+          filterFilms(cardsData, request, isShortFilms);
           setIsErr(false);
         })
         .catch((err) => {
@@ -120,14 +101,14 @@ function Movies({ isLogged, handleLikeClick, likedFilms, onCardDelete }) {
       <Header isLogged={isLogged} />
       <SearchForm
         onSearchFilms={onSearchFilms}
-        onFilter={handleShortFilms}
+        onFilter={findShortFilms}
         isShortFilms={isShortFilms}
       />
       <MoviesCardList
         likedFilms={likedFilms}
         cards={filteredFilms}
         isSavedFilms={false}
-        handleLikeClick={handleLikeClick}
+        todoLikeClick={todoLikeClick}
         onCardDelete={onCardDelete}
         isErr={isErr}
         iSnotFound={iSnotFound}

@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
-import { filtFilms, filtDuration } from "../../utils/utils";
+import { filtFilms, filtDuration } from "../../utils/someFunctionality";
 
 function SavedMovies({ isLogged, likedFilms, onCardDelete }) {
   const [filteredFilms, setFilteredFilms] = useState(likedFilms); //отфильтрованные по запросу и чекбоксу
@@ -15,7 +15,7 @@ function SavedMovies({ isLogged, likedFilms, onCardDelete }) {
     setSearcRequest(request);
   } 
 
-  function handleShortFilms() {
+  function findShortFilms() {
     setIsShortFilms(!isShortFilms);
   }
 
@@ -35,7 +35,7 @@ function SavedMovies({ isLogged, likedFilms, onCardDelete }) {
   return (
     <section className="films">
       <Header isLogged={isLogged} />
-      <SearchForm onSearchFilms={onSearchFilms} onFilter={handleShortFilms} />
+      <SearchForm onSearchFilms={onSearchFilms} onFilter={findShortFilms} />
       <MoviesCardList
         iSnotFound={iSnotFound}
         isSavedFilms={true}

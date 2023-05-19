@@ -18,5 +18,4 @@ function filtDuration(films) {
   return films.filter((film) => film.duration < SHORT_FILM_DURATION);
 }
 
-//изменить формат времени фильмов
 export { filtDuration, filtFilms };

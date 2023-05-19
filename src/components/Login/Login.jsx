@@ -3,9 +3,9 @@ import RegForm from "../RegForm/RegForm";
 import useFormWithValidation from "../../hooks/useFormWithValidation";
 
 function Login({ onAuthorize, isSpiner }) {
-  const { inputValues, error, handleChange, isValid } = useFormWithValidation();
+  const { inputValues, error, todoChange, isValid } = useFormWithValidation();
 
-  function handleSubmit(e) {
+  function todoSubmit(e) {
     e.preventDefault();
     onAuthorize({
       email: inputValues.email,
@@ -20,7 +20,7 @@ function Login({ onAuthorize, isSpiner }) {
       question="Еще не зарегистрированы?"
       linkText=" Регистрация"
       link="/signup"
-      onSubmit={handleSubmit}
+      onSubmit={todoSubmit}
       isDisabled={!isValid}
       isSpiner={isSpiner}
     >
@@ -32,7 +32,7 @@ function Login({ onAuthorize, isSpiner }) {
           id="email-input"
           type="email"
           required
-          onChange={handleChange}
+          onChange={todoChange}
           value={inputValues.email || ""}
         />
         <span className="form__input-error">{error.email}</span>
@@ -45,7 +45,7 @@ function Login({ onAuthorize, isSpiner }) {
           id="password-input"
           type="password"
           required
-          onChange={handleChange}
+          onChange={todoChange}
           value={inputValues.password || ""}
         />
         <span className="form__input-error">{error.password}</span>

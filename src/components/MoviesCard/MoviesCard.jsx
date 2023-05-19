@@ -3,7 +3,7 @@ import React from "react";
 function MoviesCard({
   card,
   isSavedFilms,
-  handleLikeClick,
+  todoLikeClick,
   onCardDelete,
   saved,
   likedFilms,
@@ -12,7 +12,7 @@ function MoviesCard({
     if (saved) {
       onCardDelete(likedFilms.filter((m) => m.movieId === card.id)[0]);
     } else {
-      handleLikeClick(card);
+      todoLikeClick(card);
     }
   }
 

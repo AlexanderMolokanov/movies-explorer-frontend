@@ -10,7 +10,7 @@ function MoviesCardList({
   isSpiner,
   isErr,
   iSnotFound,
-  handleLikeClick,
+  todoLikeClick,
   likedFilms,
   onCardDelete,
 }) {
@@ -81,7 +81,7 @@ function MoviesCardList({
                     cards={cards}
                     card={card}
                     isSavedFilms={isSavedFilms}
-                    handleLikeClick={handleLikeClick}
+                    todoLikeClick={todoLikeClick}
                     onCardDelete={onCardDelete}
                     likedFilms={likedFilms}
                   />
@@ -99,7 +99,7 @@ function MoviesCardList({
                     cards={cards}
                     card={card}
                     isSavedFilms={isSavedFilms}
-                    handleLikeClick={handleLikeClick}
+                    todoLikeClick={todoLikeClick}
                     onCardDelete={onCardDelete}
                     likedFilms={likedFilms}
                   />
