@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Redirect,
-  Route,
-  Switch,
-  useHistory,
-} from "react-router-dom";
+import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import {
   signup as apiSignup,
   signin as apiSignin,
@@ -103,6 +98,7 @@ function App() {
       });
   }
 
+  // обновить пользователя
   function todoUserUpdate(newData) {
     setIsSpiner(true);
     apiSetUser(newData)
@@ -122,6 +118,7 @@ function App() {
       });
   }
 
+  // сохранить карточку с фильмом
   function todoLikeClick(film) {
     apiSaveCard(film)
       .then((newfilm) => {
@@ -133,7 +130,7 @@ function App() {
         todoUnauthorized(err);
       });
   }
-
+ // выход при отсутствии авторизации
   function todoUnauthorized(err) {
     if (err === "Error: 401") {
       toDoSignOut();
@@ -154,14 +151,21 @@ function App() {
       });
   }
 
+  // Закрыть попар
   useEffect(() => {
     function closeByEscape(evt) {
       if (evt.key === "Escape") {
         closePopup();
       }
     }
+    function closeByClik(evt) {
+      if (evt.target.classList.contains("popup_opened")) {
+        closePopup();
+      }
+    }
     if (isPopup) {
       document.addEventListener("keydown", closeByEscape);
+      document.addEventListener("click", closeByClik);
     } else {
       document.removeEventListener("keydown", closeByEscape);
     }
@@ -177,6 +181,11 @@ function App() {
     }
   };
 
+  function closePopup() {
+    setIsPopup(false);
+    setIsSuccessful(false);
+  }
+
   // Выход
   const toDoSignOut = () => {
     setIsLogged(false);
@@ -189,12 +198,6 @@ function App() {
     setIsSuccesRegistr(false);
     history.push("/");
   };
-
-  // Закрыть попар
-  function closePopup() {
-    setIsPopup(false);
-    setIsSuccessful(false);
-  }
 
   return (
     <CurrentUserContext.Provider value={user}>
