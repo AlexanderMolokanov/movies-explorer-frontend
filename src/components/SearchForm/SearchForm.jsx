@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-function SearchForm({ onSearchFilms, onFilter, isShortFilms }) {
+export default function SearchForm({ onSearchFilms, onFilter, isShortFilms }) {
   const [isRrequesError, setIsRrequestError] = useState(false);
   const [request, setRrequest] = useState("");
   const location = useLocation();
@@ -68,5 +68,3 @@ function SearchForm({ onSearchFilms, onFilter, isShortFilms }) {
     </section>
   );
 }
-
-export default SearchForm;

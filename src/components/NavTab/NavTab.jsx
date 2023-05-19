@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-scroll';
 import './NavTab.css';
 
-function NavTab() {
+export default function NavTab() {
   return (
     <nav className="nav-tab">
       <Link to="about" className="nav-tab__link" smooth={true} duration={600}>
@@ -17,5 +17,3 @@ function NavTab() {
     </nav>
   );
 }
-
-export default NavTab;

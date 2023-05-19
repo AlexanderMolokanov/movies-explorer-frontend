@@ -2,7 +2,7 @@ import React from "react";
 import RegForm from "../RegForm/RegForm";
 import useFormWithValidation from "../../hooks/useFormWithValidation";
 
-function Register({ onRegister, isSpiner }) {
+export default function Register({ onRegister, isSpiner }) {
   const { inputValues, error, todoChange, isValid } = useFormWithValidation();
 
   function todoSubmit(e) {
@@ -70,4 +70,4 @@ function Register({ onRegister, isSpiner }) {
   );
 }
 
-export default Register;
+

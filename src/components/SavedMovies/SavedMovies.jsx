@@ -5,7 +5,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import { filtFilms, filtDuration } from "../../utils/someFunctionality";
 
-function SavedMovies({ isLogged, likedFilms, onCardDelete }) {
+export default function SavedMovies({ isLogged, likedFilms, onCardDelete }) {
   const [filteredFilms, setFilteredFilms] = useState(likedFilms); //отфильтрованные по запросу и чекбоксу
   const [isShortFilms, setIsShortFilms] = useState(false); //включен ли чекбокс короткометражек
   const [iSnotFound, setNotFound] = useState(false); //фильмы по запросу не найдены
@@ -48,4 +48,4 @@ function SavedMovies({ isLogged, likedFilms, onCardDelete }) {
   );
 }
 
-export default SavedMovies;
+

@@ -22,7 +22,7 @@ import React, { useState, useEffect } from "react";
 import Register from "../Register/Register";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 
-function App() {
+export default function App() {
   const history = useHistory();
   const [likedFilms, setLikedMovies] = useState([]);
   const [isLogged, setIsLogged] = useState(
@@ -263,5 +263,3 @@ function App() {
     </CurrentUserContext.Provider>
   );
 }
-
-export default App;

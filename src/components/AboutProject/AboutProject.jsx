@@ -1,6 +1,6 @@
 import React from "react";
 
-function AboutProject() {
+export default function AboutProject() {
   return (
     <section className="project" id="about">
       <div className="project__container">
@@ -37,5 +37,3 @@ function AboutProject() {
     </section>
   );
 }
-
-export default AboutProject;

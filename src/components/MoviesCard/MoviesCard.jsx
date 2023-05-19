@@ -1,6 +1,6 @@
 import React from "react";
 
-function MoviesCard({
+export default function MoviesCard({
   card,
   isSavedFilms,
   likedFilms,
@@ -75,4 +75,3 @@ function MoviesCard({
   );
 }
 
-export default MoviesCard;

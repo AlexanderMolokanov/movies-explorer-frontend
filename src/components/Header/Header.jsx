@@ -4,7 +4,7 @@ import logo from "../../images/logo.svg";
 import menu from "../../images/burger-button.svg";
 import React, { useState } from "react";
 
-function Header({ isLogged }) {
+export default function Header({ isLogged }) {
   const [isClicked, setIsClicked] = useState(false);
   console.log("isLogged-in-Header")
   console.log(isLogged)
@@ -69,5 +69,3 @@ function Header({ isLogged }) {
     </>
   );
 }
-
-export default Header;

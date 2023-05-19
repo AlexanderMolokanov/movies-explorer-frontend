@@ -2,7 +2,7 @@ import useFormWithValidation from "../../hooks/useFormWithValidation";
 import React from "react";
 import RegForm from "../RegForm/RegForm";
 
-function Login({ onAuthorize, isSpiner }) {
+export default function Login({ onAuthorize, isSpiner }) {
   const { inputValues, error, todoChange, isValid } = useFormWithValidation();
   function todoSubmit(evt) {
     evt.preventDefault();
@@ -51,5 +51,3 @@ function Login({ onAuthorize, isSpiner }) {
     </RegForm>
   );
 }
-
-export default Login;

@@ -1,7 +1,7 @@
 import photo from "../../images/my-photo.jpg";
 import React from "react";
 
-function AboutMe() {
+export default function AboutMe() {
   return (
     <section className="my" id="my">
       <h1 className="my__title">Студент</h1>
@@ -34,5 +34,3 @@ function AboutMe() {
     </section>
   );
 }
-
-export default AboutMe;

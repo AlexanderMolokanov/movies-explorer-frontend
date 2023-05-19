@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 
-function RegForm({
+export default function RegForm({
   buttonText,
   children,
   isDisabled,
@@ -43,4 +43,3 @@ function RegForm({
   );
 }
 
-export default RegForm;

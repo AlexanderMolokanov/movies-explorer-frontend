@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { OPEN_DESKTOP, OPEN_TABLET, OPEN_MOBILE } from "../../utils/config";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import Preloader from "../Preloader/Preloader";
+import { Preloader } from "../Preloader/Preloader";
 
-function MoviesCardList({
+export default function MoviesCardList({
   cards,
   isSavedFilms,
   isSpiner,
@@ -16,7 +16,7 @@ function MoviesCardList({
 }) {
   const [shownCards, setShownCards] = useState(0);
   const { pathname } = useLocation();
-  
+
   useEffect(() => {
     shownCount();
   }, []);
@@ -121,5 +121,3 @@ function MoviesCardList({
     </section>
   );
 }
-
-export default MoviesCardList;
