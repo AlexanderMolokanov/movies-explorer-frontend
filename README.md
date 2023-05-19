@@ -9,12 +9,12 @@ Movies Explorer - фронтенд проекта и сервис, в котор
 https://frt.gmkvid.nomoredomains.work/
 
 ## Ссылка на пул реквест
-https://github.com/AlexanderMolokanov/movies-explorer-frontend/pull/3
+https://github.com/AlexanderMolokanov/movies-explorer-frontend/pull/4
 
-## Ссылка на фронтенд 
+## Ссылка на репозиторий со фронтендом 
 https://github.com/AlexanderMolokanov/movies-explorer-api
 
-## Ссылка на бэкенд
+## Ссылка на репозиторий с бэкендом
 https://github.com/AlexanderMolokanov/movies-explorer-api
 
 ## Функционал 
@@ -29,9 +29,3 @@ https://github.com/AlexanderMolokanov/movies-explorer-api
 * Валидация форм при неправильно введенном логине/пароле;
 * SPA на `React` v6 c использованием библиотеки `react-router-dom`;
 * Защита роутов авторизацией;
-
-## Запуск проекта локально
-* `npm run start` - запуск проект в режиме отладки
-* `npm run build` - собрать проект
-* `npm run lint` - запустить линтер
-* `npm run deploy` - собрать проект и отправить на удаленный сервер
