@@ -90,7 +90,7 @@ const deleteSavedCard = (moviId) => {
 };
 
 // получить все фильмы
-function getAllMovies() {
+function getAllFilms() {
   return fetch(CONFIG.ALL_FILMS_URL, {
     method: "GET",
     headers: {
@@ -130,7 +130,7 @@ export {
   signup,
   signin,
   deleteSavedCard,
-  getAllMovies,
+  getAllFilms,
   getSavedCards,
   getUser,
 };

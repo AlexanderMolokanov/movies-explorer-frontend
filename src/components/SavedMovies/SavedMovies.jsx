@@ -9,19 +9,19 @@ function SavedMovies({ isLogged, likedFilms, onCardDelete }) {
   const [filteredFilms, setFilteredFilms] = useState(likedFilms); //отфильтрованные по запросу и чекбоксу
   const [isShortFilms, setIsShortFilms] = useState(false); //включен ли чекбокс короткометражек
   const [iSnotFound, setNotFound] = useState(false); //фильмы по запросу не найдены
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearcRequest] = useState("");
 
   function onSearchFilms(request) {
-    setSearchQuery(request);
-  }
+    setSearcRequest(request);
+  } 
 
-  function handleShortMovies() {
+  function handleShortFilms() {
     setIsShortFilms(!isShortFilms);
   }
 
   useEffect(() => {
-    const moviesList = filtFilms(likedFilms, searchQuery);
-    setFilteredFilms(isShortFilms ? filtDuration(moviesList) : moviesList);
+    const filmsList = filtFilms(likedFilms, searchQuery);
+    setFilteredFilms(isShortFilms ? filtDuration(filmsList) : filmsList);
   }, [likedFilms, isShortFilms, searchQuery]);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ function SavedMovies({ isLogged, likedFilms, onCardDelete }) {
   return (
     <section className="films">
       <Header isLogged={isLogged} />
-      <SearchForm onSearchFilms={onSearchFilms} onFilter={handleShortMovies} />
+      <SearchForm onSearchFilms={onSearchFilms} onFilter={handleShortFilms} />
       <MoviesCardList
         iSnotFound={iSnotFound}
         isSavedFilms={true}
