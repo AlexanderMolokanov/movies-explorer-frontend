@@ -2,9 +2,20 @@
 
 Movies Explorer - фронтенд проекта и сервис, в котором можно найти фильмы из коллекции BeatFilm и сохранить в избранном. 
 
-Готовый собранный сайт располагается по [ссылке](https://nomoredomains.ru)
-<br />
-Публичный IP-адрес сервера: 
+## Макет 
+Макет фигмы находится в контевом файле репозитория Diploma.fig
+
+## Ссылка на сайт
+https://frt.gmkvid.nomoredomains.work/
+
+## Ссылка на пул реквест
+https://github.com/AlexanderMolokanov/movies-explorer-frontend/pull/4
+
+## Ссылка на репозиторий со фронтендом 
+https://github.com/AlexanderMolokanov/movies-explorer-api
+
+## Ссылка на репозиторий с бэкендом
+https://github.com/AlexanderMolokanov/movies-explorer-api
 
 ## Функционал 
 * Поиск и фильтрация фильмов; 
@@ -18,9 +29,3 @@ Movies Explorer - фронтенд проекта и сервис, в котор
 * Валидация форм при неправильно введенном логине/пароле;
 * SPA на `React` v6 c использованием библиотеки `react-router-dom`;
 * Защита роутов авторизацией;
-
-## Запуск проекта локально
-* `npm run start` - запуск проект в режиме отладки
-* `npm run build` - собрать проект
-* `npm run lint` - запустить линтер
-* `npm run deploy` - собрать проект и отправить на удаленный сервер
