@@ -3,10 +3,10 @@ import React from "react";
 function MoviesCard({
   card,
   isSavedFilms,
-  todoLikeClick,
+  likedFilms,
   onCardDelete,
   saved,
-  likedFilms,
+  todoLikeClick,
 }) {
   function onCardClick() {
     if (saved) {

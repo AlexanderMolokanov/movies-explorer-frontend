@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from "react";
-import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import {
   signup as apiSignup,
   signin as apiSignin,
@@ -12,27 +10,29 @@ import {
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
+import Login from "../Login/Login";
+import Main from "../Main/Main";
+import Movies from "../Movies/Movies";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import Profile from "../Profile/Profile";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Popup from "../Popup/Popup";
-import Register from "../Register/Register";
-import Login from "../Login/Login";
-import Main from "../Main/Main";
-import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
+import React, { useState, useEffect } from "react";
+import Register from "../Register/Register";
+import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 
 function App() {
   const history = useHistory();
+  const [likedFilms, setLikedMovies] = useState([]);
   const [isLogged, setIsLogged] = useState(
     localStorage.getItem("logged") === "true"
   );
-  const [user, setUser] = useState({});
-  const [likedFilms, setLikedMovies] = useState([]);
   const [isSuccesRegistr, setIsSuccesRegistr] = useState(false);
   const [isPopup, setIsPopup] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isSpiner, setIsSpiner] = useState(false);
+  const [user, setUser] = useState({});
 
   //авторизация
   function handleAuthorization({ email, password }) {
@@ -118,6 +118,13 @@ function App() {
       });
   }
 
+  // выход при отсутствии авторизации
+  function todoUnauthorized(err) {
+    if (err === "Error: 401") {
+      toDoSignOut();
+    }
+  }
+
   // сохранить карточку с фильмом
   function todoLikeClick(film) {
     apiSaveCard(film)
@@ -130,13 +137,8 @@ function App() {
         todoUnauthorized(err);
       });
   }
- // выход при отсутствии авторизации
-  function todoUnauthorized(err) {
-    if (err === "Error: 401") {
-      toDoSignOut();
-    }
-  }
 
+  // удалить сохраненную карточку
   function todoCardDelete(card) {
     apiDeleteSavedCard(card._id)
       .then(() => {
@@ -188,13 +190,13 @@ function App() {
 
   // Выход
   const toDoSignOut = () => {
-    setIsLogged(false);
-    setUser({});
     localStorage.removeItem("films");
     localStorage.removeItem("filmsSearch");
     localStorage.removeItem("shortFilms");
     localStorage.removeItem("allFilms");
     localStorage.removeItem("logged");
+    setIsLogged(false);
+    setUser({});
     setIsSuccesRegistr(false);
     history.push("/");
   };

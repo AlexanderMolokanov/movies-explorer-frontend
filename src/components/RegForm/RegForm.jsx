@@ -3,22 +3,22 @@ import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 
 function RegForm({
+  buttonText,
+  children,
   isDisabled,
   isSpiner,
-  children,
-  title,
-  buttonText,
   question,
-  linkText,
   link,
+  linkText,
   onSubmit,
+  title,
 }) {
   return (
     <div className="form__container">
       <Link to="/" className="form__logo">
         <img src={logo} alt="логотип" />
       </Link>
-      <h3 className="form__title">{title}</h3>
+      <h2 className="form__title">{title}</h2>
       <form className="form" id="form" onSubmit={onSubmit} noValidate>
         {children}
         <button

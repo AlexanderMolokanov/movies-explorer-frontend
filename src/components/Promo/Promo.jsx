@@ -1,5 +1,5 @@
-import React from 'react';
 import NavTab from '../NavTab/NavTab';
+import React from 'react';
 
 export default function Promo() {
   return (

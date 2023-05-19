@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import Header from "../Header/Header";
-import SearchForm from "../SearchForm/SearchForm";
-import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
-import { getAllFilms as apiGetAllFilms } from "../../utils/apii";
 import { filtFilms, filtDuration } from "../../utils/someFunctionality";
+import { getAllFilms as apiGetAllFilms } from "../../utils/apii";
+import Header from "../Header/Header";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import SearchForm from "../SearchForm/SearchForm";
+import React, { useState, useEffect } from "react";
 
 function Movies({ isLogged, todoLikeClick, likedFilms, onCardDelete }) {
   const [films, setFilms] = useState([]); //начальные фильмы
@@ -14,7 +14,7 @@ function Movies({ isLogged, todoLikeClick, likedFilms, onCardDelete }) {
   const [isSpiner, setIsSpiner] = useState(false); // включить/выключить спинер
   const [isShortFilms, setIsShortFilms] = useState(false); //чекбокс короткометражек
 
-  //фильтруем фильмы и кладем в локал сторэдж 
+  //фильтруем фильмы и кладем в локал сторэдж
   function filterFilms(films, request, isShort) {
     const filmsList = filtFilms(films, request); // получаем фильмы по запросу
     setFilms(filmsList); //юзстейт

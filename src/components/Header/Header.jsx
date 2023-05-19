@@ -1,8 +1,8 @@
-import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import logo from "../../images/logo.svg";
 import menu from "../../images/burger-button.svg";
+import React, { useState } from "react";
 
 function Header({ isLogged }) {
   const [isClicked, setIsClicked] = useState(false);
@@ -11,11 +11,9 @@ function Header({ isLogged }) {
   function todoOpen() {
     setIsClicked(true);
   }
-
   function todoClose() {
     setIsClicked(false);
   }
-
   return (
     <>
       {!isLogged ? (
@@ -23,14 +21,14 @@ function Header({ isLogged }) {
           <Link to="/" className="form__logo">
             <img src={logo} alt="логотип" />
           </Link>
-          <div className="header__button-container">
+          <d  iv className="header__button-container">
             <Link to="/signup" className="header__button">
               Регистрация
             </Link>
             <Link to="/signin" className="header__button header__button-green">
               Войти
             </Link>
-          </div>
+          </d>
         </header>
       ) : (
         <header className="header" id="header">

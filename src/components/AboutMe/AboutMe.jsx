@@ -1,13 +1,13 @@
-import React from "react";
 import photo from "../../images/my-photo.jpg";
+import React from "react";
 
 function AboutMe() {
   return (
     <section className="my" id="my">
-      <h2 className="my__title">Студент</h2>
+      <h1 className="my__title">Студент</h1>
       <div className="my__container">
         <div className="my__content">
-          <h3 className="my__large-title">Александр</h3>
+          <h2 className="my__large-title">Александр</h2>
           <p className="my__info">Ученый-программист, 35 лет</p>
           <p className="my__description">
             Я работаю в научном подразделении Центрального института

@@ -1,21 +1,16 @@
-// import React, { useEffect }from "react";
-// 
-
-
 export default function Popup({
-  onClose,
   isPopup,
   isSuccessful,
   isSuccesRegistr,
+  onClose,
 }) {
-  
   // const handleEscClose = (e) => e.key === "Escape" && onClose(e);
-  // useEffect(() => { 
+  // useEffect(() => {
   //   if (isPopup) {
   //     document.addEventListener("keydown", handleEscClose);
   //   }
   //   return () => document.removeEventListener("keydown", handleEscClose);
-  // }, [isPopup]); 
+  // }, [isPopup]);
 
   return (
     <div className={`popup ${isPopup ? "popup_opened" : ""}`}>
@@ -28,20 +23,19 @@ export default function Popup({
         />
         <>
           {isSuccesRegistr ? (
-            <h2 className="popup__signup-title">{`${
+            <h3 className="popup__signup-title">{`${
               isSuccessful
                 ? "Вход осуществлен успешно!"
                 : "Что-то пошло не так! Попробуйте ещё раз."
-            }`}</h2>
+            }`}</h3>
           ) : (
-            <h2 className="popup__signup-title">{`${
+            <h3 className="popup__signup-title">{`${
               isSuccessful
                 ? "Редактирование прошло успешно!"
                 : "Что-то пошло не так! Попробуйте ещё раз."
-            }`}</h2>
+            }`}</h3>
           )}
         </>
-        
       </div>
     </div>
   );

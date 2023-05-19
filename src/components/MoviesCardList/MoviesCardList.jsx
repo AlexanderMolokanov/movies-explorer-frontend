@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { OPEN_DESKTOP, OPEN_TABLET, OPEN_MOBILE } from "../../utils/config";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import Preloader from "../Preloader/Preloader";
-import { OPEN_DESKTOP, OPEN_TABLET, OPEN_MOBILE } from "../../utils/config";
 
 function MoviesCardList({
   cards,
@@ -16,6 +16,16 @@ function MoviesCardList({
 }) {
   const [shownCards, setShownCards] = useState(0);
   const { pathname } = useLocation();
+  
+  useEffect(() => {
+    shownCount();
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.addEventListener("resize", shownCount);
+    }, 500);
+  });
 
   function shownCount() {
     const display = window.innerWidth;
@@ -27,16 +37,6 @@ function MoviesCardList({
       setShownCards(5);
     }
   }
-
-  useEffect(() => {
-    shownCount();
-  }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
-      window.addEventListener("resize", shownCount);
-    }, 500);
-  });
 
   function showMore() {
     const display = window.innerWidth;

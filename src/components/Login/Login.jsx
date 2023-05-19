@@ -1,18 +1,16 @@
+import useFormWithValidation from "../../hooks/useFormWithValidation";
 import React from "react";
 import RegForm from "../RegForm/RegForm";
-import useFormWithValidation from "../../hooks/useFormWithValidation";
 
 function Login({ onAuthorize, isSpiner }) {
   const { inputValues, error, todoChange, isValid } = useFormWithValidation();
-
-  function todoSubmit(e) {
-    e.preventDefault();
+  function todoSubmit(evt) {
+    evt.preventDefault();
     onAuthorize({
       email: inputValues.email,
       password: inputValues.password,
     });
   }
-
   return (
     <RegForm
       title="Рады Вас видеть!"

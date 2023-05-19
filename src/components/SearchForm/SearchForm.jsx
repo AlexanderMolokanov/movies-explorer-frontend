@@ -6,9 +6,15 @@ function SearchForm({ onSearchFilms, onFilter, isShortFilms }) {
   const [request, setRrequest] = useState("");
   const location = useLocation();
 
-  function handleChangeQuery(e) {
-    setRrequest(e.target.value);
-  }
+  useEffect(() => {
+    if (
+      location.pathname === "/movies" &&
+      localStorage.getItem("filmsSearch")
+    ) {
+      const localQuery = localStorage.getItem("filmsSearch");
+      setRrequest(localQuery);
+    }
+  }, [location]);
 
   function todoSubmit(e) {
     e.preventDefault();
@@ -20,15 +26,9 @@ function SearchForm({ onSearchFilms, onFilter, isShortFilms }) {
     }
   }
 
-  useEffect(() => {
-    if (
-      location.pathname === "/movies" &&
-      localStorage.getItem("filmsSearch")
-    ) {
-      const localQuery = localStorage.getItem("filmsSearch");
-      setRrequest(localQuery);
-    }
-  }, [location]);
+  function handleChangeRequest(e) {
+    setRrequest(e.target.value);
+  }
 
   return (
     <section className="search">
@@ -43,7 +43,7 @@ function SearchForm({ onSearchFilms, onFilter, isShortFilms }) {
               type="text"
               placeholder="Фильм"
               required
-              onChange={handleChangeQuery}
+              onChange={handleChangeRequest}
               value={request || ""}
             ></input>
 

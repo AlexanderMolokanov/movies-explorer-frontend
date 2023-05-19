@@ -11,14 +11,6 @@ function SavedMovies({ isLogged, likedFilms, onCardDelete }) {
   const [iSnotFound, setNotFound] = useState(false); //фильмы по запросу не найдены
   const [searchQuery, setSearcRequest] = useState("");
 
-  function onSearchFilms(request) {
-    setSearcRequest(request);
-  } 
-
-  function findShortFilms() {
-    setIsShortFilms(!isShortFilms);
-  }
-
   useEffect(() => {
     const filmsList = filtFilms(likedFilms, searchQuery);
     setFilteredFilms(isShortFilms ? filtDuration(filmsList) : filmsList);
@@ -31,6 +23,14 @@ function SavedMovies({ isLogged, likedFilms, onCardDelete }) {
       setNotFound(false);
     }
   }, [filteredFilms]);
+
+  function findShortFilms() {
+    setIsShortFilms(!isShortFilms);
+  }
+
+  function onSearchFilms(request) {
+    setSearcRequest(request);
+  }
 
   return (
     <section className="films">
