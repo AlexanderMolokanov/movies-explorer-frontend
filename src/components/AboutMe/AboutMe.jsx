@@ -1,4 +1,4 @@
-import photo from "../../images/my-photo.jpg";
+import photo from "../../images/aMan.jpg";
 import React from "react";
 
 export default function AboutMe() {
@@ -7,18 +7,10 @@ export default function AboutMe() {
       <h1 className="my__title">Студент</h1>
       <div className="my__container">
         <div className="my__content">
-          <h2 className="my__large-title">Александр</h2>
-          <p className="my__info">Ученый-программист, 35 лет</p>
+          <h2 className="my__large-title">Сталкер Сучьевич</h2>
+          <p className="my__info">Студент Яндекса, 65 лет</p>
           <p className="my__description">
-            Я работаю в научном подразделении Центрального института
-            авиационного моторостроения им.&nbsp;П.И.&nbsp;Баранова (г. Москва).
-            Занимаюсь математическим моделированием рабочих процессов
-            в&nbsp;теплоэнергетических установках. По&nbsp;совместительству
-            являюсь заместителем академика-секретаря секции «Авиакосмическая»
-            Российской инженерной академии. Увлекаюсь горными лыжами, роликами,
-            люблю быструю езду на&nbsp;спортивных автомобилях. Благодаря
-            учебному курсу приобрел опыт реализации проектов в&nbsp;области
-            HTML-, CSS- и&nbsp;JS-разработки.{" "} 
+            Пиво мое все. Никогда не поздно начать все сначала. Прошел школу Яндекса. Теперь буду кодить. 
           </p>
           <a
             href="https://github.com/AlexanderMolokanov"

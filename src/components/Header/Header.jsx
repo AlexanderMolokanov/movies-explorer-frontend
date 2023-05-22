@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
-import logo from "../../images/logo.svg";
+import logo from "../../images/logo_new.svg";
 import menu from "../../images/burger-button.svg";
 import React, { useState } from "react";
 
