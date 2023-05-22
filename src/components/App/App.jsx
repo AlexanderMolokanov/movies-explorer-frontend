@@ -41,8 +41,8 @@ export default function App() {
     apiSignin(email, password)
       .then((res) => {
         if (res) {
-          console.log(res);
-          setIsLogged(true);
+          // console.log(res);
+          // setIsLogged(true);
           localStorage.setItem("logged", true);
           setIsSuccesRegistr(true);
           setIsSuccessful(true);
@@ -63,9 +63,9 @@ export default function App() {
   // аутентификация
   useEffect(() => {
     if (isLogged) {
-      setIsLogged(true);
-      console.log("setIsLogged-true -аутентификация");
-      console.log(isLogged);
+      // setIsLogged(true);
+      // console.log("setIsLogged-true -аутентификация");
+      // console.log(isLogged);
 
       apiGetUser()
         .then((profileInfo) => {
