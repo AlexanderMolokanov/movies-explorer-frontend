@@ -21,6 +21,8 @@
   padding-right: 70px;
   padding-top: 45px;
   padding-bottom: 61px;
+  overflow: hidden;
+  display: block;
 
 
 }
