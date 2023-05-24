@@ -33,19 +33,30 @@ export default function MoviesCard({
 
   const cardSaveButtonClassName = `${
     saved
-      ? "films-card__save-button films-card__save-button_active"
-      : "films-card__save-button"
+      ? "films-card__save-button_bird "
+      : "films-card__save-button films-card__save-button_displayNone"
+  }`;
+
+  const cardBirdButtonClassName = `${
+    saved
+      ? "films-card__save-button films-card__save-button_bird films-card__save-button_displayNone"
+      : "films-card__save-button "
   }`;
 
   return (
     <li className="card">
-      <div className="films-card__container">
-        <div className="films-card__info-container">
-          <h2 className="films-card__text">{card.nameRU}</h2>
-          <span className="films-card__time">
-            {changeTimeTormat(card.duration)}
-          </span>
-        </div>
+      <div className="img-card__container">
+        <a href={card.trailerLink} target="_blank" rel="noreferrer">
+          <img
+            className="films-card__image"
+            alt={card.nameRU}
+            src={
+              isSavedFilms
+                ? card.image
+                : `https://api.nomoreparties.co${card.image.url}`
+            }
+          />
+        </a>
         {isSavedFilms ? (
           <button
             type="button"
@@ -53,25 +64,32 @@ export default function MoviesCard({
             onClick={onDelete}
           ></button>
         ) : (
-          <button
-            type="button"
-            className={cardSaveButtonClassName}
-            onClick={onCardClick}
-          ></button>
+          <>
+            <button
+              type="button"
+              className={cardSaveButtonClassName}
+              onClick={onCardClick}
+            >
+              
+            </button>
+            <button
+              type="button"
+              className={cardBirdButtonClassName}
+              onClick={onCardClick}
+            >Сохранить
+            </button>
+          </>
         )}
       </div>
-      <a href={card.trailerLink} target="_blank" rel="noreferrer">
-        <img
-          className="films-card__image"
-          alt={card.nameRU}
-          src={
-            isSavedFilms
-              ? card.image
-              : `https://api.nomoreparties.co${card.image.url}`
-          }
-        />
-      </a>
+
+      <div className="films-card__container">
+        <div className="films-card__info-container">
+          <h2 className="films-card__text">{card.nameRU}</h2>
+          <span className="films-card__time">
+            {changeTimeTormat(card.duration)}
+          </span>
+        </div>
+      </div>
     </li>
   );
 }
-

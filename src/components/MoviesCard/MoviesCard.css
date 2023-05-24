@@ -2,7 +2,7 @@
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
 }
 
-.films-card__container { 
+.films-card__container {
   display: flex;
   justify-content: space-between;
   padding: 14px 14px 12px;
@@ -10,7 +10,7 @@
 
 .films-card__image {
   width: 100%;
-  height: 203px;
+  height: 222px;
   object-fit: cover;
 }
 
@@ -21,10 +21,9 @@
   max-width: 280px;
   margin-top: 0;
   white-space: nowrap;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  
 }
 
 .films-card__time {
@@ -38,29 +37,76 @@
   color: #a0a0a0;
 }
 
-.films-card__save-button {
-  border: none;
-  border-radius: 50px;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding-top: 0;
-  margin-top: 5px;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  background: #f9f9f9;
-  background-repeat: no-repeat;
-  background-position: center ;
-  background-image: url(../../images/card-like1.svg);
+.img-card__container {
+  position: relative;
+}
+.img-card__container:hover {
+  box-shadow: 0px 0px 9px 7px #EE3465;
+  opacity: 0.7;
 }
 
-.films-card__save-button_active {
-  background-color: #3DDC84;
-  background-image: url(../../images/White-flag.svg);
+.img-card__container:hover .films-card__save-button{
+  /* box-shadow: 0px 0px 9px 7px #EE3465;
+  opacity: 0.7; */
+  display: block;
+
+}
+
+.films-card__save-button_bird .img-card__container:hover .films-card__save-button{
+  /* box-shadow: 0px 0px 9px 7px #EE3465;
+  opacity: 0.7; */
+  /* display: none; */
+
+}
+
+.films-card__save-button {
+  display: none;
+  border: none;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  padding-top: 0;
+  border-radius: 50px;
+  /* margin-top: 5px; */
+  width: 72px;
+  height: 21px;
+  cursor: pointer;
+  /* background: #f9f9f9; */
+ 
+  /* background-image: url(../../images/card-like1.svg); */
+  background-color: #313131;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 9px;
+  /* identical to box height, or 90% */
+
+  text-align: center;
+  color: #ffffff;
+}
+
+.films-card__save-button_displayNone {
+  display: none;
+
+}
+
+.films-card__save-button_bird {
+  /* background-color: #3DDC84; */
+  position: absolute;
+  cursor: pointer;
+  border: none;
+  right: 14px;
+  top: 14px;
+  height: 21px;
+  width: 21px;
+  padding-top: 0;
+  border-radius: 50px;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-image: url(../../images/bird.svg);
 }
 
 .films-card__save-button:hover {
-  box-shadow: 0px 0px 9px 7px rgba(43, 224, 128, 0.8);
+  box-shadow: 0px 0px 9px 7px #EE3465;
   opacity: 0.6;
 }
 
@@ -71,12 +117,11 @@
   margin-top: 12px;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #F9F9F9;
-  background-image: url('../../images/del-button.svg');
-  border: 1px solid #F9F9F9;
-  
-  border-radius: 50px;
+  background-color: #f9f9f9;
+  background-image: url("../../images/del-button.svg");
+  border: 1px solid #f9f9f9;
 
+  border-radius: 50px;
 }
 
 .films-card__del-button:hover {
@@ -90,11 +135,11 @@
   }
 
   .films-card__del-button {
-    margin-top: 19px; ;
+    margin-top: 19px;
   }
 
-  .films-card__container { 
-    padding: 0 14px ;
+  .films-card__container {
+    padding: 0 14px;
   }
 
   .films-card__text {
@@ -102,7 +147,7 @@
   }
 
   .films-card__time {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
   }
 }
 
@@ -111,11 +156,10 @@
     height: 168px;
   }
 
-.films-card__save-button {
-margin-top: 18px;
-}
-.films-card__text {
-  max-width: 235px;
-}
-
+  .films-card__save-button {
+    margin-top: 18px;
+  }
+  .films-card__text {
+    max-width: 235px;
+  }
 }

@@ -28,7 +28,7 @@
   background-repeat: no-repeat;
   background-position: right;
   background-size: 18px;
-  background-image: url(../../images/Arrow.svg);
+  background-image: url(../../images/text__COLOR_font-main.svg);
 }
 
 .portfolio__link:last-child {
@@ -73,7 +73,7 @@
     background-repeat: no-repeat;
     background-position: right;
     background-size: 18px 18px;
-    background-image: url(../../images/Arrow.svg);
+    background-image: url(../../images/text__COLOR_font-main.svg);
   }
 }
 
@@ -110,6 +110,6 @@
     background-repeat: no-repeat;
     background-position: right;
     background-size: 12px;
-    background-image: url(../../images/Arrow.svg);
+    background-image: url(../../images/text__COLOR_font-main.svg);
   }
 }
