@@ -28,7 +28,7 @@
   transform: translate(0, -7px) scale(1.1);
   cursor: pointer;
   transition-duration: 0.5s;
-  background: #2be080;
+  background: #3DDC84;
 }
 
 @media screen and (max-width: 577px) {

@@ -9,7 +9,7 @@
 .form__logo {
   height: 38px;
   width: 38px;
-  fill: #2be080;
+  fill: #3DDC84;
 }
 
 .form__logo:hover {
@@ -43,7 +43,7 @@
   line-height: 17px;
   text-align: center;
   cursor: pointer;
-  background-color: #2be080;
+  background-color: #3DDC84;
   color: white;
 }
 
@@ -81,7 +81,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: #2be080;
+  color: #3DDC84;
 }
 
 .form__link:hover {

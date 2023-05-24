@@ -1,7 +1,7 @@
 .techs {
   padding: 100px 70px;
   box-sizing: border-box;
-  background-color: #f5f5f5;
+  background-color: #272727;
 }
 
 .techs__title {
@@ -12,7 +12,7 @@
   font-weight: 400;
   font-size: 22px;
   letter-spacing: -0.04em;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #DADADA;
 }
 
 .techs__large-title {
@@ -67,7 +67,7 @@
   width: 90px;
   height: 60px;
   border-radius: 10px;
-  background-color: #e8e8e8;
+  background-color: #303030;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;

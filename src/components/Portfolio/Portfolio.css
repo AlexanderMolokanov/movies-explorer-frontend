@@ -11,7 +11,7 @@
   line-height: 20px;
   mix-blend-mode: normal;
   margin-bottom: 30px;
-  color: #a0a0a0;
+  color: #8B8B8B;
 }
 
 .portfolio__list {
@@ -40,7 +40,7 @@
 }
 
 .portfolio__link-border {
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid #424242;
   padding-bottom: 19px;
 }
 
@@ -51,6 +51,7 @@
   font-size: 30px;
   line-height: 50px;
   letter-spacing: -0.04em;
+  color: #FFFFFF;
 }
 
 @media screen and (max-width: 1024px) {
@@ -60,6 +61,7 @@
 
   .portfolio__text {
     font-size: 28px;
+    color: #FFFFFF;
   }
 
   .portfolio__image {

@@ -51,7 +51,7 @@
 .films-cards__button:hover {
   cursor: pointer;
   opacity: 0.6;
-  border: 1px solid #2be080;
+  border: 1px solid #3DDC84;
 }
 
 .search__error {

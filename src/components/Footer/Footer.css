@@ -4,7 +4,7 @@
   flex-direction: column;
   margin-top: auto;
   width: 100%;
-  background-color: #ffffff;
+  background-color: #202020;
 }
 
 .footer__title {
@@ -49,7 +49,7 @@
   font-size: 13px;
   line-height: 1.23px;
   transition: all 0.3s ease;
-  color: #000000;
+  color: #FFFFFF;
 }
 
 .footer__links-list {
