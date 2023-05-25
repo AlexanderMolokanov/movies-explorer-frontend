@@ -8,8 +8,8 @@ import { useLocation } from "react-router-dom";
 
 export default function Header({ isLogged }) {
   const [isClicked, setIsClicked] = useState(false);
-  console.log("isLogged-in-Header")
-  console.log(isLogged)
+  console.log("isLogged-in-Header");
+  console.log(isLogged);
 
   const { pathname } = useLocation();
   function todoOpen() {
@@ -19,28 +19,24 @@ export default function Header({ isLogged }) {
     setIsClicked(false);
   }
 
- const isFirst = (pathname === "/")
-  // {pathname === "/" ? ( ) : ()
-  console.log(isFirst)
+  const isFirstPage = pathname === "/";
+  // console.log(isFirstPage);
 
-  const headerFromColor = `${
-    isFirst
-      ? "header header_blue"
-      : "header"
-  }`;
-
+  const headerFromColor = `${isFirstPage ? "header header_blue" : "header"}`;
+  const headerButtonColor = `${isFirstPage ? "header_blue header__account-button " : "header_black header__account-button"}`;
 
   return (
     <>
       {!isLogged ? (
-        <header 
-        // className="header" 
-        className={headerFromColor}
-        id="header">
+        <header
+          // className="header"
+          className={headerFromColor}
+          id="header"
+        >
           <Link to="/" className="form__logo">
             <img src={logo} alt="логотип" />
           </Link>
-          <d  iv className="header__button-container">
+          <d iv className="header__button-container">
             <Link to="/signup" className="header__button">
               Регистрация
             </Link>
@@ -50,9 +46,7 @@ export default function Header({ isLogged }) {
           </d>
         </header>
       ) : (
-        <header 
-        className={headerFromColor}
-        id="header">
+        <header className={headerFromColor} id="header">
           <Link to="/" className="form__logo">
             <img src={logo} alt="логотип" />
           </Link>
@@ -73,15 +67,14 @@ export default function Header({ isLogged }) {
             </NavLink>
           </div>
           <div className="header__button-container">
-            <div>
-            <Link to="/profile" className="header__account-button">
-            <img
-                className="header__prof-butt-man"
-                src={proflogo}
-                alt="человечек"
-              />
-               &nbsp;Аккаунт
-            </Link>
+            <div className="header__account-button-container ">
+              <Link to="/profile" className={headerButtonColor}>
+                <img
+                  className="header__prof-butt-man"
+                  src={proflogo}
+                  alt="человечек"
+                /> &nbsp;Аккаунт
+              </Link>
             </div>
 
             <button onClick={todoOpen} className="header__burger-button">

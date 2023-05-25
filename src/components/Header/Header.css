@@ -8,8 +8,10 @@
 }
 
 .header_blue {
-  background-color: #073042;
-
+  background: #073042;
+}
+.header_black {
+  background: #202020;
 }
 
 .header__button-container {
@@ -32,13 +34,12 @@
   /* justify-content: right; */
   min-height: 32px;
   text-decoration: none;
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: 500;
 
-
   font-weight: 500;
-font-size: 12px;
-line-height: 16px;
+  font-size: 12px;
+  line-height: 16px;
 }
 
 .header__button_save-films {
@@ -50,19 +51,19 @@ line-height: 16px;
   opacity: 0.6;
   transform: translate(0, -7px) scale(1.1);
   transition-duration: 0.5s;
-  background: #3DDC84;
+  background: #3ddc84;
   border-radius: 10px;
 }
 
 .header__button_active {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .header__button-green {
   min-width: 76px;
   border-radius: 3px;
   color: #000000;
-  background-color: #3DDC84;
+  background-color: #3ddc84;
 }
 
 .header__burger-button {
@@ -90,8 +91,8 @@ line-height: 16px;
   line-height: 16px;
   text-decoration: none;
   color: #ffffff;
-  background: #202020;
-  border: 3px solid #AAAAAA
+  /* background: #202020; */
+  border: 3px solid #aaaaaa;
 }
 
 .header__account-button:hover {
@@ -99,7 +100,7 @@ line-height: 16px;
   opacity: 0.6;
   transform: translate(0, -7px) scale(1.1);
   transition-duration: 0.5s;
-  background: #3DDC84;
+  background: #3ddc84;
 }
 
 @media screen and (max-width: 1024px) {
