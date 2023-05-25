@@ -21,7 +21,7 @@ export default function MoviesCard({
     const hours = Math.floor(time / 60);
     const minutes = time % 60;
     if (hours > 0) {
-      return `${hours}ч${minutes}м`;
+      return `${hours}ч ${minutes}м`;
     } else {
       return `${minutes}м`;
     }
@@ -41,6 +41,12 @@ export default function MoviesCard({
     saved
       ? "films-card__save-button films-card__save-button_bird films-card__save-button_displayNone"
       : "films-card__save-button "
+  }`;
+
+  const saveText = `${
+    saved
+      ? ""
+      : "Сохранить"
   }`;
 
   return (
@@ -76,19 +82,19 @@ export default function MoviesCard({
               type="button"
               className={cardBirdButtonClassName}
               onClick={onCardClick}
-            >Сохранить
+            >{saveText}
             </button>
           </>
         )}
       </div>
 
       <div className="films-card__container">
-        <div className="films-card__info-container">
+        {/* <div className="films-card__info-container"> */}
           <h2 className="films-card__text">{card.nameRU}</h2>
           <span className="films-card__time">
             {changeTimeTormat(card.duration)}
           </span>
-        </div>
+        {/* </div> */}
       </div>
     </li>
   );

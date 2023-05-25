@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #f9f9f9;
+  background-color: #222222;
 }
 
 .search__form-container {
@@ -56,7 +56,8 @@
   font-size: 18px;
   line-height: 20px;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: #222222;
+  color: #8B8B8B
 }
 
 .search__input:focus {
@@ -80,7 +81,7 @@ input:-ms-input-placeholder {
 }
 
 .search__button {
-  background-image: url("../../images/search-button.svg");
+  background-image: url("../../images/search-button1.svg");
   width: 34px;
   height: 34px;
   border: none;

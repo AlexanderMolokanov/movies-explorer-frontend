@@ -2,22 +2,41 @@ import { Link, NavLink } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import logo from "../../images/logo_new.svg";
 import menu from "../../images/burger-button.svg";
+import proflogo from "../../images/profile-logo-man.svg";
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function Header({ isLogged }) {
   const [isClicked, setIsClicked] = useState(false);
   console.log("isLogged-in-Header")
   console.log(isLogged)
+
+  const { pathname } = useLocation();
   function todoOpen() {
     setIsClicked(true);
   }
   function todoClose() {
     setIsClicked(false);
   }
+
+ const isFirst = (pathname === "/")
+  // {pathname === "/" ? ( ) : ()
+  console.log(isFirst)
+
+  const headerFromColor = `${
+    isFirst
+      ? "header header_blue"
+      : "header"
+  }`;
+
+
   return (
     <>
       {!isLogged ? (
-        <header className="header" id="header">
+        <header 
+        // className="header" 
+        className={headerFromColor}
+        id="header">
           <Link to="/" className="form__logo">
             <img src={logo} alt="логотип" />
           </Link>
@@ -31,7 +50,9 @@ export default function Header({ isLogged }) {
           </d>
         </header>
       ) : (
-        <header className="header" id="header">
+        <header 
+        className={headerFromColor}
+        id="header">
           <Link to="/" className="form__logo">
             <img src={logo} alt="логотип" />
           </Link>
@@ -52,9 +73,17 @@ export default function Header({ isLogged }) {
             </NavLink>
           </div>
           <div className="header__button-container">
+            <div>
             <Link to="/profile" className="header__account-button">
-              Аккаунт
+            <img
+                className="header__prof-butt-man"
+                src={proflogo}
+                alt="человечек"
+              />
+               &nbsp;Аккаунт
             </Link>
+            </div>
+
             <button onClick={todoOpen} className="header__burger-button">
               <img
                 className="header__burger-button-img"
