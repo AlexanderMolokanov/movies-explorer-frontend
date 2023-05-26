@@ -24,7 +24,8 @@
     padding: 159px 90px 90px 90px;
     width: 520px;
     min-height: 100vh;
-    background-color: #fff;
+    background-color: #202020;
+    
   }
 
   .navigation__container-empty {
@@ -44,9 +45,11 @@
     background-image: url("../../images/cl-button.svg");
   }
 
-  F:hover {
+  .navigation__cl-button:hover {
     opacity: 0.6;
     cursor: pointer;
+    transform: rotate(-45deg);
+    transition-duration: 0.5s;
   }
 
   .navigation__nav {
@@ -64,7 +67,7 @@
     line-height: 22px;
     text-align: center;
     width: max-content;
-    color: #000000;
+    color: white;;
   }
 
   .navigation__link_active {
@@ -72,28 +75,63 @@
   }
 
   .navigation__link:hover {
-    border-bottom: 2px solid #000000;
+    border-bottom: 2px solid white;
   }
 
   .navigation__account-button {
-    padding-top: 8px;
+    /* padding-top: 8px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100px;
-    height: 32px; 
-    text-align: center;
-    /* box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08); */
-    border-radius: 40px;
+    height: 32px;
+    border-radius: 20px;
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
     text-decoration: none;
-    color: #aaaaaa;
-    background-color: #202020;
+    color: #ffffff;
+    /* background: #202020; */
+    border: 3px solid #aaaaaa;
   }
 
   .navigation__account-button:hover {
     cursor: pointer;
     opacity: 0.6;
   }
+
+
+  .header__account-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 32px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-decoration: none;
+    color: #ffffff;
+    /* background: #202020; */
+    border: 3px solid #aaaaaa;
+  }
+  
+  .header__account-button:hover {
+    cursor: pointer;
+    opacity: 0.6;
+    transform: translate(0, -7px) scale(1.1);
+    transition-duration: 0.5s;
+    background: #3ddc84;
+  }
+
+
+
+
+
+
+
+
 }
 
 @media screen and (max-width: 577px) {

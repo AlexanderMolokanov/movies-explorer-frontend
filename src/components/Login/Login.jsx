@@ -39,7 +39,7 @@ export default function Login({ onAuthorize, isSpiner }) {
         Пароль
         <input
           name="password"
-          className="form__input"
+          className="form__input form__input_red"
           id="password-input"
           type="password"
           required

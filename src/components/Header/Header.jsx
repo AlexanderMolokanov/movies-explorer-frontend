@@ -23,7 +23,11 @@ export default function Header({ isLogged }) {
   // console.log(isFirstPage);
 
   const headerFromColor = `${isFirstPage ? "header header_blue" : "header"}`;
-  const headerButtonColor = `${isFirstPage ? "header_blue header__account-button " : "header_black header__account-button"}`;
+  const headerButtonColor = `${
+    isFirstPage
+      ? "header_blue header__account-button "
+      : "header_black header__account-button"
+  }`;
 
   return (
     <>
@@ -36,14 +40,14 @@ export default function Header({ isLogged }) {
           <Link to="/" className="form__logo">
             <img src={logo} alt="логотип" />
           </Link>
-          <d iv className="header__button-container">
+          <div className="header__button-container">
             <Link to="/signup" className="header__button">
               Регистрация
             </Link>
-            <Link to="/signin" className="header__button header__button-green">
+            <Link to="/signin" className="header__button-green">
               Войти
             </Link>
-          </d>
+          </div>
         </header>
       ) : (
         <header className={headerFromColor} id="header">
@@ -65,17 +69,18 @@ export default function Header({ isLogged }) {
             >
               Сохранённые фильмы
             </NavLink>
-          </div>
-          <div className="header__button-container">
             <div className="header__account-button-container ">
               <Link to="/profile" className={headerButtonColor}>
                 <img
                   className="header__prof-butt-man"
                   src={proflogo}
                   alt="человечек"
-                /> &nbsp;Аккаунт
+                />{" "}
+                &nbsp;Аккаунт
               </Link>
             </div>
+          </div>
+          <div className="header__button-container">
 
             <button onClick={todoOpen} className="header__burger-button">
               <img

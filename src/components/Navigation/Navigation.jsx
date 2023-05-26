@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import React from "react";
+import proflogo from "../../images/profile-logo-man.svg";
 
 export default function Navigation({ todoClose }) {
   return (
@@ -34,13 +35,27 @@ export default function Navigation({ todoClose }) {
             Сохранённые фильмы
           </NavLink>
         </nav>
-        <Link
+        {/* <Link
           to="/profile"
           onClick={todoClose}
           className="navigation__account-button"
         >
           Аккаунт
+        </Link> */}
+
+        <Link to="/profile" 
+        className="navigation__account-button"
+        >
+
+          <img
+            className="header__prof-butt-man"
+            src={proflogo}
+            alt="человечек"
+          />{" "}
+          &nbsp;Аккаунт
         </Link>
+
+
       </div>
     </div>
   );

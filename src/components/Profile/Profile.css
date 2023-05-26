@@ -46,7 +46,9 @@
   font-size: 11px;
   line-height: 13px;
   border: none;
+  background-color: #202020;
   outline: none;
+  color: white
 }
 
 .profile__input-error {
@@ -68,7 +70,7 @@
 
 .profile__border {
   margin-bottom: 17px;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid #424242;
 }
 
 .profile__button-save {
@@ -82,8 +84,8 @@
   text-align: center;
   border: none;
   cursor: pointer;
-  color: #000;
-  background-color: white;
+  color: white;
+  background-color: #202020;
 }
 
 .profile__logout {
