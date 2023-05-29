@@ -1,11 +1,11 @@
 .header {
   display: flex;
   align-items: center;
-  /* justify-content: center; */
-  position: relative;
+  /* justify-content: space-between; */
+  /* position: relative; */
   padding: 0 70px;
-  min-height: 74px;
-  background-color: #202020;
+    min-height: 74px;
+  /* background-color: #202020; */
 }
 
 .header_blue {
@@ -15,23 +15,20 @@
   background: #202020;
 }
 
-.header__button-container {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
+.header__buttons-container {
+  /* display: flex; */
+  /* align-items: center; */
   /* gap: 30px; */
-
-
-  margin-left: auto;
-  margin-right: 50px;
-  gap: 16px;
+  /* margin-left: auto; */
+  /* margin-right: 50px; */
+  /* gap: 16px; */
 }
 
-.header__button-container_films {
+.header__buttons-container_films {
   display: flex;
   margin-left: auto;
-  justify-self: center;
-  margin-right: 50px;
+  /* justify-self: right; */
+  /* margin-right: 50px; */
   gap: 16px;
 }
 
@@ -50,7 +47,7 @@
   text-align: center;
 }
 
-.header__button_save-films {
+.header__button_saved-films {
   font-weight: 400;
 }
 
@@ -135,7 +132,7 @@
     display: flex;
   }
 
-  .header__button-container_films {
+  .header__buttons-container_films {
     display: none;
   }
 
@@ -154,7 +151,7 @@
     padding: 0 14px;
   }
 
-  .header__button-container {
+  .header__buttons-container {
     gap: 14px;
   }
 

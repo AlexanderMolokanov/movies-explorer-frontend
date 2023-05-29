@@ -40,7 +40,7 @@ export default function Header({ isLogged }) {
           <Link to="/" className="form__logo">
             <img src={logo} alt="логотип" />
           </Link>
-          <div className="header__button-container">
+          <div className="header__buttons-container_films">
             <Link to="/signup" className="header__button">
               Регистрация
             </Link>
@@ -54,7 +54,7 @@ export default function Header({ isLogged }) {
           <Link to="/" className="form__logo">
             <img src={logo} alt="логотип" />
           </Link>
-          <div className="header__button-container_films">
+          <div className="header__buttons-container_films">
             <NavLink
               to="/movies"
               className="header__button"
@@ -64,7 +64,7 @@ export default function Header({ isLogged }) {
             </NavLink>
             <NavLink
               to="/saved-movies"
-              className="header__button  header__button_save-films"
+              className="header__button  header__button_saved-films"
               activeClassName="header__button_active"
             >
               Сохранённые фильмы
@@ -80,8 +80,7 @@ export default function Header({ isLogged }) {
               </Link>
             </div>
           </div>
-          <div className="header__button-container">
-
+          <div className="header__buttons-container">
             <button onClick={todoOpen} className="header__burger-button">
               <img
                 className="header__burger-button-img"
