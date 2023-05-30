@@ -7,7 +7,7 @@ export default function AboutMe() {
       <h1 className="my__title">Студент</h1>
       <div className="my__container">
         <div className="my__content">
-          <h2 className="my__large-title">Сталкер Сучьевич</h2>
+          <h2 className="my__large-title">Потрах Сучьевич</h2>
           <p className="my__info">Студент Яндекса, 65 лет</p>
           <p className="my__description">
             Пиво мое все. Никогда не поздно начать все сначала. Прошел школу Яндекса. Теперь буду кодить. 

@@ -42,7 +42,7 @@ export default function App() {
       .then((res) => {
         if (res) {
           // console.log(res);
-          // setIsLogged(true);
+          setIsLogged(true);
           localStorage.setItem("logged", true);
           setIsSuccesRegistr(true);
           setIsSuccessful(true);

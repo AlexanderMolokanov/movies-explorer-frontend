@@ -46,7 +46,6 @@ export default function SearchForm({ onSearchFilms, onFilter, isShortFilms }) {
               onChange={handleChangeRequest}
               value={request || ""}
             ></input>
-
             <button className="search__button" type="submit"></button>
           </form>
         </div>

@@ -1,7 +1,7 @@
 const CONFIG = {
   BASE_URL:
-    // "http://localhost:3000",
-    "https://gmkvid.nomoredomains.work",
+    "http://localhost:3000",
+    // "https://gmkvid.nomoredomains.work",
   ALL_FILMS_URL: "https://api.nomoreparties.co/beatfilm-movies",
   IMG_URL: "https://api.nomoreparties.co/",
 };

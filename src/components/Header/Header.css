@@ -29,7 +29,11 @@
   margin-left: auto;
   /* justify-self: right; */
   /* margin-right: 50px; */
-  gap: 16px;
+  gap: 20px;
+}
+
+.header__prof-butt-man {
+  /* border: 2px solid #AAAAAA; */
 }
 
 .header__button {
@@ -40,15 +44,14 @@
   text-decoration: none;
   color: #ffffff;
   font-weight: 500;
-
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 14px;
+  line-height: 18px;
   text-align: center;
 }
 
 .header__button_saved-films {
   font-weight: 400;
+  margin-right: 28px;
 }
 
 .header__button:hover {
@@ -103,8 +106,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 32px;
+  width: 98px;
+  height: 30px;
   border-radius: 20px;
   font-weight: 500;
   font-size: 14px;
@@ -112,7 +115,8 @@
   text-decoration: none;
   color: #ffffff;
   /* background: #202020; */
-  border: 3px solid #aaaaaa;
+  /* border: 3px solid #aaaaaa; */
+  border: 2px solid #AAAAAA;
 }
 
 .header__account-button:hover {

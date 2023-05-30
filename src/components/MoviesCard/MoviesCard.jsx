@@ -43,16 +43,12 @@ export default function MoviesCard({
       : "films-card__save-button "
   }`;
 
-  const saveText = `${
-    saved
-      ? ""
-      : "Сохранить"
-  }`;
+  const saveText = `${saved ? "" : "Сохранить"}`;
 
   return (
     <li className="card">
       <div className="img-card__container">
-        <a href={card.trailerLink} target="_blank" rel="noreferrer">
+        <a className="img-card__link" href={card.trailerLink} target="_blank" rel="noreferrer">
           <img
             className="films-card__image"
             alt={card.nameRU}
@@ -75,14 +71,13 @@ export default function MoviesCard({
               type="button"
               className={cardSaveButtonClassName}
               onClick={onCardClick}
-            >
-              
-            </button>
+            ></button>
             <button
               type="button"
               className={cardBirdButtonClassName}
               onClick={onCardClick}
-            >{saveText}
+            >
+              {saveText}
             </button>
           </>
         )}
@@ -90,10 +85,10 @@ export default function MoviesCard({
 
       <div className="films-card__container">
         {/* <div className="films-card__info-container"> */}
-          <h2 className="films-card__text">{card.nameRU}</h2>
-          <span className="films-card__time">
-            {changeTimeTormat(card.duration)}
-          </span>
+        <h2 className="films-card__text">{card.nameRU}</h2>
+        <span className="films-card__time">
+          {changeTimeTormat(card.duration)}
+        </span>
         {/* </div> */}
       </div>
     </li>

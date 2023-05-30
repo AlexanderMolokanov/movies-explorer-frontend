@@ -7,16 +7,14 @@
 
 .films-cards__list {
   display: grid;
-  grid-template-columns: repeat(3, 367px);
-  /* grid-row-gap: 300px; */
+  grid-template-columns: repeat(3, 360px);
   padding: 80px 0 30px;
   margin-left: 70px;
   margin-right: 70px;
   margin-top: -10px;
   list-style: none;
-  gap: 25px 20px;
-  /* justify-content: center; */
-  border-top: solid 1px #e8e8e8;
+  gap: 44px 30px;
+  border-top: solid 1px #424242;
 }
 
 .films-cards__button-container {
@@ -39,13 +37,16 @@
   box-sizing: border-box;
   width: 320px;
   height: 36px;
-  background-color: transparent;
-  border-radius: 5px;
+  background-color: #2F2F2F;
+  border-radius: 6px;
+  border: none;
   /* font-style: normal; */
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
-  border: 1px solid #e8e8e8;
+  /* border: 1px solid #2F2F2F; */
+  color: #FFFFFF;
+  
 }
 
 .films-cards__button:hover {
