@@ -127,6 +127,7 @@ export default function App() {
 
   // сохранить карточку с фильмом
   function todoLikeClick(film) {
+    setIsSpiner(true);
     apiSaveCard(film)
       .then((newfilm) => {
         setLikedMovies([newfilm, ...likedFilms]);
@@ -135,11 +136,14 @@ export default function App() {
         setIsPopup(true);
         console.log(err);
         todoUnauthorized(err);
+      }).finally(() => {
+        setIsSpiner(false);
       });
   }
 
   // удалить сохраненную карточку
   function todoCardDelete(card) {
+    setIsSpiner(true);
     apiDeleteSavedCard(card._id)
       .then(() => {
         setLikedMovies((state) =>
@@ -150,6 +154,8 @@ export default function App() {
         setIsPopup(true);
         console.log(err);
         todoUnauthorized(err);
+      }).finally(() => {
+        setIsSpiner(false);
       });
   }
 
