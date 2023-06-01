@@ -67,7 +67,7 @@ export default function MoviesCard({
           ></button>
         ) : (
           <>
-            <button
+            <button 
               type="button"
               className={cardSaveButtonClassName}
               onClick={onCardClick}

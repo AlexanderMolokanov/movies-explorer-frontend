@@ -92,7 +92,7 @@
     text-decoration: none;
     color: #ffffff;
     /* background: #202020; */
-    border: 3px solid #aaaaaa;
+    border: 2px solid #AAAAAA;
   }
 
   .navigation__account-button:hover {
@@ -133,6 +133,12 @@
 
 
 }
+
+
+@media screen and (max-width: 1024px) {
+  .navigation__container {
+    padding-bottom: 90px;
+  }}
 
 @media screen and (max-width: 577px) {
   .navigation__nav {

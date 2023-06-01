@@ -22,6 +22,9 @@
   /* margin-left: auto; */
   /* margin-right: 50px; */
   /* gap: 16px; */
+  display: flex;
+  margin-left: auto;
+  gap: 20px;
 }
 
 .header__buttons-container_films {
@@ -127,21 +130,35 @@
   background: #3ddc84;
 }
 
+.header__buttons-container-brg{
+
+}
+
 @media screen and (max-width: 1024px) {
   .header {
     padding: 0 30px;
+    /* align-items: right; */
+    justify-content: space-between;
   }
 
   .header__burger-button {
     display: flex;
+    /* margin-left: auto; */
+    
   }
 
   .header__buttons-container_films {
     display: none;
+    gap: 30px;
+  }
+
+  .header__buttons-container {
+    /* display: none; */
+    gap: 30px;
   }
 
   .header__account-button {
-    display: none;
+    /* display: none; */
   }
   .header__button {
     font-weight: 500;
@@ -160,14 +177,21 @@
   }
 
   .header__button {
-    min-height: 6px;
+    /* min-height: 6px; */
+    height: 26px;
     font-size: 10px;
     line-height: 16px;
+    min-width: 53px;
   }
 
   .header__button-green {
-    min-width: 54px;
-    padding: 5px 0;
+    min-width: 53px;
+    padding: 0;
+    height: 26px;
+    min-height: 26px;
+    font-size: 10px;
+    line-height: 16px;
+
   }
 
   .header__burger-button-img {

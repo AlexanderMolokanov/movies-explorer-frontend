@@ -40,7 +40,7 @@ export default function Header({ isLogged }) {
           <Link to="/" className="form__logo">
             <img src={logo} alt="логотип" />
           </Link>
-          <div className="header__buttons-container_films">
+          <div className="header__buttons-container">
             <Link to="/signup" className="header__button">
               Регистрация
             </Link>
@@ -80,7 +80,7 @@ export default function Header({ isLogged }) {
               </Link>
             </div>
           </div>
-          <div className="header__buttons-container">
+          <div className="header__buttons-container-brg">
             <button onClick={todoOpen} className="header__burger-button">
               <img
                 className="header__burger-button-img"

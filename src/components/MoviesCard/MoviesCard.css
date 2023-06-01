@@ -135,6 +135,7 @@
 
 
 .films-card__del-button {
+  display: none;
   position: absolute;
   cursor: pointer;
   border: none;
@@ -146,6 +147,7 @@
   border-radius: 50px;
   background-repeat: no-repeat;
   background-position: right;
+  background-color: #2F2F2F;
   background-image: url(../../images/Card-cl-butt.svg);
 }
 
@@ -155,9 +157,12 @@
   box-shadow: 0px 0px 9px 7px #ee3465;
 }
 
-.films-card__del-button:hover {
-  cursor: pointer;
-  opacity: 0.6;
+.films-card__del-button:hover .films-card__del-button{
+  display: block;
+}
+
+.img-card__container:hover .films-card__del-button {
+  display: block;
 }
 
 @media screen and (max-width: 1024px) {
@@ -170,15 +175,24 @@
   }
 
   .films-card__container {
-    padding: 0 14px;
+    /* padding: 0 14px; */
+    padding-top: 23px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 18px;
+    align-items: center;
   }
 
   .films-card__text {
-    margin-top: 14px;
+    /* margin-top: 14px; */
   }
 
   .films-card__time {
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
+  }
+  .img-card__container {
+    /* position: relative; */
+    height: 190px;
   }
 }
 
