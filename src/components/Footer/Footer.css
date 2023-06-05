@@ -16,7 +16,7 @@
   padding-bottom: 20px;
   box-sizing: border-box;
   color: #8b8b8b;
-  border-bottom: 1px solid #a0a0a0;
+  border-bottom: 1px solid #424242;
 }
 
 .footer__container {
@@ -85,7 +85,7 @@
   .footer__title {
     line-height: 1.25;
     font-size: 12px;
-    padding-bottom: 21px;
+    padding-bottom: 21px #424242;
   }
 
   .footer__copyright {

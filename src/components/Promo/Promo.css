@@ -22,25 +22,27 @@
   /* color: #000; */
   background-repeat: no-repeat;
   background-position: center;
-
+  padding: 0;
+  margin: 0;
   /* background-size: 18px; */
   background-image: url(../../images/text__COLOR_landing-logo.svg);
 
+  width: 722px;
+  height: 244px;
 
-  /* background-repeat: no-repeat; */
-  /* position: relative; */
-  /* left: 200px; */
   /* overflow: hidden; */
-  /* display: block; */
   /* position: absolute; */
-  
+
   /* margin-left: auto; */
-  /* width: 722px; */
   /* padding-right: 70px; */
   /* padding-top: 45px; */
   /* padding-bottom: 61px; */
-  /* background-size: cover; */
+  background-size: cover;
   /* align-self: center; */
+  margin-left: auto;
+  margin-right: 70px;
+  margin-top: 45px;
+  margin-bottom: 61px;
 }
 
 .promo__title {
@@ -85,12 +87,13 @@
   }
 
   .promo__cercles {
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 110px;
+    /* padding-left: 0; */
+    /* padding-right: 0; */
+    /* padding-top: 110px; */
+    margin-top: 111px;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 70px;
+    /* padding-bottom: 70px; */
     width: 680px;
     height: 230px;
   }
@@ -124,8 +127,16 @@
   }
 
   .promo__cercles {
+    padding: 0;
+    margin: 0;
     padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 40px;
     /* display: none; */
-    overflow: hidden;
+    /* overflow: hidden; */
+    width: 320;
+    height: 230px;
+    margin-left: -180px;
+    /* background-position: center; */
   }
 }

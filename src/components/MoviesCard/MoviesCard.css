@@ -29,7 +29,6 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-
 }
 
 .films-card__time {
@@ -44,7 +43,7 @@
   width: 52px;
   height: 18px;
   border-radius: 3px;
-  background-color: #2F2F2F;
+  background-color: #2f2f2f;
   /* text-align: center; */
   /* display: block; */
   justify-content: center;
@@ -132,8 +131,6 @@
   opacity: 0.6;
 }
 
-
-
 .films-card__del-button {
   display: none;
   position: absolute;
@@ -147,7 +144,7 @@
   border-radius: 50px;
   background-repeat: no-repeat;
   background-position: right;
-  background-color: #2F2F2F;
+  background-color: #2f2f2f;
   background-image: url(../../images/Card-cl-butt.svg);
 }
 
@@ -157,7 +154,7 @@
   box-shadow: 0px 0px 9px 7px #ee3465;
 }
 
-.films-card__del-button:hover .films-card__del-button{
+.films-card__del-button:hover .films-card__del-button {
   display: block;
 }
 
@@ -204,7 +201,32 @@
   .films-card__save-button {
     margin-top: 18px;
   }
+
+  .films-card__container {
+    padding: 0 14px;
+    padding-top: 23px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 18px;
+    align-items: center;
+    /* padding: 0;
+    margin: 0; */
+    /* height: 45px; */
+     padding-top: 16px;
+  }
+
+  .img-card__container {
+    padding: 0;
+    margin: 0;
+    width: 300px;
+    height: 168px;
+   
+  }
   .films-card__text {
-    max-width: 235px;
+    width: 300px;
+    /* height: 168px; */
+    font-weight: 500;
+font-size: 12px;
+line-height: 15px;
   }
 }
