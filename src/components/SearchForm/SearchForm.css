@@ -138,7 +138,6 @@
   border-radius: 50%;
   transition: 0.4s ease;
   transform: translate(16px);
-  /* background-color: #ffffff; */
 }
 
 @media screen and (max-width: 1024px) {
@@ -154,7 +153,7 @@
   .filter__text {
     line-height: 18px;
     font-size: 11px;
-    color: #FFFFFF;
+    color: #ffffff;
   }
 
   .filter {
@@ -190,7 +189,6 @@
   }
 
   .search__form-container {
-    /* background-color: #f9f9f9; */
     border-radius: 9px;
   }
   .search__input {
@@ -248,16 +246,13 @@
   .search__button {
     padding: 0;
     margin: 0;
-    /* margin-right: 15px; */
-    /* padding-right: 15px; */
   }
 
   .filter__text {
     line-height: 18px;
     font-size: 11px;
-    color: #FFFFFF;
+    color: #ffffff;
     padding-left: 0;
     padding-right: 11px;
   }
-
 }

@@ -69,5 +69,3 @@ export default function Register({ onRegister, isSpiner }) {
     </RegForm>
   );
 }
-
-

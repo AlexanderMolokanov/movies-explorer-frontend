@@ -34,7 +34,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 1.21;
-  color: #4285F4;
+  color: #4285f4;
   padding: 0;
   position: absolute;
   left: 50%;
@@ -47,13 +47,6 @@
   opacity: 0.8;
 }
 
-/* @media screen and (max-width: 1024px) {
-  .wrong-address__error {
-    font-weight: 400;
-    font-size: 140px;
-    line-height: 169px;
-  }
-} */
 @media screen and (max-width: 700px) {
   .wrong-address__button {
     bottom: 212px;

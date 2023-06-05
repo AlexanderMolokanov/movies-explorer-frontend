@@ -8,9 +8,6 @@ import { useLocation } from "react-router-dom";
 
 export default function Header({ isLogged }) {
   const [isClicked, setIsClicked] = useState(false);
-  console.log("isLogged-in-Header");
-  console.log(isLogged);
-
   const { pathname } = useLocation();
   function todoOpen() {
     setIsClicked(true);
@@ -20,8 +17,6 @@ export default function Header({ isLogged }) {
   }
 
   const isFirstPage = pathname === "/";
-  // console.log(isFirstPage);
-
   const headerFromColor = `${isFirstPage ? "header header_blue" : "header"}`;
   const headerButtonColor = `${
     isFirstPage
@@ -29,19 +24,13 @@ export default function Header({ isLogged }) {
       : "header_black header__account-button"
   }`;
   const headerBurgerButtonColor = `${
-    isFirstPage
-      ? "header__burger-button header_blue"
-      : "header__burger-button"
+    isFirstPage ? "header__burger-button header_blue" : "header__burger-button"
   }`;
 
   return (
     <>
       {!isLogged ? (
-        <header
-          // className="header"
-          className={headerFromColor}
-          id="header"
-        >
+        <header className={headerFromColor} id="header">
           <Link to="/" className="form__logo">
             <img src={logo} alt="логотип" />
           </Link>

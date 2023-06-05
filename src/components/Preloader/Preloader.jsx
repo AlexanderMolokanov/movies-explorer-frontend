@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Preloader = () => {
   return (
@@ -10,4 +10,4 @@ const Preloader = () => {
   );
 };
 
-export {Preloader};
+export { Preloader };

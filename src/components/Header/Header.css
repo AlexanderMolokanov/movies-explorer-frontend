@@ -1,21 +1,11 @@
 .header {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
-  /* position: relative; */
   padding: 0 70px;
-    min-height: 74px;
-  /* background-color: #202020; */
+  min-height: 74px;
 }
 
-
 .header__buttons-container {
-  /* display: flex; */
-  /* align-items: center; */
-  /* gap: 30px; */
-  /* margin-left: auto; */
-  /* margin-right: 50px; */
-  /* gap: 16px; */
   display: flex;
   margin-left: auto;
   gap: 20px;
@@ -24,29 +14,20 @@
 .header__buttons-container_films {
   display: flex;
   margin-left: auto;
-  /* justify-self: right; */
-  /* margin-right: 50px; */
   gap: 20px;
-}
-
-.header__prof-butt-man {
-  /* border: 2px solid #AAAAAA; */
 }
 
 .header__button {
   display: flex;
   align-items: center;
-  /* justify-content: right; */
   min-height: 32px;
   text-decoration: none;
   color: #ffffff;
-  
   text-align: center;
-
   font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 16px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
 }
 
 .header__button_saved-films {
@@ -79,12 +60,10 @@ line-height: 16px;
   justify-content: center;
   min-height: 32px;
   text-decoration: none;
-  /* color: #ffffff; */
   font-weight: 500;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  /* text-align: center; */
 }
 
 .header__burger-button {
@@ -97,17 +76,9 @@ line-height: 16px;
   margin: 0;
 }
 
-/* .header__burger-button_blue {
-  background-color: #073042;
-  
-} */
-
 .header__burger-button-img {
-  /* width: 34px; */
-  /* margin-top: 6px; */
   margin: 0;
   padding: 0;
-  /* background-color: #202020; */
 }
 
 .header__burger-button:hover {
@@ -127,9 +98,7 @@ line-height: 16px;
   line-height: 16px;
   text-decoration: none;
   color: #ffffff;
-  /* background: #202020; */
-  /* border: 3px solid #aaaaaa; */
-  border: 2px solid #AAAAAA;
+  border: 2px solid #aaaaaa;
 }
 
 .header__account-button:hover {
@@ -140,8 +109,7 @@ line-height: 16px;
   background: #3ddc84;
 }
 
-.header__buttons-container-brg{
-  
+.header__buttons-container-brg {
 }
 .header_blue {
   background-color: #073042;
@@ -153,29 +121,22 @@ line-height: 16px;
 @media screen and (max-width: 1024px) {
   .header {
     padding: 0 30px;
-    /* align-items: right; */
     justify-content: space-between;
   }
-  
+
   .header__burger-button {
     display: flex;
-    /* margin-left: auto; */
-    
   }
-  
+
   .header__buttons-container_films {
     display: none;
     gap: 30px;
   }
-  
+
   .header__buttons-container {
-    /* display: none; */
     gap: 30px;
   }
-  
-  .header__account-button {
-    /* display: none; */
-  }
+
   .header__button {
     font-weight: 500;
     font-size: 12px;
@@ -193,7 +154,6 @@ line-height: 16px;
   }
 
   .header__button {
-    /* min-height: 6px; */
     height: 26px;
     font-size: 10px;
     line-height: 16px;
@@ -208,13 +168,11 @@ line-height: 16px;
     font-size: 10px;
     line-height: 16px;
     margin: 0;
-
   }
 
   .header__burger-button-img {
     width: 34px;
     margin-top: 6px;
-    /* background-color: #202020; */
   }
 
   .header_blue {

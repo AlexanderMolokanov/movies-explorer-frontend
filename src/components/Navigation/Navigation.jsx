@@ -35,18 +35,7 @@ export default function Navigation({ todoClose }) {
             Сохранённые фильмы
           </NavLink>
         </nav>
-        {/* <Link
-          to="/profile"
-          onClick={todoClose}
-          className="navigation__account-button"
-        >
-          Аккаунт
-        </Link> */}
-
-        <Link to="/profile" 
-        className="navigation__account-button"
-        >
-
+        <Link to="/profile" className="navigation__account-button">
           <img
             className="header__prof-butt-man"
             src={proflogo}
@@ -54,8 +43,6 @@ export default function Navigation({ todoClose }) {
           />{" "}
           &nbsp;Аккаунт
         </Link>
-
-
       </div>
     </div>
   );

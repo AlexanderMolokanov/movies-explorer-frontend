@@ -37,11 +37,9 @@ export default function App() {
   //авторизация
   function handleAuthorization({ email, password }) {
     setIsSpiner(true);
-    // console.log("handleAuthorization-apiSignin-");
     apiSignin(email, password)
       .then((res) => {
         if (res) {
-          // console.log(res);
           setIsLogged(true);
           localStorage.setItem("logged", true);
           setIsSuccesRegistr(true);
@@ -63,10 +61,6 @@ export default function App() {
   // аутентификация
   useEffect(() => {
     if (isLogged) {
-      // setIsLogged(true);
-      // console.log("setIsLogged-true -аутентификация");
-      // console.log(isLogged);
-
       apiGetUser()
         .then((profileInfo) => {
           setUser(profileInfo);
@@ -136,7 +130,8 @@ export default function App() {
         setIsPopup(true);
         console.log(err);
         todoUnauthorized(err);
-      }).finally(() => {
+      })
+      .finally(() => {
         setIsSpiner(false);
       });
   }
@@ -154,7 +149,8 @@ export default function App() {
         setIsPopup(true);
         console.log(err);
         todoUnauthorized(err);
-      }).finally(() => {
+      })
+      .finally(() => {
         setIsSpiner(false);
       });
   }

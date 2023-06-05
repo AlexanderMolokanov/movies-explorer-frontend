@@ -6,7 +6,12 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import React, { useState, useEffect } from "react";
 
-export default function Movies({ isLogged, todoLikeClick, likedFilms, onCardDelete }) {
+export default function Movies({
+  isLogged,
+  todoLikeClick,
+  likedFilms,
+  onCardDelete,
+}) {
   const [films, setFilms] = useState([]); //начальные фильмы
   const [filteredFilms, setFilteredFilms] = useState([]); //отфильтровать по запросу
   const [isErr, setIsErr] = useState(false); // вывести ошибку

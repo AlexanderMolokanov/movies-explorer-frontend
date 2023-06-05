@@ -47,5 +47,3 @@ export default function SavedMovies({ isLogged, likedFilms, onCardDelete }) {
     </section>
   );
 }
-
-

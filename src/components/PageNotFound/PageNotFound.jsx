@@ -1,4 +1,4 @@
-import './PageNotFound.css';
+import "./PageNotFound.css";
 
 export default function PageNotFound({ goBack }) {
   return (

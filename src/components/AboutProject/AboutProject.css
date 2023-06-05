@@ -18,7 +18,7 @@
   font-size: 22px;
   line-height: 27px;
   letter-spacing: -0.04em;
-  border-bottom: 1px solid #DADADA;
+  border-bottom: 1px solid #dadada;
 }
 
 .project__content {
@@ -77,7 +77,7 @@
 
 .project__time-header_green {
   color: #000000;
-  background-color: #3DDC84;
+  background-color: #3ddc84;
 }
 
 .project__time-description {

@@ -1,31 +1,32 @@
 {
   "files": {
-    "main.css": "/static/css/main.9006fea3.css",
-    "main.js": "/static/js/main.840b015e.js",
+    "main.css": "/static/css/main.75322926.css",
+    "main.js": "/static/js/main.81495d80.js",
     "static/js/787.5fef94a4.chunk.js": "/static/js/787.5fef94a4.chunk.js",
+    "static/media/aMan.jpg": "/static/media/aMan.e009c119bf636e7aae3b.jpg",
     "static/media/Inter-Medium.woff": "/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
     "static/media/Inter-Black.woff": "/static/media/Inter-Black.c6938660eec019fefd68.woff",
     "static/media/Inter-Regular.woff": "/static/media/Inter-Regular.8c206db99195777c6769.woff",
-    "static/media/my-photo.jpg": "/static/media/my-photo.104206a102e58dff4c4d.jpg",
     "static/media/Inter-Medium.woff2": "/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
     "static/media/Inter-Black.woff2": "/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
     "static/media/Inter-Regular.woff2": "/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
-    "static/media/logo.svg": "/static/media/logo.8e73ef98993cf7d2d1539a5e7a6faf7e.svg",
+    "static/media/text__COLOR_landing-logo.svg": "/static/media/text__COLOR_landing-logo.4a7e65f596a0d095848c.svg",
+    "static/media/search-button1.svg": "/static/media/search-button1.500b16ee3745ed55235f.svg",
     "static/media/search-icon.svg": "/static/media/search-icon.95905a7740041efe54fd.svg",
     "index.html": "/index.html",
-    "static/media/card-like1.svg": "/static/media/card-like1.fe99257c80ecafe595a4.svg",
-    "static/media/White-flag.svg": "/static/media/White-flag.cb46adadf0fbfa52fbc5.svg",
-    "static/media/del-button.svg": "/static/media/del-button.9b0fc08af582cf7a5f45.svg",
-    "static/media/search-button.svg": "/static/media/search-button.3095ed55f9005878a91d.svg",
-    "static/media/cl-button.svg": "/static/media/cl-button.37b3cf6153b53ea7c3c9.svg",
-    "static/media/Arrow.svg": "/static/media/Arrow.9c2833c8cb15ebac3607.svg",
-    "static/media/burger-button.svg": "/static/media/burger-button.57219a08847aebb72b93d93b52ee7f75.svg",
-    "main.9006fea3.css.map": "/static/css/main.9006fea3.css.map",
-    "main.840b015e.js.map": "/static/js/main.840b015e.js.map",
+    "static/media/profile-logo-man.svg": "/static/media/profile-logo-man.4a8d88d01f31c46294b8df42a4f9feaa.svg",
+    "static/media/Card-cl-butt.svg": "/static/media/Card-cl-butt.023b0162a1c1e3a955f9.svg",
+    "static/media/logo_new.svg": "/static/media/logo_new.850e5b6d7cb5d175d25677a3e572b5ff.svg",
+    "static/media/burger-button.svg": "/static/media/burger-button.111cfc3a3545a9ff785c650913202756.svg",
+    "static/media/cl-button.svg": "/static/media/cl-button.128b4b070d39259dc44e.svg",
+    "static/media/text__COLOR_font-main.svg": "/static/media/text__COLOR_font-main.21d4a41cbd169bf0c5fe.svg",
+    "static/media/bird.svg": "/static/media/bird.05d8e33ceef298e0e7e6.svg",
+    "main.75322926.css.map": "/static/css/main.75322926.css.map",
+    "main.81495d80.js.map": "/static/js/main.81495d80.js.map",
     "787.5fef94a4.chunk.js.map": "/static/js/787.5fef94a4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9006fea3.css",
-    "static/js/main.840b015e.js"
+    "static/css/main.75322926.css",
+    "static/js/main.81495d80.js"
   ]
 }
