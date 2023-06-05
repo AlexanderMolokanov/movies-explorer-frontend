@@ -8,12 +8,6 @@
   /* background-color: #202020; */
 }
 
-.header_blue {
-  background: #073042;
-}
-.header_black {
-  background: #202020;
-}
 
 .header__buttons-container {
   /* display: flex; */
@@ -76,8 +70,8 @@
   color: #000000;
   text-align: center;
   background-color: #3ddc84;
-
-
+  
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,7 +79,7 @@
   text-decoration: none;
   /* color: #ffffff; */
   font-weight: 500;
-
+  
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
@@ -98,6 +92,21 @@
   width: 44px;
   height: 44px;
   background-color: #202020;
+  padding: 0;
+  margin: 0;
+}
+
+/* .header__burger-button_blue {
+  background-color: #073042;
+  
+} */
+
+.header__burger-button-img {
+  /* width: 34px; */
+  /* margin-top: 6px; */
+  margin: 0;
+  padding: 0;
+  /* background-color: #202020; */
 }
 
 .header__burger-button:hover {
@@ -131,7 +140,13 @@
 }
 
 .header__buttons-container-brg{
-
+  
+}
+.header_blue {
+  background-color: #073042;
+}
+.header_black {
+  background: #202020;
 }
 
 @media screen and (max-width: 1024px) {
@@ -140,23 +155,23 @@
     /* align-items: right; */
     justify-content: space-between;
   }
-
+  
   .header__burger-button {
     display: flex;
     /* margin-left: auto; */
     
   }
-
+  
   .header__buttons-container_films {
     display: none;
     gap: 30px;
   }
-
+  
   .header__buttons-container {
     /* display: none; */
     gap: 30px;
   }
-
+  
   .header__account-button {
     /* display: none; */
   }
@@ -197,6 +212,10 @@
   .header__burger-button-img {
     width: 34px;
     margin-top: 6px;
-    background-color: #202020;
+    /* background-color: #202020; */
+  }
+
+  .header_blue {
+    background-color: #073042;
   }
 }

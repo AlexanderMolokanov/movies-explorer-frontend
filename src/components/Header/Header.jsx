@@ -28,6 +28,11 @@ export default function Header({ isLogged }) {
       ? "header_blue header__account-button "
       : "header_black header__account-button"
   }`;
+  const headerBurgerButtonColor = `${
+    isFirstPage
+      ? "header__burger-button header_blue"
+      : "header__burger-button"
+  }`;
 
   return (
     <>
@@ -81,7 +86,7 @@ export default function Header({ isLogged }) {
             </div>
           </div>
           <div className="header__buttons-container-brg">
-            <button onClick={todoOpen} className="header__burger-button">
+            <button onClick={todoOpen} className={headerBurgerButtonColor}>
               <img
                 className="header__burger-button-img"
                 src={menu}

@@ -10,8 +10,9 @@ export default function Promo() {
         {/* <NavTab /> */}
         {/* <div className="promo__cercles"> */}
         {/* <img src={logo} alt="логотип" /> */}
-        <img className="promo__cercles" src={cercles} alt="круги" />
+        {/* <img className="promo__cercles" src={cercles} alt="круги" /> */}
         {/* </div> */}
+        <div className="promo__cercles" ></div>
       </div>
     </section>
   );
