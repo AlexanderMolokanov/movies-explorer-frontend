@@ -18,6 +18,8 @@ https://github.com/AlexanderMolokanov/movies-explorer-api
 https://github.com/AlexanderMolokanov/movies-explorer-api
 
 ## Функционал 
+Макет фигмы находится в контевом файле репозитория Diploma.fig
+## Функционал 
 * Поиск и фильтрация фильмов; 
 * Добавление и удаление фильмов из избранного
 * Изменение данных пользователя;

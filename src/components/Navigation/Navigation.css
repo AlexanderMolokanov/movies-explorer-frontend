@@ -1,0 +1,117 @@
+.navigation__overlay {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .navigation__overlay {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 42;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .navigation__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 159px 90px 90px 90px;
+    width: 520px;
+    min-height: 100vh;
+    background-color: #fff;
+  }
+
+  .navigation__container-empty {
+    flex: 1 1 auto;
+  }
+
+  .navigation__cl-button {
+    position: absolute;
+    top: 27px;
+    right: 27px;
+    width: 22px;
+    height: 22px;
+    border: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-image: url("../../images/cl-button.svg");
+  }
+
+  F:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+
+  .navigation__nav {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .navigation__link {
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    width: max-content;
+    color: #000000;
+  }
+
+  .navigation__link_active {
+    text-decoration: line;
+  }
+
+  .navigation__link:hover {
+    border-bottom: 2px solid #000000;
+  }
+
+  .navigation__account-button {
+    padding-top: 8px;
+    width: 100px;
+    height: 32px;
+    text-align: center;
+    /* box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08); */
+    border-radius: 40px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-decoration: none;
+    color: #000000;
+    background: #f9f9f9;
+  }
+
+  .navigation__account-button:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+}
+
+@media screen and (max-width: 577px) {
+  .navigation__nav {
+    gap: 24px;
+  }
+
+  .navigation__container {
+    padding: 144px 10px 46px 10px;
+    width: 100%;
+  }
+
+  .navigation__container-empty {
+    display: none;
+  }
+
+  .navigation__cl-button {
+    top: 22px;
+    right: 22px;
+  }
+}
